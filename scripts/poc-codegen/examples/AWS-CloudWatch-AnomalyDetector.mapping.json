@@ -1,0 +1,612 @@
+{
+  "resourceType": "AWS::CloudWatch::AnomalyDetector",
+  "subOperations": {},
+  "installedSdk": {
+    "pkg": "client-cloudwatch",
+    "checked": true
+  },
+  "service": {
+    "modelPath": "/Users/sakurai/ghq/github.com/aws/api-models-aws/models/cloudwatch/service/2010-08-01/cloudwatch-2010-08-01.json",
+    "sdkId": "CloudWatch",
+    "cloudFormationName": "CloudWatch",
+    "arnNamespace": "monitoring",
+    "namespace": "com.amazonaws.cloudwatch"
+  },
+  "operations": {
+    "create": {
+      "operationName": "PutAnomalyDetector",
+      "inputShape": "com.amazonaws.cloudwatch#PutAnomalyDetectorInput",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutAnomalyDetector)|PutAnomalyDetectorInput",
+      "candidates": [
+        "PutAnomalyDetector"
+      ]
+    },
+    "update": {
+      "operationName": "PutAnomalyDetector",
+      "inputShape": "com.amazonaws.cloudwatch#PutAnomalyDetectorInput",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutAnomalyDetector)|PutAnomalyDetectorInput",
+      "candidates": [
+        "PutAnomalyDetector"
+      ]
+    },
+    "delete": {
+      "operationName": "DeleteAnomalyDetector",
+      "inputShape": "com.amazonaws.cloudwatch#DeleteAnomalyDetectorInput",
+      "source": "verb-heuristic",
+      "rootId": "#top(DeleteAnomalyDetector)|DeleteAnomalyDetectorInput",
+      "candidates": [
+        "DeleteAnomalyDetector"
+      ]
+    }
+  },
+  "structs": {
+    "#top(PutAnomalyDetector)|PutAnomalyDetectorInput": {
+      "id": "#top(PutAnomalyDetector)|PutAnomalyDetectorInput",
+      "cfnDef": "#top(PutAnomalyDetector)",
+      "sdkShape": "PutAnomalyDetectorInput",
+      "members": [
+        {
+          "cfn": "Configuration",
+          "sdk": "Configuration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "Configuration|AnomalyDetectorConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "Dimensions",
+          "sdk": "Dimensions",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Dimension|Dimension",
+          "notes": []
+        },
+        {
+          "cfn": "MetricCharacteristics",
+          "sdk": "MetricCharacteristics",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "MetricCharacteristics|MetricCharacteristics",
+          "notes": []
+        },
+        {
+          "cfn": "MetricMathAnomalyDetector",
+          "sdk": "MetricMathAnomalyDetector",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "MetricMathAnomalyDetector|MetricMathAnomalyDetector",
+          "notes": []
+        },
+        {
+          "cfn": "MetricName",
+          "sdk": "MetricName",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Namespace",
+          "sdk": "Namespace",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SingleMetricAnomalyDetector",
+          "sdk": "SingleMetricAnomalyDetector",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "SingleMetricAnomalyDetector|SingleMetricAnomalyDetector",
+          "notes": []
+        },
+        {
+          "cfn": "Stat",
+          "sdk": "Stat",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Configuration|AnomalyDetectorConfiguration": {
+      "id": "Configuration|AnomalyDetectorConfiguration",
+      "cfnDef": "Configuration",
+      "sdkShape": "AnomalyDetectorConfiguration",
+      "members": [
+        {
+          "cfn": "ExcludedTimeRanges",
+          "sdk": "ExcludedTimeRanges",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Range|Range",
+          "notes": []
+        },
+        {
+          "cfn": "MetricTimeZone",
+          "sdk": "MetricTimezone",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Range|Range": {
+      "id": "Range|Range",
+      "cfnDef": "Range",
+      "sdkShape": "Range",
+      "members": [
+        {
+          "cfn": "EndTime",
+          "sdk": "EndTime",
+          "match": "exact",
+          "transform": "to-date",
+          "cfnKind": "string",
+          "sdkKind": "timestamp",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "StartTime",
+          "sdk": "StartTime",
+          "match": "exact",
+          "transform": "to-date",
+          "cfnKind": "string",
+          "sdkKind": "timestamp",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Dimension|Dimension": {
+      "id": "Dimension|Dimension",
+      "cfnDef": "Dimension",
+      "sdkShape": "Dimension",
+      "members": [
+        {
+          "cfn": "Name",
+          "sdk": "Name",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Value",
+          "sdk": "Value",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "MetricCharacteristics|MetricCharacteristics": {
+      "id": "MetricCharacteristics|MetricCharacteristics",
+      "cfnDef": "MetricCharacteristics",
+      "sdkShape": "MetricCharacteristics",
+      "members": [
+        {
+          "cfn": "PeriodicSpikes",
+          "sdk": "PeriodicSpikes",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "MetricMathAnomalyDetector|MetricMathAnomalyDetector": {
+      "id": "MetricMathAnomalyDetector|MetricMathAnomalyDetector",
+      "cfnDef": "MetricMathAnomalyDetector",
+      "sdkShape": "MetricMathAnomalyDetector",
+      "members": [
+        {
+          "cfn": "MetricDataQueries",
+          "sdk": "MetricDataQueries",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "MetricDataQuery|MetricDataQuery",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "MetricDataQuery|MetricDataQuery": {
+      "id": "MetricDataQuery|MetricDataQuery",
+      "cfnDef": "MetricDataQuery",
+      "sdkShape": "MetricDataQuery",
+      "members": [
+        {
+          "cfn": "AccountId",
+          "sdk": "AccountId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Expression",
+          "sdk": "Expression",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Id",
+          "sdk": "Id",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Label",
+          "sdk": "Label",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MetricStat",
+          "sdk": "MetricStat",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "MetricStat|MetricStat",
+          "notes": []
+        },
+        {
+          "cfn": "Period",
+          "sdk": "Period",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ReturnData",
+          "sdk": "ReturnData",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "MetricStat|MetricStat": {
+      "id": "MetricStat|MetricStat",
+      "cfnDef": "MetricStat",
+      "sdkShape": "MetricStat",
+      "members": [
+        {
+          "cfn": "Metric",
+          "sdk": "Metric",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "Metric|Metric",
+          "notes": []
+        },
+        {
+          "cfn": "Period",
+          "sdk": "Period",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Stat",
+          "sdk": "Stat",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Unit",
+          "sdk": "Unit",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Metric|Metric": {
+      "id": "Metric|Metric",
+      "cfnDef": "Metric",
+      "sdkShape": "Metric",
+      "members": [
+        {
+          "cfn": "Dimensions",
+          "sdk": "Dimensions",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Dimension|Dimension",
+          "notes": []
+        },
+        {
+          "cfn": "MetricName",
+          "sdk": "MetricName",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Namespace",
+          "sdk": "Namespace",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "SingleMetricAnomalyDetector|SingleMetricAnomalyDetector": {
+      "id": "SingleMetricAnomalyDetector|SingleMetricAnomalyDetector",
+      "cfnDef": "SingleMetricAnomalyDetector",
+      "sdkShape": "SingleMetricAnomalyDetector",
+      "members": [
+        {
+          "cfn": "AccountId",
+          "sdk": "AccountId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Dimensions",
+          "sdk": "Dimensions",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Dimension|Dimension",
+          "notes": []
+        },
+        {
+          "cfn": "MetricName",
+          "sdk": "MetricName",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Namespace",
+          "sdk": "Namespace",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Stat",
+          "sdk": "Stat",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "#top(DeleteAnomalyDetector)|DeleteAnomalyDetectorInput": {
+      "id": "#top(DeleteAnomalyDetector)|DeleteAnomalyDetectorInput",
+      "cfnDef": "#top(DeleteAnomalyDetector)",
+      "sdkShape": "DeleteAnomalyDetectorInput",
+      "members": [
+        {
+          "cfn": "Configuration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Dimensions",
+          "sdk": "Dimensions",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Dimension|Dimension",
+          "notes": []
+        },
+        {
+          "cfn": "MetricCharacteristics",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MetricMathAnomalyDetector",
+          "sdk": "MetricMathAnomalyDetector",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "MetricMathAnomalyDetector|MetricMathAnomalyDetector",
+          "notes": []
+        },
+        {
+          "cfn": "MetricName",
+          "sdk": "MetricName",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Namespace",
+          "sdk": "Namespace",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SingleMetricAnomalyDetector",
+          "sdk": "SingleMetricAnomalyDetector",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "SingleMetricAnomalyDetector|SingleMetricAnomalyDetector",
+          "notes": []
+        },
+        {
+          "cfn": "Stat",
+          "sdk": "Stat",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "Configuration",
+        "MetricCharacteristics"
+      ],
+      "sdkRequiredUnfed": []
+    }
+  },
+  "readOnlyProperties": [
+    "Id"
+  ],
+  "createOnlyProperties": [
+    "Dimensions",
+    "MetricCharacteristics",
+    "MetricName",
+    "Namespace",
+    "SingleMetricAnomalyDetector",
+    "MetricMathAnomalyDetector",
+    "Stat"
+  ],
+  "stats": {
+    "totalCfnPaths": 43,
+    "matchedExact": 40,
+    "matchedCase": 1,
+    "renameCandidates": 0,
+    "unmatched": 2,
+    "nonDirectTransforms": 4
+  }
+}

@@ -17,8 +17,8 @@ function toNum(v: unknown): number | undefined {
 function toBool(v: unknown): boolean | undefined {
   if (v === undefined || v === null) return undefined;
   if (typeof v === 'boolean') return v;
-  if (v === 'true') return true;
-  if (v === 'false') return false;
+  if (v === 'true' || v === 'True') return true;
+  if (v === 'false' || v === 'False') return false;
   throw new Error(\`expected a boolean, got: \${JSON.stringify(v)}\`);
 }
 function toDateV(v: unknown): Date | undefined {
@@ -118,6 +118,27 @@ function emitMember(
     );
     return;
   }
+  // The three NOT-emitted classes (VERIFICATION.md C2 / C3): an unconfirmed
+  // guess must never execute — a wrong-but-plausible write is worse than a
+  // visible gap.
+  if (m.skew === true) {
+    body.push(
+      `  // VERSION-SKEW (NOT emitted): '${m.cfn}' -> '${m.sdk}' is absent from the ` +
+        `installed SDK client; the serializer would silently drop it`
+    );
+    return;
+  }
+  if (m.match === 'collision') {
+    body.push(`  // COLLISION (NOT emitted): '${m.cfn}' -> '${m.sdk}' — ${m.notes.join('; ')}`);
+    return;
+  }
+  if (m.match === 'rename-candidate') {
+    body.push(
+      `  // RENAME-CANDIDATE (NOT emitted; confirm via override table): ` +
+        `'${m.cfn}' -> '${m.sdk}' (${m.notes.join('; ')})`
+    );
+    return;
+  }
   if (m.transform === 'unsupported') {
     body.push(
       `  // UNSUPPORTED: '${m.cfn}' -> '${m.sdk}' (${m.notes.join('; ') || 'manual mapping needed'})`
@@ -127,9 +148,6 @@ function emitMember(
   const comments: string[] = [];
   if (m.match === 'case' && !isStyleFlip(m.cfn, m.sdk)) {
     comments.push(`case-divergence: '${m.cfn}' -> '${m.sdk}'`);
-  }
-  if (m.match === 'rename-candidate') {
-    comments.push(`RENAME-CANDIDATE (confirm): '${m.cfn}' -> '${m.sdk}'`);
   }
   for (const note of m.notes) comments.push(note);
 
@@ -188,12 +206,18 @@ function emitMember(
   }
 
   for (const c of comments) body.push(`  // ${c}`);
+  const isWrap =
+    m.transform === 'wrap-quantity-items' || m.transform === 'wrap-single-list-member';
+  const otherRequired = isWrap ? (m.wrapper?.otherRequired ?? []) : [];
+  if (otherRequired.length > 0) {
+    body.push(
+      `  // TODO(required-wrapper): '${m.sdk}' also requires { ${otherRequired.join(', ')} } — ` +
+        `not derivable from the CFn array; set in glue code`
+    );
+  }
   body.push(`  {`);
   body.push(`    const v = ${v};`);
-  if (
-    (m.transform === 'wrap-quantity-items' || m.transform === 'wrap-single-list-member') &&
-    m.sdkRequired
-  ) {
+  if (isWrap && m.sdkRequired && otherRequired.length === 0) {
     const w = m.wrapper as NonNullable<MemberMapping['wrapper']>;
     const empty =
       w.quantityMember !== null
@@ -203,6 +227,11 @@ function emitMember(
     body.push(`    else out['${m.sdk}'] = ${empty}; // required wrapper: empty default`);
   } else {
     body.push(`    if (v !== undefined) out['${m.sdk}'] = ${expr};`);
+    if (isWrap && m.sdkRequired && otherRequired.length > 0) {
+      body.push(
+        `    // NOTE: required wrapper with non-derivable members — no empty default emitted`
+      );
+    }
   }
   body.push(`  }`);
 }

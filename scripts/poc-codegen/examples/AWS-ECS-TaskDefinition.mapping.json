@@ -1,0 +1,2223 @@
+{
+  "resourceType": "AWS::ECS::TaskDefinition",
+  "subOperations": {},
+  "installedSdk": {
+    "pkg": "client-ecs",
+    "checked": true
+  },
+  "service": {
+    "modelPath": "/Users/sakurai/ghq/github.com/aws/api-models-aws/models/ecs/service/2014-11-13/ecs-2014-11-13.json",
+    "sdkId": "ECS",
+    "cloudFormationName": "ECS",
+    "arnNamespace": "ecs",
+    "namespace": "com.amazonaws.ecs"
+  },
+  "operations": {
+    "create": {
+      "operationName": "RegisterTaskDefinition",
+      "inputShape": "com.amazonaws.ecs#RegisterTaskDefinitionRequest",
+      "source": "handlers",
+      "rootId": "#top(RegisterTaskDefinition)|RegisterTaskDefinitionRequest",
+      "candidates": [
+        "RegisterTaskDefinition",
+        "DescribeTaskDefinition",
+        "TagResource"
+      ]
+    },
+    "delete": {
+      "operationName": "DeregisterTaskDefinition",
+      "inputShape": "com.amazonaws.ecs#DeregisterTaskDefinitionRequest",
+      "source": "handlers",
+      "rootId": "#top(DeregisterTaskDefinition)|DeregisterTaskDefinitionRequest",
+      "candidates": [
+        "DeregisterTaskDefinition",
+        "DescribeTaskDefinition"
+      ]
+    }
+  },
+  "structs": {
+    "#top(RegisterTaskDefinition)|RegisterTaskDefinitionRequest": {
+      "id": "#top(RegisterTaskDefinition)|RegisterTaskDefinitionRequest",
+      "cfnDef": "#top(RegisterTaskDefinition)",
+      "sdkShape": "RegisterTaskDefinitionRequest",
+      "members": [
+        {
+          "cfn": "ContainerDefinitions",
+          "sdk": "containerDefinitions",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": true,
+          "childId": "ContainerDefinition|ContainerDefinition",
+          "notes": []
+        },
+        {
+          "cfn": "Cpu",
+          "sdk": "cpu",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "EnableFaultInjection",
+          "sdk": "enableFaultInjection",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "EphemeralStorage",
+          "sdk": "ephemeralStorage",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "EphemeralStorage|EphemeralStorage",
+          "notes": []
+        },
+        {
+          "cfn": "ExecutionRoleArn",
+          "sdk": "executionRoleArn",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Family",
+          "sdk": "family",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "InferenceAccelerators",
+          "sdk": "inferenceAccelerators",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "InferenceAccelerator|InferenceAccelerator",
+          "notes": []
+        },
+        {
+          "cfn": "IpcMode",
+          "sdk": "ipcMode",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Memory",
+          "sdk": "memory",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "NetworkMode",
+          "sdk": "networkMode",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PidMode",
+          "sdk": "pidMode",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PlacementConstraints",
+          "sdk": "placementConstraints",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "TaskDefinitionPlacementConstraint|TaskDefinitionPlacementConstraint",
+          "notes": []
+        },
+        {
+          "cfn": "ProxyConfiguration",
+          "sdk": "proxyConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ProxyConfiguration|ProxyConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "RequiresCompatibilities",
+          "sdk": "requiresCompatibilities",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "RuntimePlatform",
+          "sdk": "runtimePlatform",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "RuntimePlatform|RuntimePlatform",
+          "notes": []
+        },
+        {
+          "cfn": "Tags",
+          "sdk": "tags",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Tag|Tag",
+          "notes": []
+        },
+        {
+          "cfn": "TaskRoleArn",
+          "sdk": "taskRoleArn",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Volumes",
+          "sdk": "volumes",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Volume|Volume",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ContainerDefinition|ContainerDefinition": {
+      "id": "ContainerDefinition|ContainerDefinition",
+      "cfnDef": "ContainerDefinition",
+      "sdkShape": "ContainerDefinition",
+      "members": [
+        {
+          "cfn": "Command",
+          "sdk": "command",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Cpu",
+          "sdk": "cpu",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "CredentialSpecs",
+          "sdk": "credentialSpecs",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "DependsOn",
+          "sdk": "dependsOn",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "ContainerDependency|ContainerDependency",
+          "notes": []
+        },
+        {
+          "cfn": "DisableNetworking",
+          "sdk": "disableNetworking",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "DnsSearchDomains",
+          "sdk": "dnsSearchDomains",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "DnsServers",
+          "sdk": "dnsServers",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "DockerLabels",
+          "sdk": "dockerLabels",
+          "match": "case",
+          "transform": "map",
+          "cfnKind": "map",
+          "sdkKind": "map",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "DockerSecurityOptions",
+          "sdk": "dockerSecurityOptions",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "EntryPoint",
+          "sdk": "entryPoint",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Environment",
+          "sdk": "environment",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "KeyValuePair|KeyValuePair",
+          "notes": []
+        },
+        {
+          "cfn": "EnvironmentFiles",
+          "sdk": "environmentFiles",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "EnvironmentFile|EnvironmentFile",
+          "notes": []
+        },
+        {
+          "cfn": "Essential",
+          "sdk": "essential",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ExtraHosts",
+          "sdk": "extraHosts",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "HostEntry|HostEntry",
+          "notes": []
+        },
+        {
+          "cfn": "FirelensConfiguration",
+          "sdk": "firelensConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "FirelensConfiguration|FirelensConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "HealthCheck",
+          "sdk": "healthCheck",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "HealthCheck|HealthCheck",
+          "notes": []
+        },
+        {
+          "cfn": "Hostname",
+          "sdk": "hostname",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Image",
+          "sdk": "image",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Interactive",
+          "sdk": "interactive",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Links",
+          "sdk": "links",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "LinuxParameters",
+          "sdk": "linuxParameters",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "LinuxParameters|LinuxParameters",
+          "notes": []
+        },
+        {
+          "cfn": "LogConfiguration",
+          "sdk": "logConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "LogConfiguration|LogConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "Memory",
+          "sdk": "memory",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MemoryReservation",
+          "sdk": "memoryReservation",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MountPoints",
+          "sdk": "mountPoints",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "MountPoint|MountPoint",
+          "notes": []
+        },
+        {
+          "cfn": "Name",
+          "sdk": "name",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PortMappings",
+          "sdk": "portMappings",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "PortMapping|PortMapping",
+          "notes": []
+        },
+        {
+          "cfn": "Privileged",
+          "sdk": "privileged",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PseudoTerminal",
+          "sdk": "pseudoTerminal",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ReadonlyRootFilesystem",
+          "sdk": "readonlyRootFilesystem",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "RepositoryCredentials",
+          "sdk": "repositoryCredentials",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "RepositoryCredentials|RepositoryCredentials",
+          "notes": []
+        },
+        {
+          "cfn": "ResourceRequirements",
+          "sdk": "resourceRequirements",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "ResourceRequirement|ResourceRequirement",
+          "notes": []
+        },
+        {
+          "cfn": "RestartPolicy",
+          "sdk": "restartPolicy",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "RestartPolicy|ContainerRestartPolicy",
+          "notes": []
+        },
+        {
+          "cfn": "Secrets",
+          "sdk": "secrets",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Secret|Secret",
+          "notes": []
+        },
+        {
+          "cfn": "StartTimeout",
+          "sdk": "startTimeout",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "StopTimeout",
+          "sdk": "stopTimeout",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SystemControls",
+          "sdk": "systemControls",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "SystemControl|SystemControl",
+          "notes": []
+        },
+        {
+          "cfn": "Ulimits",
+          "sdk": "ulimits",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Ulimit|Ulimit",
+          "notes": []
+        },
+        {
+          "cfn": "User",
+          "sdk": "user",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "VersionConsistency",
+          "sdk": "versionConsistency",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "VolumesFrom",
+          "sdk": "volumesFrom",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "VolumeFrom|VolumeFrom",
+          "notes": []
+        },
+        {
+          "cfn": "WorkingDirectory",
+          "sdk": "workingDirectory",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ContainerDependency|ContainerDependency": {
+      "id": "ContainerDependency|ContainerDependency",
+      "cfnDef": "ContainerDependency",
+      "sdkShape": "ContainerDependency",
+      "members": [
+        {
+          "cfn": "Condition",
+          "sdk": "condition",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "ContainerName",
+          "sdk": "containerName",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "KeyValuePair|KeyValuePair": {
+      "id": "KeyValuePair|KeyValuePair",
+      "cfnDef": "KeyValuePair",
+      "sdkShape": "KeyValuePair",
+      "members": [
+        {
+          "cfn": "Name",
+          "sdk": "name",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Value",
+          "sdk": "value",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "EnvironmentFile|EnvironmentFile": {
+      "id": "EnvironmentFile|EnvironmentFile",
+      "cfnDef": "EnvironmentFile",
+      "sdkShape": "EnvironmentFile",
+      "members": [
+        {
+          "cfn": "Type",
+          "sdk": "type",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Value",
+          "sdk": "value",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "HostEntry|HostEntry": {
+      "id": "HostEntry|HostEntry",
+      "cfnDef": "HostEntry",
+      "sdkShape": "HostEntry",
+      "members": [
+        {
+          "cfn": "Hostname",
+          "sdk": "hostname",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "IpAddress",
+          "sdk": "ipAddress",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "FirelensConfiguration|FirelensConfiguration": {
+      "id": "FirelensConfiguration|FirelensConfiguration",
+      "cfnDef": "FirelensConfiguration",
+      "sdkShape": "FirelensConfiguration",
+      "members": [
+        {
+          "cfn": "Options",
+          "sdk": "options",
+          "match": "case",
+          "transform": "map",
+          "cfnKind": "map",
+          "sdkKind": "map",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Type",
+          "sdk": "type",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "HealthCheck|HealthCheck": {
+      "id": "HealthCheck|HealthCheck",
+      "cfnDef": "HealthCheck",
+      "sdkShape": "HealthCheck",
+      "members": [
+        {
+          "cfn": "Command",
+          "sdk": "command",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Interval",
+          "sdk": "interval",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Retries",
+          "sdk": "retries",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "StartPeriod",
+          "sdk": "startPeriod",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Timeout",
+          "sdk": "timeout",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "LinuxParameters|LinuxParameters": {
+      "id": "LinuxParameters|LinuxParameters",
+      "cfnDef": "LinuxParameters",
+      "sdkShape": "LinuxParameters",
+      "members": [
+        {
+          "cfn": "Capabilities",
+          "sdk": "capabilities",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "KernelCapabilities|KernelCapabilities",
+          "notes": []
+        },
+        {
+          "cfn": "Devices",
+          "sdk": "devices",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Device|Device",
+          "notes": []
+        },
+        {
+          "cfn": "InitProcessEnabled",
+          "sdk": "initProcessEnabled",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MaxSwap",
+          "sdk": "maxSwap",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SharedMemorySize",
+          "sdk": "sharedMemorySize",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Swappiness",
+          "sdk": "swappiness",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Tmpfs",
+          "sdk": "tmpfs",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Tmpfs|Tmpfs",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "KernelCapabilities|KernelCapabilities": {
+      "id": "KernelCapabilities|KernelCapabilities",
+      "cfnDef": "KernelCapabilities",
+      "sdkShape": "KernelCapabilities",
+      "members": [
+        {
+          "cfn": "Add",
+          "sdk": "add",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Drop",
+          "sdk": "drop",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Device|Device": {
+      "id": "Device|Device",
+      "cfnDef": "Device",
+      "sdkShape": "Device",
+      "members": [
+        {
+          "cfn": "ContainerPath",
+          "sdk": "containerPath",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "HostPath",
+          "sdk": "hostPath",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Permissions",
+          "sdk": "permissions",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Tmpfs|Tmpfs": {
+      "id": "Tmpfs|Tmpfs",
+      "cfnDef": "Tmpfs",
+      "sdkShape": "Tmpfs",
+      "members": [
+        {
+          "cfn": "ContainerPath",
+          "sdk": "containerPath",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "MountOptions",
+          "sdk": "mountOptions",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Size",
+          "sdk": "size",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "LogConfiguration|LogConfiguration": {
+      "id": "LogConfiguration|LogConfiguration",
+      "cfnDef": "LogConfiguration",
+      "sdkShape": "LogConfiguration",
+      "members": [
+        {
+          "cfn": "LogDriver",
+          "sdk": "logDriver",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Options",
+          "sdk": "options",
+          "match": "case",
+          "transform": "map",
+          "cfnKind": "map",
+          "sdkKind": "map",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SecretOptions",
+          "sdk": "secretOptions",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Secret|Secret",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Secret|Secret": {
+      "id": "Secret|Secret",
+      "cfnDef": "Secret",
+      "sdkShape": "Secret",
+      "members": [
+        {
+          "cfn": "Name",
+          "sdk": "name",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "ValueFrom",
+          "sdk": "valueFrom",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "MountPoint|MountPoint": {
+      "id": "MountPoint|MountPoint",
+      "cfnDef": "MountPoint",
+      "sdkShape": "MountPoint",
+      "members": [
+        {
+          "cfn": "ContainerPath",
+          "sdk": "containerPath",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ReadOnly",
+          "sdk": "readOnly",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SourceVolume",
+          "sdk": "sourceVolume",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "PortMapping|PortMapping": {
+      "id": "PortMapping|PortMapping",
+      "cfnDef": "PortMapping",
+      "sdkShape": "PortMapping",
+      "members": [
+        {
+          "cfn": "AppProtocol",
+          "sdk": "appProtocol",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ContainerPort",
+          "sdk": "containerPort",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ContainerPortRange",
+          "sdk": "containerPortRange",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "HostPort",
+          "sdk": "hostPort",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Name",
+          "sdk": "name",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Protocol",
+          "sdk": "protocol",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "RepositoryCredentials|RepositoryCredentials": {
+      "id": "RepositoryCredentials|RepositoryCredentials",
+      "cfnDef": "RepositoryCredentials",
+      "sdkShape": "RepositoryCredentials",
+      "members": [
+        {
+          "cfn": "CredentialsParameter",
+          "sdk": "credentialsParameter",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ResourceRequirement|ResourceRequirement": {
+      "id": "ResourceRequirement|ResourceRequirement",
+      "cfnDef": "ResourceRequirement",
+      "sdkShape": "ResourceRequirement",
+      "members": [
+        {
+          "cfn": "Type",
+          "sdk": "type",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Value",
+          "sdk": "value",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "RestartPolicy|ContainerRestartPolicy": {
+      "id": "RestartPolicy|ContainerRestartPolicy",
+      "cfnDef": "RestartPolicy",
+      "sdkShape": "ContainerRestartPolicy",
+      "members": [
+        {
+          "cfn": "Enabled",
+          "sdk": "enabled",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "IgnoredExitCodes",
+          "sdk": "ignoredExitCodes",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "RestartAttemptPeriod",
+          "sdk": "restartAttemptPeriod",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "SystemControl|SystemControl": {
+      "id": "SystemControl|SystemControl",
+      "cfnDef": "SystemControl",
+      "sdkShape": "SystemControl",
+      "members": [
+        {
+          "cfn": "Namespace",
+          "sdk": "namespace",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Value",
+          "sdk": "value",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Ulimit|Ulimit": {
+      "id": "Ulimit|Ulimit",
+      "cfnDef": "Ulimit",
+      "sdkShape": "Ulimit",
+      "members": [
+        {
+          "cfn": "HardLimit",
+          "sdk": "hardLimit",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Name",
+          "sdk": "name",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "SoftLimit",
+          "sdk": "softLimit",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "VolumeFrom|VolumeFrom": {
+      "id": "VolumeFrom|VolumeFrom",
+      "cfnDef": "VolumeFrom",
+      "sdkShape": "VolumeFrom",
+      "members": [
+        {
+          "cfn": "ReadOnly",
+          "sdk": "readOnly",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SourceContainer",
+          "sdk": "sourceContainer",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "EphemeralStorage|EphemeralStorage": {
+      "id": "EphemeralStorage|EphemeralStorage",
+      "cfnDef": "EphemeralStorage",
+      "sdkShape": "EphemeralStorage",
+      "members": [
+        {
+          "cfn": "SizeInGiB",
+          "sdk": "sizeInGiB",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "InferenceAccelerator|InferenceAccelerator": {
+      "id": "InferenceAccelerator|InferenceAccelerator",
+      "cfnDef": "InferenceAccelerator",
+      "sdkShape": "InferenceAccelerator",
+      "members": [
+        {
+          "cfn": "DeviceName",
+          "sdk": "deviceName",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "DeviceType",
+          "sdk": "deviceType",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "TaskDefinitionPlacementConstraint|TaskDefinitionPlacementConstraint": {
+      "id": "TaskDefinitionPlacementConstraint|TaskDefinitionPlacementConstraint",
+      "cfnDef": "TaskDefinitionPlacementConstraint",
+      "sdkShape": "TaskDefinitionPlacementConstraint",
+      "members": [
+        {
+          "cfn": "Expression",
+          "sdk": "expression",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Type",
+          "sdk": "type",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ProxyConfiguration|ProxyConfiguration": {
+      "id": "ProxyConfiguration|ProxyConfiguration",
+      "cfnDef": "ProxyConfiguration",
+      "sdkShape": "ProxyConfiguration",
+      "members": [
+        {
+          "cfn": "ContainerName",
+          "sdk": "containerName",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "ProxyConfigurationProperties",
+          "sdk": "properties",
+          "match": "rename-candidate",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "KeyValuePair|KeyValuePair",
+          "notes": [
+            "fuzzy-matched to \"properties\" (overlap 0.36)"
+          ]
+        },
+        {
+          "cfn": "Type",
+          "sdk": "type",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "RuntimePlatform|RuntimePlatform": {
+      "id": "RuntimePlatform|RuntimePlatform",
+      "cfnDef": "RuntimePlatform",
+      "sdkShape": "RuntimePlatform",
+      "members": [
+        {
+          "cfn": "CpuArchitecture",
+          "sdk": "cpuArchitecture",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "OperatingSystemFamily",
+          "sdk": "operatingSystemFamily",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Tag|Tag": {
+      "id": "Tag|Tag",
+      "cfnDef": "Tag",
+      "sdkShape": "Tag",
+      "members": [
+        {
+          "cfn": "Key",
+          "sdk": "key",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Value",
+          "sdk": "value",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Volume|Volume": {
+      "id": "Volume|Volume",
+      "cfnDef": "Volume",
+      "sdkShape": "Volume",
+      "members": [
+        {
+          "cfn": "ConfiguredAtLaunch",
+          "sdk": "configuredAtLaunch",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "DockerVolumeConfiguration",
+          "sdk": "dockerVolumeConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "DockerVolumeConfiguration|DockerVolumeConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "EFSVolumeConfiguration",
+          "sdk": "efsVolumeConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "EFSVolumeConfiguration|EFSVolumeConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "FSxWindowsFileServerVolumeConfiguration",
+          "sdk": "fsxWindowsFileServerVolumeConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "FSxWindowsFileServerVolumeConfiguration|FSxWindowsFileServerVolumeConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "Host",
+          "sdk": "host",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "HostVolumeProperties|HostVolumeProperties",
+          "notes": []
+        },
+        {
+          "cfn": "Name",
+          "sdk": "name",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "S3FilesVolumeConfiguration",
+          "sdk": "s3filesVolumeConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "S3FilesVolumeConfiguration|S3FilesVolumeConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "DockerVolumeConfiguration|DockerVolumeConfiguration": {
+      "id": "DockerVolumeConfiguration|DockerVolumeConfiguration",
+      "cfnDef": "DockerVolumeConfiguration",
+      "sdkShape": "DockerVolumeConfiguration",
+      "members": [
+        {
+          "cfn": "Autoprovision",
+          "sdk": "autoprovision",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Driver",
+          "sdk": "driver",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "DriverOpts",
+          "sdk": "driverOpts",
+          "match": "case",
+          "transform": "map",
+          "cfnKind": "map",
+          "sdkKind": "map",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Labels",
+          "sdk": "labels",
+          "match": "case",
+          "transform": "map",
+          "cfnKind": "map",
+          "sdkKind": "map",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Scope",
+          "sdk": "scope",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "EFSVolumeConfiguration|EFSVolumeConfiguration": {
+      "id": "EFSVolumeConfiguration|EFSVolumeConfiguration",
+      "cfnDef": "EFSVolumeConfiguration",
+      "sdkShape": "EFSVolumeConfiguration",
+      "members": [
+        {
+          "cfn": "AuthorizationConfig",
+          "sdk": "authorizationConfig",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "AuthorizationConfig|EFSAuthorizationConfig",
+          "notes": []
+        },
+        {
+          "cfn": "FilesystemId",
+          "sdk": "fileSystemId",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "RootDirectory",
+          "sdk": "rootDirectory",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TransitEncryption",
+          "sdk": "transitEncryption",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TransitEncryptionPort",
+          "sdk": "transitEncryptionPort",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "AuthorizationConfig|EFSAuthorizationConfig": {
+      "id": "AuthorizationConfig|EFSAuthorizationConfig",
+      "cfnDef": "AuthorizationConfig",
+      "sdkShape": "EFSAuthorizationConfig",
+      "members": [
+        {
+          "cfn": "AccessPointId",
+          "sdk": "accessPointId",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "IAM",
+          "sdk": "iam",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "FSxWindowsFileServerVolumeConfiguration|FSxWindowsFileServerVolumeConfiguration": {
+      "id": "FSxWindowsFileServerVolumeConfiguration|FSxWindowsFileServerVolumeConfiguration",
+      "cfnDef": "FSxWindowsFileServerVolumeConfiguration",
+      "sdkShape": "FSxWindowsFileServerVolumeConfiguration",
+      "members": [
+        {
+          "cfn": "AuthorizationConfig",
+          "sdk": "authorizationConfig",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "FSxAuthorizationConfig|FSxWindowsFileServerAuthorizationConfig",
+          "notes": []
+        },
+        {
+          "cfn": "FileSystemId",
+          "sdk": "fileSystemId",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "RootDirectory",
+          "sdk": "rootDirectory",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "FSxAuthorizationConfig|FSxWindowsFileServerAuthorizationConfig": {
+      "id": "FSxAuthorizationConfig|FSxWindowsFileServerAuthorizationConfig",
+      "cfnDef": "FSxAuthorizationConfig",
+      "sdkShape": "FSxWindowsFileServerAuthorizationConfig",
+      "members": [
+        {
+          "cfn": "CredentialsParameter",
+          "sdk": "credentialsParameter",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Domain",
+          "sdk": "domain",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "HostVolumeProperties|HostVolumeProperties": {
+      "id": "HostVolumeProperties|HostVolumeProperties",
+      "cfnDef": "HostVolumeProperties",
+      "sdkShape": "HostVolumeProperties",
+      "members": [
+        {
+          "cfn": "SourcePath",
+          "sdk": "sourcePath",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "S3FilesVolumeConfiguration|S3FilesVolumeConfiguration": {
+      "id": "S3FilesVolumeConfiguration|S3FilesVolumeConfiguration",
+      "cfnDef": "S3FilesVolumeConfiguration",
+      "sdkShape": "S3FilesVolumeConfiguration",
+      "members": [
+        {
+          "cfn": "AccessPointArn",
+          "sdk": "accessPointArn",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "FileSystemArn",
+          "sdk": "fileSystemArn",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "RootDirectory",
+          "sdk": "rootDirectory",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TransitEncryptionPort",
+          "sdk": "transitEncryptionPort",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "#top(DeregisterTaskDefinition)|DeregisterTaskDefinitionRequest": {
+      "id": "#top(DeregisterTaskDefinition)|DeregisterTaskDefinitionRequest",
+      "cfnDef": "#top(DeregisterTaskDefinition)",
+      "sdkShape": "DeregisterTaskDefinitionRequest",
+      "members": [
+        {
+          "cfn": "ContainerDefinitions",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Cpu",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "EnableFaultInjection",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "boolean",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "EphemeralStorage",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ExecutionRoleArn",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Family",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "InferenceAccelerators",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "IpcMode",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Memory",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "NetworkMode",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PidMode",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PlacementConstraints",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ProxyConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "RequiresCompatibilities",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "RuntimePlatform",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Tags",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TaskRoleArn",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Volumes",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "ContainerDefinitions",
+        "Cpu",
+        "EnableFaultInjection",
+        "EphemeralStorage",
+        "ExecutionRoleArn",
+        "Family",
+        "InferenceAccelerators",
+        "IpcMode",
+        "Memory",
+        "NetworkMode",
+        "PidMode",
+        "PlacementConstraints",
+        "ProxyConfiguration",
+        "RequiresCompatibilities",
+        "RuntimePlatform",
+        "Tags",
+        "TaskRoleArn",
+        "Volumes"
+      ],
+      "sdkRequiredUnfed": [
+        "taskDefinition"
+      ]
+    }
+  },
+  "readOnlyProperties": [
+    "TaskDefinitionArn"
+  ],
+  "createOnlyProperties": [
+    "Family",
+    "ContainerDefinitions",
+    "Cpu",
+    "EnableFaultInjection",
+    "ExecutionRoleArn",
+    "InferenceAccelerators",
+    "Memory",
+    "NetworkMode",
+    "PlacementConstraints",
+    "ProxyConfiguration",
+    "RequiresCompatibilities",
+    "RuntimePlatform",
+    "TaskRoleArn",
+    "Volumes",
+    "PidMode",
+    "IpcMode",
+    "EphemeralStorage"
+  ],
+  "stats": {
+    "totalCfnPaths": 176,
+    "matchedExact": 0,
+    "matchedCase": 157,
+    "renameCandidates": 1,
+    "unmatched": 18,
+    "nonDirectTransforms": 23
+  }
+}

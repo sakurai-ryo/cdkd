@@ -1,0 +1,2429 @@
+{
+  "resourceType": "AWS::ECS::Service",
+  "subOperations": {},
+  "installedSdk": {
+    "pkg": "client-ecs",
+    "checked": true
+  },
+  "service": {
+    "modelPath": "/Users/sakurai/ghq/github.com/aws/api-models-aws/models/ecs/service/2014-11-13/ecs-2014-11-13.json",
+    "sdkId": "ECS",
+    "cloudFormationName": "ECS",
+    "arnNamespace": "ecs",
+    "namespace": "com.amazonaws.ecs"
+  },
+  "operations": {
+    "create": {
+      "operationName": "CreateService",
+      "inputShape": "com.amazonaws.ecs#CreateServiceRequest",
+      "source": "handlers",
+      "rootId": "#top(CreateService)|CreateServiceRequest",
+      "candidates": [
+        "CreateService",
+        "DescribeServiceDeployments",
+        "DescribeServices",
+        "ListServiceDeployments",
+        "TagResource"
+      ]
+    },
+    "update": {
+      "operationName": "UpdateService",
+      "inputShape": "com.amazonaws.ecs#UpdateServiceRequest",
+      "source": "handlers",
+      "rootId": "#top(UpdateService)|UpdateServiceRequest",
+      "candidates": [
+        "DescribeServiceDeployments",
+        "DescribeServices",
+        "ListServiceDeployments",
+        "ListTagsForResource",
+        "StopServiceDeployment",
+        "TagResource",
+        "UntagResource",
+        "UpdateService"
+      ]
+    },
+    "delete": {
+      "operationName": "DeleteService",
+      "inputShape": "com.amazonaws.ecs#DeleteServiceRequest",
+      "source": "handlers",
+      "rootId": "#top(DeleteService)|DeleteServiceRequest",
+      "candidates": [
+        "DeleteService",
+        "DescribeServices"
+      ]
+    }
+  },
+  "structs": {
+    "#top(CreateService)|CreateServiceRequest": {
+      "id": "#top(CreateService)|CreateServiceRequest",
+      "cfnDef": "#top(CreateService)",
+      "sdkShape": "CreateServiceRequest",
+      "members": [
+        {
+          "cfn": "AvailabilityZoneRebalancing",
+          "sdk": "availabilityZoneRebalancing",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "CapacityProviderStrategy",
+          "sdk": "capacityProviderStrategy",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "CapacityProviderStrategyItem|CapacityProviderStrategyItem",
+          "notes": []
+        },
+        {
+          "cfn": "Cluster",
+          "sdk": "cluster",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "DeploymentConfiguration",
+          "sdk": "deploymentConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "DeploymentConfiguration|DeploymentConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "DeploymentController",
+          "sdk": "deploymentController",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "DeploymentController|DeploymentController",
+          "notes": []
+        },
+        {
+          "cfn": "DesiredCount",
+          "sdk": "desiredCount",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "EnableECSManagedTags",
+          "sdk": "enableECSManagedTags",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "EnableExecuteCommand",
+          "sdk": "enableExecuteCommand",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ForceNewDeployment",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "HealthCheckGracePeriodSeconds",
+          "sdk": "healthCheckGracePeriodSeconds",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "LaunchType",
+          "sdk": "launchType",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "LoadBalancers",
+          "sdk": "loadBalancers",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "LoadBalancer|LoadBalancer",
+          "notes": []
+        },
+        {
+          "cfn": "Monitoring",
+          "sdk": "monitoring",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "MonitoringConfiguration|MonitoringConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "NetworkConfiguration",
+          "sdk": "networkConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "NetworkConfiguration|NetworkConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "PlacementConstraints",
+          "sdk": "placementConstraints",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "PlacementConstraint|PlacementConstraint",
+          "notes": []
+        },
+        {
+          "cfn": "PlacementStrategies",
+          "sdk": "placementStrategy",
+          "match": "rename-candidate",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "PlacementStrategy|PlacementStrategy",
+          "notes": [
+            "fuzzy-matched to \"placementStrategy\" (overlap 0.84)"
+          ]
+        },
+        {
+          "cfn": "PlatformVersion",
+          "sdk": "platformVersion",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PropagateTags",
+          "sdk": "propagateTags",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Role",
+          "sdk": "role",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SchedulingStrategy",
+          "sdk": "schedulingStrategy",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ServiceConnectConfiguration",
+          "sdk": "serviceConnectConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ServiceConnectConfiguration|ServiceConnectConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "ServiceName",
+          "sdk": "serviceName",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "ServiceRegistries",
+          "sdk": "serviceRegistries",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "ServiceRegistry|ServiceRegistry",
+          "notes": []
+        },
+        {
+          "cfn": "Tags",
+          "sdk": "tags",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Tag|Tag",
+          "notes": []
+        },
+        {
+          "cfn": "TaskDefinition",
+          "sdk": "taskDefinition",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "VolumeConfigurations",
+          "sdk": "volumeConfigurations",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "ServiceVolumeConfiguration|ServiceVolumeConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "VpcLatticeConfigurations",
+          "sdk": "vpcLatticeConfigurations",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "VpcLatticeConfiguration|VpcLatticeConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "ForceNewDeployment"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "CapacityProviderStrategyItem|CapacityProviderStrategyItem": {
+      "id": "CapacityProviderStrategyItem|CapacityProviderStrategyItem",
+      "cfnDef": "CapacityProviderStrategyItem",
+      "sdkShape": "CapacityProviderStrategyItem",
+      "members": [
+        {
+          "cfn": "Base",
+          "sdk": "base",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "CapacityProvider",
+          "sdk": "capacityProvider",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Weight",
+          "sdk": "weight",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "DeploymentConfiguration|DeploymentConfiguration": {
+      "id": "DeploymentConfiguration|DeploymentConfiguration",
+      "cfnDef": "DeploymentConfiguration",
+      "sdkShape": "DeploymentConfiguration",
+      "members": [
+        {
+          "cfn": "Alarms",
+          "sdk": "alarms",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "DeploymentAlarms|DeploymentAlarms",
+          "notes": []
+        },
+        {
+          "cfn": "BakeTimeInMinutes",
+          "sdk": "bakeTimeInMinutes",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "CanaryConfiguration",
+          "sdk": "canaryConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "CanaryConfiguration|CanaryConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "DeploymentCircuitBreaker",
+          "sdk": "deploymentCircuitBreaker",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "DeploymentCircuitBreaker|DeploymentCircuitBreaker",
+          "notes": []
+        },
+        {
+          "cfn": "LifecycleHooks",
+          "sdk": "lifecycleHooks",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "DeploymentLifecycleHook|DeploymentLifecycleHook",
+          "notes": []
+        },
+        {
+          "cfn": "LinearConfiguration",
+          "sdk": "linearConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "LinearConfiguration|LinearConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "MaximumPercent",
+          "sdk": "maximumPercent",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MinimumHealthyPercent",
+          "sdk": "minimumHealthyPercent",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Strategy",
+          "sdk": "strategy",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "DeploymentAlarms|DeploymentAlarms": {
+      "id": "DeploymentAlarms|DeploymentAlarms",
+      "cfnDef": "DeploymentAlarms",
+      "sdkShape": "DeploymentAlarms",
+      "members": [
+        {
+          "cfn": "AlarmNames",
+          "sdk": "alarmNames",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Enable",
+          "sdk": "enable",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Rollback",
+          "sdk": "rollback",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "CanaryConfiguration|CanaryConfiguration": {
+      "id": "CanaryConfiguration|CanaryConfiguration",
+      "cfnDef": "CanaryConfiguration",
+      "sdkShape": "CanaryConfiguration",
+      "members": [
+        {
+          "cfn": "CanaryBakeTimeInMinutes",
+          "sdk": "canaryBakeTimeInMinutes",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "CanaryPercent",
+          "sdk": "canaryPercent",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "DeploymentCircuitBreaker|DeploymentCircuitBreaker": {
+      "id": "DeploymentCircuitBreaker|DeploymentCircuitBreaker",
+      "cfnDef": "DeploymentCircuitBreaker",
+      "sdkShape": "DeploymentCircuitBreaker",
+      "members": [
+        {
+          "cfn": "Enable",
+          "sdk": "enable",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "ResetOnHealthyTask",
+          "sdk": "resetOnHealthyTask",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Rollback",
+          "sdk": "rollback",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "ThresholdConfiguration",
+          "sdk": "thresholdConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ThresholdConfiguration|ThresholdConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ThresholdConfiguration|ThresholdConfiguration": {
+      "id": "ThresholdConfiguration|ThresholdConfiguration",
+      "cfnDef": "ThresholdConfiguration",
+      "sdkShape": "ThresholdConfiguration",
+      "members": [
+        {
+          "cfn": "Type",
+          "sdk": "type",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Value",
+          "sdk": "value",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "DeploymentLifecycleHook|DeploymentLifecycleHook": {
+      "id": "DeploymentLifecycleHook|DeploymentLifecycleHook",
+      "cfnDef": "DeploymentLifecycleHook",
+      "sdkShape": "DeploymentLifecycleHook",
+      "members": [
+        {
+          "cfn": "HookDetails",
+          "sdk": "hookDetails",
+          "match": "case",
+          "transform": "document",
+          "cfnKind": "ambiguous",
+          "sdkKind": "document",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "HookTargetArn",
+          "sdk": "hookTargetArn",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "LifecycleStages",
+          "sdk": "lifecycleStages",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "RoleArn",
+          "sdk": "roleArn",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TargetType",
+          "sdk": "targetType",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TimeoutConfiguration",
+          "sdk": "timeoutConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "HookTimeoutConfig|DeploymentLifecycleHookTimeoutConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "HookTimeoutConfig|DeploymentLifecycleHookTimeoutConfiguration": {
+      "id": "HookTimeoutConfig|DeploymentLifecycleHookTimeoutConfiguration",
+      "cfnDef": "HookTimeoutConfig",
+      "sdkShape": "DeploymentLifecycleHookTimeoutConfiguration",
+      "members": [
+        {
+          "cfn": "Action",
+          "sdk": "action",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TimeoutInMinutes",
+          "sdk": "timeoutInMinutes",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "LinearConfiguration|LinearConfiguration": {
+      "id": "LinearConfiguration|LinearConfiguration",
+      "cfnDef": "LinearConfiguration",
+      "sdkShape": "LinearConfiguration",
+      "members": [
+        {
+          "cfn": "StepBakeTimeInMinutes",
+          "sdk": "stepBakeTimeInMinutes",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "StepPercent",
+          "sdk": "stepPercent",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "DeploymentController|DeploymentController": {
+      "id": "DeploymentController|DeploymentController",
+      "cfnDef": "DeploymentController",
+      "sdkShape": "DeploymentController",
+      "members": [
+        {
+          "cfn": "Type",
+          "sdk": "type",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "LoadBalancer|LoadBalancer": {
+      "id": "LoadBalancer|LoadBalancer",
+      "cfnDef": "LoadBalancer",
+      "sdkShape": "LoadBalancer",
+      "members": [
+        {
+          "cfn": "AdvancedConfiguration",
+          "sdk": "advancedConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "AdvancedConfiguration|AdvancedConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "ContainerName",
+          "sdk": "containerName",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ContainerPort",
+          "sdk": "containerPort",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "LoadBalancerName",
+          "sdk": "loadBalancerName",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TargetGroupArn",
+          "sdk": "targetGroupArn",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "AdvancedConfiguration|AdvancedConfiguration": {
+      "id": "AdvancedConfiguration|AdvancedConfiguration",
+      "cfnDef": "AdvancedConfiguration",
+      "sdkShape": "AdvancedConfiguration",
+      "members": [
+        {
+          "cfn": "AlternateTargetGroupArn",
+          "sdk": "alternateTargetGroupArn",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ProductionListenerRule",
+          "sdk": "productionListenerRule",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "RoleArn",
+          "sdk": "roleArn",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TestListenerRule",
+          "sdk": "testListenerRule",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "MonitoringConfiguration|MonitoringConfiguration": {
+      "id": "MonitoringConfiguration|MonitoringConfiguration",
+      "cfnDef": "MonitoringConfiguration",
+      "sdkShape": "MonitoringConfiguration",
+      "members": [
+        {
+          "cfn": "MetricConfigurations",
+          "sdk": "metricConfigurations",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "MetricConfiguration|MetricConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "MetricConfiguration|MetricConfiguration": {
+      "id": "MetricConfiguration|MetricConfiguration",
+      "cfnDef": "MetricConfiguration",
+      "sdkShape": "MetricConfiguration",
+      "members": [
+        {
+          "cfn": "MetricNames",
+          "sdk": "metricNames",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "ResolutionSeconds",
+          "sdk": "resolutionSeconds",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "NetworkConfiguration|NetworkConfiguration": {
+      "id": "NetworkConfiguration|NetworkConfiguration",
+      "cfnDef": "NetworkConfiguration",
+      "sdkShape": "NetworkConfiguration",
+      "members": [
+        {
+          "cfn": "AwsvpcConfiguration",
+          "sdk": "awsvpcConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "AwsVpcConfiguration|AwsVpcConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "AwsVpcConfiguration|AwsVpcConfiguration": {
+      "id": "AwsVpcConfiguration|AwsVpcConfiguration",
+      "cfnDef": "AwsVpcConfiguration",
+      "sdkShape": "AwsVpcConfiguration",
+      "members": [
+        {
+          "cfn": "AssignPublicIp",
+          "sdk": "assignPublicIp",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SecurityGroups",
+          "sdk": "securityGroups",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Subnets",
+          "sdk": "subnets",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "PlacementConstraint|PlacementConstraint": {
+      "id": "PlacementConstraint|PlacementConstraint",
+      "cfnDef": "PlacementConstraint",
+      "sdkShape": "PlacementConstraint",
+      "members": [
+        {
+          "cfn": "Expression",
+          "sdk": "expression",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Type",
+          "sdk": "type",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "PlacementStrategy|PlacementStrategy": {
+      "id": "PlacementStrategy|PlacementStrategy",
+      "cfnDef": "PlacementStrategy",
+      "sdkShape": "PlacementStrategy",
+      "members": [
+        {
+          "cfn": "Field",
+          "sdk": "field",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Type",
+          "sdk": "type",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ServiceConnectConfiguration|ServiceConnectConfiguration": {
+      "id": "ServiceConnectConfiguration|ServiceConnectConfiguration",
+      "cfnDef": "ServiceConnectConfiguration",
+      "sdkShape": "ServiceConnectConfiguration",
+      "members": [
+        {
+          "cfn": "AccessLogConfiguration",
+          "sdk": "accessLogConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ServiceConnectAccessLogConfiguration|ServiceConnectAccessLogConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "Enabled",
+          "sdk": "enabled",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "LogConfiguration",
+          "sdk": "logConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "LogConfiguration|LogConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "Namespace",
+          "sdk": "namespace",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Services",
+          "sdk": "services",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "ServiceConnectService|ServiceConnectService",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ServiceConnectAccessLogConfiguration|ServiceConnectAccessLogConfiguration": {
+      "id": "ServiceConnectAccessLogConfiguration|ServiceConnectAccessLogConfiguration",
+      "cfnDef": "ServiceConnectAccessLogConfiguration",
+      "sdkShape": "ServiceConnectAccessLogConfiguration",
+      "members": [
+        {
+          "cfn": "Format",
+          "sdk": "format",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "IncludeQueryParameters",
+          "sdk": "includeQueryParameters",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "LogConfiguration|LogConfiguration": {
+      "id": "LogConfiguration|LogConfiguration",
+      "cfnDef": "LogConfiguration",
+      "sdkShape": "LogConfiguration",
+      "members": [
+        {
+          "cfn": "LogDriver",
+          "sdk": "logDriver",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Options",
+          "sdk": "options",
+          "match": "case",
+          "transform": "map",
+          "cfnKind": "map",
+          "sdkKind": "map",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SecretOptions",
+          "sdk": "secretOptions",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Secret|Secret",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Secret|Secret": {
+      "id": "Secret|Secret",
+      "cfnDef": "Secret",
+      "sdkShape": "Secret",
+      "members": [
+        {
+          "cfn": "Name",
+          "sdk": "name",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "ValueFrom",
+          "sdk": "valueFrom",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ServiceConnectService|ServiceConnectService": {
+      "id": "ServiceConnectService|ServiceConnectService",
+      "cfnDef": "ServiceConnectService",
+      "sdkShape": "ServiceConnectService",
+      "members": [
+        {
+          "cfn": "ClientAliases",
+          "sdk": "clientAliases",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "ServiceConnectClientAlias|ServiceConnectClientAlias",
+          "notes": []
+        },
+        {
+          "cfn": "DiscoveryName",
+          "sdk": "discoveryName",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "IngressPortOverride",
+          "sdk": "ingressPortOverride",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PortName",
+          "sdk": "portName",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Timeout",
+          "sdk": "timeout",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "TimeoutConfiguration|TimeoutConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "Tls",
+          "sdk": "tls",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ServiceConnectTlsConfiguration|ServiceConnectTlsConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ServiceConnectClientAlias|ServiceConnectClientAlias": {
+      "id": "ServiceConnectClientAlias|ServiceConnectClientAlias",
+      "cfnDef": "ServiceConnectClientAlias",
+      "sdkShape": "ServiceConnectClientAlias",
+      "members": [
+        {
+          "cfn": "DnsName",
+          "sdk": "dnsName",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Port",
+          "sdk": "port",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "TestTrafficRules",
+          "sdk": "testTrafficRules",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ServiceConnectTestTrafficRules|ServiceConnectTestTrafficRules",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ServiceConnectTestTrafficRules|ServiceConnectTestTrafficRules": {
+      "id": "ServiceConnectTestTrafficRules|ServiceConnectTestTrafficRules",
+      "cfnDef": "ServiceConnectTestTrafficRules",
+      "sdkShape": "ServiceConnectTestTrafficRules",
+      "members": [
+        {
+          "cfn": "Header",
+          "sdk": "header",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "ServiceConnectTestTrafficRulesHeader|ServiceConnectTestTrafficHeaderRules",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ServiceConnectTestTrafficRulesHeader|ServiceConnectTestTrafficHeaderRules": {
+      "id": "ServiceConnectTestTrafficRulesHeader|ServiceConnectTestTrafficHeaderRules",
+      "cfnDef": "ServiceConnectTestTrafficRulesHeader",
+      "sdkShape": "ServiceConnectTestTrafficHeaderRules",
+      "members": [
+        {
+          "cfn": "Name",
+          "sdk": "name",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Value",
+          "sdk": "value",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ServiceConnectTestTrafficRulesHeaderValue|ServiceConnectTestTrafficHeaderMatchRules",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ServiceConnectTestTrafficRulesHeaderValue|ServiceConnectTestTrafficHeaderMatchRules": {
+      "id": "ServiceConnectTestTrafficRulesHeaderValue|ServiceConnectTestTrafficHeaderMatchRules",
+      "cfnDef": "ServiceConnectTestTrafficRulesHeaderValue",
+      "sdkShape": "ServiceConnectTestTrafficHeaderMatchRules",
+      "members": [
+        {
+          "cfn": "Exact",
+          "sdk": "exact",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "TimeoutConfiguration|TimeoutConfiguration": {
+      "id": "TimeoutConfiguration|TimeoutConfiguration",
+      "cfnDef": "TimeoutConfiguration",
+      "sdkShape": "TimeoutConfiguration",
+      "members": [
+        {
+          "cfn": "IdleTimeoutSeconds",
+          "sdk": "idleTimeoutSeconds",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PerRequestTimeoutSeconds",
+          "sdk": "perRequestTimeoutSeconds",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ServiceConnectTlsConfiguration|ServiceConnectTlsConfiguration": {
+      "id": "ServiceConnectTlsConfiguration|ServiceConnectTlsConfiguration",
+      "cfnDef": "ServiceConnectTlsConfiguration",
+      "sdkShape": "ServiceConnectTlsConfiguration",
+      "members": [
+        {
+          "cfn": "IssuerCertificateAuthority",
+          "sdk": "issuerCertificateAuthority",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "ServiceConnectTlsCertificateAuthority|ServiceConnectTlsCertificateAuthority",
+          "notes": []
+        },
+        {
+          "cfn": "KmsKey",
+          "sdk": "kmsKey",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "RoleArn",
+          "sdk": "roleArn",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ServiceConnectTlsCertificateAuthority|ServiceConnectTlsCertificateAuthority": {
+      "id": "ServiceConnectTlsCertificateAuthority|ServiceConnectTlsCertificateAuthority",
+      "cfnDef": "ServiceConnectTlsCertificateAuthority",
+      "sdkShape": "ServiceConnectTlsCertificateAuthority",
+      "members": [
+        {
+          "cfn": "AwsPcaAuthorityArn",
+          "sdk": "awsPcaAuthorityArn",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ServiceRegistry|ServiceRegistry": {
+      "id": "ServiceRegistry|ServiceRegistry",
+      "cfnDef": "ServiceRegistry",
+      "sdkShape": "ServiceRegistry",
+      "members": [
+        {
+          "cfn": "ContainerName",
+          "sdk": "containerName",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ContainerPort",
+          "sdk": "containerPort",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Port",
+          "sdk": "port",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "RegistryArn",
+          "sdk": "registryArn",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Tag|Tag": {
+      "id": "Tag|Tag",
+      "cfnDef": "Tag",
+      "sdkShape": "Tag",
+      "members": [
+        {
+          "cfn": "Key",
+          "sdk": "key",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Value",
+          "sdk": "value",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ServiceVolumeConfiguration|ServiceVolumeConfiguration": {
+      "id": "ServiceVolumeConfiguration|ServiceVolumeConfiguration",
+      "cfnDef": "ServiceVolumeConfiguration",
+      "sdkShape": "ServiceVolumeConfiguration",
+      "members": [
+        {
+          "cfn": "ManagedEBSVolume",
+          "sdk": "managedEBSVolume",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ServiceManagedEBSVolumeConfiguration|ServiceManagedEBSVolumeConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "Name",
+          "sdk": "name",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ServiceManagedEBSVolumeConfiguration|ServiceManagedEBSVolumeConfiguration": {
+      "id": "ServiceManagedEBSVolumeConfiguration|ServiceManagedEBSVolumeConfiguration",
+      "cfnDef": "ServiceManagedEBSVolumeConfiguration",
+      "sdkShape": "ServiceManagedEBSVolumeConfiguration",
+      "members": [
+        {
+          "cfn": "Encrypted",
+          "sdk": "encrypted",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "FilesystemType",
+          "sdk": "filesystemType",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Iops",
+          "sdk": "iops",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "KmsKeyId",
+          "sdk": "kmsKeyId",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "RoleArn",
+          "sdk": "roleArn",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "SizeInGiB",
+          "sdk": "sizeInGiB",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SnapshotId",
+          "sdk": "snapshotId",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TagSpecifications",
+          "sdk": "tagSpecifications",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "EBSTagSpecification|EBSTagSpecification",
+          "notes": []
+        },
+        {
+          "cfn": "Throughput",
+          "sdk": "throughput",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "VolumeInitializationRate",
+          "sdk": "volumeInitializationRate",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "VolumeType",
+          "sdk": "volumeType",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "EBSTagSpecification|EBSTagSpecification": {
+      "id": "EBSTagSpecification|EBSTagSpecification",
+      "cfnDef": "EBSTagSpecification",
+      "sdkShape": "EBSTagSpecification",
+      "members": [
+        {
+          "cfn": "PropagateTags",
+          "sdk": "propagateTags",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ResourceType",
+          "sdk": "resourceType",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Tags",
+          "sdk": "tags",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Tag|Tag",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "VpcLatticeConfiguration|VpcLatticeConfiguration": {
+      "id": "VpcLatticeConfiguration|VpcLatticeConfiguration",
+      "cfnDef": "VpcLatticeConfiguration",
+      "sdkShape": "VpcLatticeConfiguration",
+      "members": [
+        {
+          "cfn": "PortName",
+          "sdk": "portName",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "RoleArn",
+          "sdk": "roleArn",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "TargetGroupArn",
+          "sdk": "targetGroupArn",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "#top(UpdateService)|UpdateServiceRequest": {
+      "id": "#top(UpdateService)|UpdateServiceRequest",
+      "cfnDef": "#top(UpdateService)",
+      "sdkShape": "UpdateServiceRequest",
+      "members": [
+        {
+          "cfn": "AvailabilityZoneRebalancing",
+          "sdk": "availabilityZoneRebalancing",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "CapacityProviderStrategy",
+          "sdk": "capacityProviderStrategy",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "CapacityProviderStrategyItem|CapacityProviderStrategyItem",
+          "notes": []
+        },
+        {
+          "cfn": "Cluster",
+          "sdk": "cluster",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "DeploymentConfiguration",
+          "sdk": "deploymentConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "DeploymentConfiguration|DeploymentConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "DeploymentController",
+          "sdk": "deploymentController",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "DeploymentController|DeploymentController",
+          "notes": []
+        },
+        {
+          "cfn": "DesiredCount",
+          "sdk": "desiredCount",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "EnableECSManagedTags",
+          "sdk": "enableECSManagedTags",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "EnableExecuteCommand",
+          "sdk": "enableExecuteCommand",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ForceNewDeployment",
+          "sdk": "forceNewDeployment",
+          "match": "case",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": [
+            "type-incompatible: CFn structure vs SDK boolean"
+          ]
+        },
+        {
+          "cfn": "HealthCheckGracePeriodSeconds",
+          "sdk": "healthCheckGracePeriodSeconds",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "LaunchType",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "LoadBalancers",
+          "sdk": "loadBalancers",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "LoadBalancer|LoadBalancer",
+          "notes": []
+        },
+        {
+          "cfn": "Monitoring",
+          "sdk": "monitoring",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "MonitoringConfiguration|MonitoringConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "NetworkConfiguration",
+          "sdk": "networkConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "NetworkConfiguration|NetworkConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "PlacementConstraints",
+          "sdk": "placementConstraints",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "PlacementConstraint|PlacementConstraint",
+          "notes": []
+        },
+        {
+          "cfn": "PlacementStrategies",
+          "sdk": "placementStrategy",
+          "match": "rename-candidate",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "PlacementStrategy|PlacementStrategy",
+          "notes": [
+            "fuzzy-matched to \"placementStrategy\" (overlap 0.84)"
+          ]
+        },
+        {
+          "cfn": "PlatformVersion",
+          "sdk": "platformVersion",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PropagateTags",
+          "sdk": "propagateTags",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Role",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SchedulingStrategy",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ServiceConnectConfiguration",
+          "sdk": "serviceConnectConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ServiceConnectConfiguration|ServiceConnectConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "ServiceName",
+          "sdk": "service",
+          "match": "rename-candidate",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": [
+            "fuzzy-matched to \"service\" (overlap 0.64)"
+          ]
+        },
+        {
+          "cfn": "ServiceRegistries",
+          "sdk": "serviceRegistries",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "ServiceRegistry|ServiceRegistry",
+          "notes": []
+        },
+        {
+          "cfn": "Tags",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TaskDefinition",
+          "sdk": "taskDefinition",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "VolumeConfigurations",
+          "sdk": "volumeConfigurations",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "ServiceVolumeConfiguration|ServiceVolumeConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "VpcLatticeConfigurations",
+          "sdk": "vpcLatticeConfigurations",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "VpcLatticeConfiguration|VpcLatticeConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "LaunchType",
+        "Role",
+        "SchedulingStrategy",
+        "Tags"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "#top(DeleteService)|DeleteServiceRequest": {
+      "id": "#top(DeleteService)|DeleteServiceRequest",
+      "cfnDef": "#top(DeleteService)",
+      "sdkShape": "DeleteServiceRequest",
+      "members": [
+        {
+          "cfn": "AvailabilityZoneRebalancing",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "CapacityProviderStrategy",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Cluster",
+          "sdk": "cluster",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "DeploymentConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "DeploymentController",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "DesiredCount",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "number",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "EnableECSManagedTags",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "boolean",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "EnableExecuteCommand",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "boolean",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ForceNewDeployment",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "HealthCheckGracePeriodSeconds",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "number",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "LaunchType",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "LoadBalancers",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Monitoring",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "NetworkConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PlacementConstraints",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PlacementStrategies",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PlatformVersion",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PropagateTags",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Role",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SchedulingStrategy",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ServiceConnectConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ServiceName",
+          "sdk": "service",
+          "match": "rename-candidate",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": [
+            "fuzzy-matched to \"service\" (overlap 0.64)"
+          ]
+        },
+        {
+          "cfn": "ServiceRegistries",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Tags",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TaskDefinition",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "VolumeConfigurations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "VpcLatticeConfigurations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "AvailabilityZoneRebalancing",
+        "CapacityProviderStrategy",
+        "DeploymentConfiguration",
+        "DeploymentController",
+        "DesiredCount",
+        "EnableECSManagedTags",
+        "EnableExecuteCommand",
+        "ForceNewDeployment",
+        "HealthCheckGracePeriodSeconds",
+        "LaunchType",
+        "LoadBalancers",
+        "Monitoring",
+        "NetworkConfiguration",
+        "PlacementConstraints",
+        "PlacementStrategies",
+        "PlatformVersion",
+        "PropagateTags",
+        "Role",
+        "SchedulingStrategy",
+        "ServiceConnectConfiguration",
+        "ServiceRegistries",
+        "Tags",
+        "TaskDefinition",
+        "VolumeConfigurations",
+        "VpcLatticeConfigurations"
+      ],
+      "sdkRequiredUnfed": []
+    }
+  },
+  "readOnlyProperties": [
+    "ServiceArn",
+    "Name"
+  ],
+  "createOnlyProperties": [
+    "Cluster",
+    "Role",
+    "SchedulingStrategy",
+    "ServiceName"
+  ],
+  "stats": {
+    "totalCfnPaths": 191,
+    "matchedExact": 0,
+    "matchedCase": 157,
+    "renameCandidates": 4,
+    "unmatched": 30,
+    "nonDirectTransforms": 33
+  }
+}

@@ -53,6 +53,18 @@ export function resolveOperation(
       if (model.operations.has(action)) handlerOps.push(action);
     }
   }
+  // Some services' IAM action prefix matches NONE of the service-trait names
+  // (CloudWatch schemas use `cloudwatch:` while arnNamespace / sigv4 /
+  // endpointPrefix are all `monitoring`), which silently discarded the whole
+  // permission signal (VERIFICATION.md M5). Retry ignoring the prefix; an
+  // action still only counts when it exists as an operation of THIS model,
+  // so cross-service actions (iam:PassRole, s3:GetObject) cannot leak in.
+  if (handlerOps.length === 0 && perms.length > 0) {
+    for (const perm of perms) {
+      const action = perm.split(':')[1];
+      if (action !== undefined && model.operations.has(action)) handlerOps.push(action);
+    }
+  }
 
   const lowerResource = resourceName.toLowerCase();
   const pick = (cands: string[], requireResourceName: boolean): string | null => {
@@ -111,7 +123,8 @@ const SUB_OP_STRIP_SUFFIXES = ['configurations', 'configuration', 's'];
  */
 export function resolveSubOperation(
   model: SmithyModel,
-  propName: string
+  propName: string,
+  resourceName: string
 ): { operationName: string; inputShape: string; candidates: string[] } | null {
   let needle = propName.toLowerCase().replace(/[^a-z0-9]/g, '');
   for (const suffix of SUB_OP_STRIP_SUFFIXES) {
@@ -120,12 +133,19 @@ export function resolveSubOperation(
       break;
     }
   }
+  const resLower = resourceName.toLowerCase().replace(/[^a-z0-9]/g, '');
   const candidates: string[] = [];
   for (const opName of model.operations.keys()) {
     const verb = SUB_OP_VERBS.find((v) => opName.startsWith(v));
     if (verb === undefined) continue;
     const rest = opName.slice(verb.length).toLowerCase().replace(/[^a-z0-9]/g, '');
-    if (rest.includes(needle)) candidates.push(opName);
+    // Anchored match only (VERIFICATION.md M4): bare `includes` matched
+    // Athena `State` -> Create**PreparedSTATEment**. The needle must be the
+    // op's object (optionally behind the resource name: PutBucketCors,
+    // PutBucketTagging), not an arbitrary substring.
+    if (rest.startsWith(needle) || rest.startsWith(resLower + needle)) {
+      candidates.push(opName);
+    }
   }
   if (candidates.length === 0) return null;
   candidates.sort((a, b) => a.length - b.length || a.localeCompare(b));

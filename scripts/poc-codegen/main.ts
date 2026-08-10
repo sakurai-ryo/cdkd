@@ -15,9 +15,11 @@
  * fixtures under tests/fixtures/cfn-schemas/.
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { loadCfnSchema } from './cfn-schema.ts';
 import { emitMapper } from './emit-ts.ts';
+import { clientPackageInstalled, loadInstalledSdkIndex } from './installed-sdk.ts';
 import { Matcher, computeStats } from './matcher.ts';
 import { type OpKind, resolveOperation, resolveSubOperation } from './operations.ts';
 import { renderReport } from './report.ts';
@@ -28,25 +30,31 @@ function parseArgs(argv: string[]): {
   cfnSchemaDir: string;
   modelsDir: string;
   out: string;
+  nodeModules: string;
   types: string[];
 } {
   let cfnSchemaDir: string | null = null;
   let modelsDir: string | null = null;
   let out: string | null = null;
+  // The repo's own node_modules is the default third input (VERIFICATION.md
+  // C3): the pinned @aws-sdk clients there are what the runtime serializes
+  // with, so they — not the HEAD Smithy models — decide what is writable.
+  let nodeModules = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..', 'node_modules');
   const types: string[] = [];
   for (const arg of argv) {
     if (arg.startsWith('--cfn-schema-dir=')) cfnSchemaDir = arg.slice('--cfn-schema-dir='.length);
     else if (arg.startsWith('--models-dir=')) modelsDir = arg.slice('--models-dir='.length);
     else if (arg.startsWith('--out=')) out = arg.slice('--out='.length);
+    else if (arg.startsWith('--node-modules=')) nodeModules = arg.slice('--node-modules='.length);
     else if (arg.startsWith('--')) throw new Error(`Unknown flag: ${arg}`);
     else types.push(arg);
   }
   if (cfnSchemaDir === null || modelsDir === null || out === null || types.length === 0) {
     throw new Error(
-      'Usage: node scripts/poc-codegen/main.ts --cfn-schema-dir=<dir> --models-dir=<dir> --out=<dir> <ResourceType>...'
+      'Usage: node scripts/poc-codegen/main.ts --cfn-schema-dir=<dir> --models-dir=<dir> --out=<dir> [--node-modules=<dir>] <ResourceType>...'
     );
   }
-  return { cfnSchemaDir, modelsDir, out, types };
+  return { cfnSchemaDir, modelsDir, out, nodeModules, types };
 }
 
 function sanitize(resourceType: string): string {
@@ -54,7 +62,7 @@ function sanitize(resourceType: string): string {
 }
 
 function main(): void {
-  const { cfnSchemaDir, modelsDir, out, types } = parseArgs(process.argv.slice(2));
+  const { cfnSchemaDir, modelsDir, out, nodeModules, types } = parseArgs(process.argv.slice(2));
   mkdirSync(out, { recursive: true });
   const reportSections: string[] = [
     '# PoC codegen report: CFn registry schema + Smithy model -> SDK input mappers',
@@ -72,7 +80,9 @@ function main(): void {
       .flatMap((h) => h.permissions ?? [])
       .map((p) => p.split(':')[1] as string)
       .filter((a) => a !== undefined);
-    const { model, scored } = pickModelByHandlerActions(modelPaths, handlerActions);
+    const { model, scored } = pickModelByHandlerActions(modelPaths, handlerActions, (m) =>
+      clientPackageInstalled(nodeModules, m.serviceTrait.sdkId)
+    );
     const modelPath = model.path;
     console.log(`model: ${modelPath.split('/').slice(-1)[0]} (sdkId: ${model.serviceTrait.sdkId})`);
     if (scored.length > 1) {
@@ -112,12 +122,19 @@ function main(): void {
 
     // Multi-op resources: any top-level property the CREATE input does not
     // carry gets a per-property sub-operation lookup (the S3 Put* idiom).
+    // Unconfirmed rename-candidates are included too: `BucketEncryption`'s
+    // false fuzzy hit previously masked the existence of PutBucketEncryption
+    // entirely (VERIFICATION.md, S3 16-of-17 finding).
     const subOperations: ResourceMappingSpec['subOperations'] = {};
     const createOp = operations.create;
     if (createOp !== undefined) {
       const createRoot = matcher.structs[createOp.rootId];
-      for (const prop of createRoot?.unmatchedCfn ?? []) {
-        const sub = resolveSubOperation(model, prop);
+      const subOpProps = new Set(createRoot?.unmatchedCfn ?? []);
+      for (const m of createRoot?.members ?? []) {
+        if (m.match === 'rename-candidate' || m.match === 'collision') subOpProps.add(m.cfn);
+      }
+      for (const prop of subOpProps) {
+        const sub = resolveSubOperation(model, prop, cfnResource);
         if (sub === null || sub.inputShape === 'smithy.api#Unit') continue;
         const rootId = matcher.matchOperationInput(sub.inputShape, sub.operationName, [prop]);
         subOperations[prop] = {
@@ -131,9 +148,37 @@ function main(): void {
       }
     }
 
+    // Installed-SDK reconciliation (VERIFICATION.md C3): flag every
+    // would-be-emitted member whose SDK spelling the pinned client does not
+    // declare — the serializer would silently drop it at runtime.
+    const sdkIndex = loadInstalledSdkIndex(nodeModules, model.serviceTrait.sdkId);
+    let skewCount = 0;
+    if (sdkIndex.members === null) {
+      console.log(`  WARNING: @aws-sdk/${sdkIndex.pkg} not installed — version-skew check SKIPPED`);
+    } else {
+      for (const struct of Object.values(matcher.structs)) {
+        for (const m of struct.members) {
+          if (
+            m.sdk !== null &&
+            (m.match === 'exact' || m.match === 'case') &&
+            m.transform !== 'unsupported' &&
+            !sdkIndex.members.has(m.sdk)
+          ) {
+            m.skew = true;
+            m.notes.push(`absent from installed @aws-sdk/${sdkIndex.pkg}`);
+            skewCount += 1;
+          }
+        }
+      }
+      if (skewCount > 0) {
+        console.log(`  version-skew: ${skewCount} member(s) absent from installed @aws-sdk/${sdkIndex.pkg}`);
+      }
+    }
+
     const spec: ResourceMappingSpec = {
       resourceType,
       subOperations,
+      installedSdk: { pkg: sdkIndex.pkg, checked: sdkIndex.members !== null },
       service: {
         modelPath,
         sdkId: model.serviceTrait.sdkId,

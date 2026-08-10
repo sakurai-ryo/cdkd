@@ -1,0 +1,1862 @@
+{
+  "resourceType": "AWS::CodeBuild::Project",
+  "subOperations": {
+    "Visibility": {
+      "operationName": "UpdateProjectVisibility",
+      "inputShape": "com.amazonaws.codebuild#UpdateProjectVisibilityInput",
+      "source": "verb-heuristic",
+      "rootId": "#top(UpdateProjectVisibility)|UpdateProjectVisibilityInput",
+      "candidates": [
+        "UpdateProjectVisibility"
+      ]
+    }
+  },
+  "installedSdk": {
+    "pkg": "client-codebuild",
+    "checked": true
+  },
+  "service": {
+    "modelPath": "/Users/sakurai/ghq/github.com/aws/api-models-aws/models/codebuild/service/2016-10-06/codebuild-2016-10-06.json",
+    "sdkId": "CodeBuild",
+    "cloudFormationName": "CodeBuild",
+    "arnNamespace": "codebuild",
+    "namespace": "com.amazonaws.codebuild"
+  },
+  "operations": {
+    "create": {
+      "operationName": "CreateProject",
+      "inputShape": "com.amazonaws.codebuild#CreateProjectInput",
+      "source": "verb-heuristic",
+      "rootId": "#top(CreateProject)|CreateProjectInput",
+      "candidates": [
+        "CreateProject"
+      ]
+    },
+    "update": {
+      "operationName": "UpdateProject",
+      "inputShape": "com.amazonaws.codebuild#UpdateProjectInput",
+      "source": "verb-heuristic",
+      "rootId": "#top(UpdateProject)|UpdateProjectInput",
+      "candidates": [
+        "UpdateProject",
+        "UpdateProjectVisibility"
+      ]
+    },
+    "delete": {
+      "operationName": "DeleteProject",
+      "inputShape": "com.amazonaws.codebuild#DeleteProjectInput",
+      "source": "verb-heuristic",
+      "rootId": "#top(DeleteProject)|DeleteProjectInput",
+      "candidates": [
+        "DeleteProject"
+      ]
+    }
+  },
+  "structs": {
+    "#top(CreateProject)|CreateProjectInput": {
+      "id": "#top(CreateProject)|CreateProjectInput",
+      "cfnDef": "#top(CreateProject)",
+      "sdkShape": "CreateProjectInput",
+      "members": [
+        {
+          "cfn": "Artifacts",
+          "sdk": "artifacts",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "Artifacts|ProjectArtifacts",
+          "notes": []
+        },
+        {
+          "cfn": "AutoRetryLimit",
+          "sdk": "autoRetryLimit",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "BadgeEnabled",
+          "sdk": "badgeEnabled",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "BuildBatchConfig",
+          "sdk": "buildBatchConfig",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ProjectBuildBatchConfig|ProjectBuildBatchConfig",
+          "notes": []
+        },
+        {
+          "cfn": "Cache",
+          "sdk": "cache",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ProjectCache|ProjectCache",
+          "notes": []
+        },
+        {
+          "cfn": "ConcurrentBuildLimit",
+          "sdk": "concurrentBuildLimit",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Description",
+          "sdk": "description",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "EncryptionKey",
+          "sdk": "encryptionKey",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Environment",
+          "sdk": "environment",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "Environment|ProjectEnvironment",
+          "notes": []
+        },
+        {
+          "cfn": "FileSystemLocations",
+          "sdk": "fileSystemLocations",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "ProjectFileSystemLocation|ProjectFileSystemLocation",
+          "notes": []
+        },
+        {
+          "cfn": "LogsConfig",
+          "sdk": "logsConfig",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "LogsConfig|LogsConfig",
+          "notes": []
+        },
+        {
+          "cfn": "Name",
+          "sdk": "name",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "QueuedTimeoutInMinutes",
+          "sdk": "queuedTimeoutInMinutes",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ResourceAccessRole",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SecondaryArtifacts",
+          "sdk": "secondaryArtifacts",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Artifacts|ProjectArtifacts",
+          "notes": []
+        },
+        {
+          "cfn": "SecondarySourceVersions",
+          "sdk": "secondarySourceVersions",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "ProjectSourceVersion|ProjectSourceVersion",
+          "notes": []
+        },
+        {
+          "cfn": "SecondarySources",
+          "sdk": "secondarySources",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Source|ProjectSource",
+          "notes": []
+        },
+        {
+          "cfn": "ServiceRole",
+          "sdk": "serviceRole",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Source",
+          "sdk": "source",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "Source|ProjectSource",
+          "notes": []
+        },
+        {
+          "cfn": "SourceVersion",
+          "sdk": "sourceVersion",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Tags",
+          "sdk": "tags",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Tag|Tag",
+          "notes": []
+        },
+        {
+          "cfn": "TimeoutInMinutes",
+          "sdk": "timeoutInMinutes",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Triggers",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Visibility",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "VpcConfig",
+          "sdk": "vpcConfig",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "VpcConfig|VpcConfig",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "ResourceAccessRole",
+        "Triggers",
+        "Visibility"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "Artifacts|ProjectArtifacts": {
+      "id": "Artifacts|ProjectArtifacts",
+      "cfnDef": "Artifacts",
+      "sdkShape": "ProjectArtifacts",
+      "members": [
+        {
+          "cfn": "ArtifactIdentifier",
+          "sdk": "artifactIdentifier",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "EncryptionDisabled",
+          "sdk": "encryptionDisabled",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Location",
+          "sdk": "location",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Name",
+          "sdk": "name",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "NamespaceType",
+          "sdk": "namespaceType",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "OverrideArtifactName",
+          "sdk": "overrideArtifactName",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Packaging",
+          "sdk": "packaging",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Path",
+          "sdk": "path",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Type",
+          "sdk": "type",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ProjectBuildBatchConfig|ProjectBuildBatchConfig": {
+      "id": "ProjectBuildBatchConfig|ProjectBuildBatchConfig",
+      "cfnDef": "ProjectBuildBatchConfig",
+      "sdkShape": "ProjectBuildBatchConfig",
+      "members": [
+        {
+          "cfn": "BatchReportMode",
+          "sdk": "batchReportMode",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "CombineArtifacts",
+          "sdk": "combineArtifacts",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Restrictions",
+          "sdk": "restrictions",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "BatchRestrictions|BatchRestrictions",
+          "notes": []
+        },
+        {
+          "cfn": "ServiceRole",
+          "sdk": "serviceRole",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TimeoutInMins",
+          "sdk": "timeoutInMins",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "BatchRestrictions|BatchRestrictions": {
+      "id": "BatchRestrictions|BatchRestrictions",
+      "cfnDef": "BatchRestrictions",
+      "sdkShape": "BatchRestrictions",
+      "members": [
+        {
+          "cfn": "ComputeTypesAllowed",
+          "sdk": "computeTypesAllowed",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MaximumBuildsAllowed",
+          "sdk": "maximumBuildsAllowed",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ProjectCache|ProjectCache": {
+      "id": "ProjectCache|ProjectCache",
+      "cfnDef": "ProjectCache",
+      "sdkShape": "ProjectCache",
+      "members": [
+        {
+          "cfn": "CacheNamespace",
+          "sdk": "cacheNamespace",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Location",
+          "sdk": "location",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Modes",
+          "sdk": "modes",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Type",
+          "sdk": "type",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Environment|ProjectEnvironment": {
+      "id": "Environment|ProjectEnvironment",
+      "cfnDef": "Environment",
+      "sdkShape": "ProjectEnvironment",
+      "members": [
+        {
+          "cfn": "Certificate",
+          "sdk": "certificate",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ComputeType",
+          "sdk": "computeType",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "DockerServer",
+          "sdk": "dockerServer",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "DockerServer|DockerServer",
+          "notes": []
+        },
+        {
+          "cfn": "EnvironmentVariables",
+          "sdk": "environmentVariables",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "EnvironmentVariable|EnvironmentVariable",
+          "notes": []
+        },
+        {
+          "cfn": "Fleet",
+          "sdk": "fleet",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ProjectFleet|ProjectFleet",
+          "notes": []
+        },
+        {
+          "cfn": "HostKernel",
+          "sdk": "hostKernel",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": [
+            "absent from installed @aws-sdk/client-codebuild"
+          ],
+          "skew": true
+        },
+        {
+          "cfn": "Image",
+          "sdk": "image",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "ImagePullCredentialsType",
+          "sdk": "imagePullCredentialsType",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PrivilegedMode",
+          "sdk": "privilegedMode",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "RegistryCredential",
+          "sdk": "registryCredential",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "RegistryCredential|RegistryCredential",
+          "notes": []
+        },
+        {
+          "cfn": "Type",
+          "sdk": "type",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "DockerServer|DockerServer": {
+      "id": "DockerServer|DockerServer",
+      "cfnDef": "DockerServer",
+      "sdkShape": "DockerServer",
+      "members": [
+        {
+          "cfn": "ComputeType",
+          "sdk": "computeType",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "SecurityGroupIds",
+          "sdk": "securityGroupIds",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "EnvironmentVariable|EnvironmentVariable": {
+      "id": "EnvironmentVariable|EnvironmentVariable",
+      "cfnDef": "EnvironmentVariable",
+      "sdkShape": "EnvironmentVariable",
+      "members": [
+        {
+          "cfn": "Name",
+          "sdk": "name",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Type",
+          "sdk": "type",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Value",
+          "sdk": "value",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ProjectFleet|ProjectFleet": {
+      "id": "ProjectFleet|ProjectFleet",
+      "cfnDef": "ProjectFleet",
+      "sdkShape": "ProjectFleet",
+      "members": [
+        {
+          "cfn": "FleetArn",
+          "sdk": "fleetArn",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "RegistryCredential|RegistryCredential": {
+      "id": "RegistryCredential|RegistryCredential",
+      "cfnDef": "RegistryCredential",
+      "sdkShape": "RegistryCredential",
+      "members": [
+        {
+          "cfn": "Credential",
+          "sdk": "credential",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "CredentialProvider",
+          "sdk": "credentialProvider",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ProjectFileSystemLocation|ProjectFileSystemLocation": {
+      "id": "ProjectFileSystemLocation|ProjectFileSystemLocation",
+      "cfnDef": "ProjectFileSystemLocation",
+      "sdkShape": "ProjectFileSystemLocation",
+      "members": [
+        {
+          "cfn": "Identifier",
+          "sdk": "identifier",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Location",
+          "sdk": "location",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MountOptions",
+          "sdk": "mountOptions",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MountPoint",
+          "sdk": "mountPoint",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Type",
+          "sdk": "type",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "LogsConfig|LogsConfig": {
+      "id": "LogsConfig|LogsConfig",
+      "cfnDef": "LogsConfig",
+      "sdkShape": "LogsConfig",
+      "members": [
+        {
+          "cfn": "CloudWatchLogs",
+          "sdk": "cloudWatchLogs",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "CloudWatchLogsConfig|CloudWatchLogsConfig",
+          "notes": []
+        },
+        {
+          "cfn": "S3Logs",
+          "sdk": "s3Logs",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "S3LogsConfig|S3LogsConfig",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "CloudWatchLogsConfig|CloudWatchLogsConfig": {
+      "id": "CloudWatchLogsConfig|CloudWatchLogsConfig",
+      "cfnDef": "CloudWatchLogsConfig",
+      "sdkShape": "CloudWatchLogsConfig",
+      "members": [
+        {
+          "cfn": "GroupName",
+          "sdk": "groupName",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Status",
+          "sdk": "status",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "StreamName",
+          "sdk": "streamName",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "S3LogsConfig|S3LogsConfig": {
+      "id": "S3LogsConfig|S3LogsConfig",
+      "cfnDef": "S3LogsConfig",
+      "sdkShape": "S3LogsConfig",
+      "members": [
+        {
+          "cfn": "EncryptionDisabled",
+          "sdk": "encryptionDisabled",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Location",
+          "sdk": "location",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Status",
+          "sdk": "status",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ProjectSourceVersion|ProjectSourceVersion": {
+      "id": "ProjectSourceVersion|ProjectSourceVersion",
+      "cfnDef": "ProjectSourceVersion",
+      "sdkShape": "ProjectSourceVersion",
+      "members": [
+        {
+          "cfn": "SourceIdentifier",
+          "sdk": "sourceIdentifier",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "SourceVersion",
+          "sdk": "sourceVersion",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Source|ProjectSource": {
+      "id": "Source|ProjectSource",
+      "cfnDef": "Source",
+      "sdkShape": "ProjectSource",
+      "members": [
+        {
+          "cfn": "Auth",
+          "sdk": "auth",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "SourceAuth|SourceAuth",
+          "notes": []
+        },
+        {
+          "cfn": "BuildSpec",
+          "sdk": "buildspec",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "BuildStatusConfig",
+          "sdk": "buildStatusConfig",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "BuildStatusConfig|BuildStatusConfig",
+          "notes": []
+        },
+        {
+          "cfn": "GitCloneDepth",
+          "sdk": "gitCloneDepth",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "GitSubmodulesConfig",
+          "sdk": "gitSubmodulesConfig",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "GitSubmodulesConfig|GitSubmodulesConfig",
+          "notes": []
+        },
+        {
+          "cfn": "InsecureSsl",
+          "sdk": "insecureSsl",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Location",
+          "sdk": "location",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ReportBuildStatus",
+          "sdk": "reportBuildStatus",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SourceIdentifier",
+          "sdk": "sourceIdentifier",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Type",
+          "sdk": "type",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "SourceAuth|SourceAuth": {
+      "id": "SourceAuth|SourceAuth",
+      "cfnDef": "SourceAuth",
+      "sdkShape": "SourceAuth",
+      "members": [
+        {
+          "cfn": "Resource",
+          "sdk": "resource",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Type",
+          "sdk": "type",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "BuildStatusConfig|BuildStatusConfig": {
+      "id": "BuildStatusConfig|BuildStatusConfig",
+      "cfnDef": "BuildStatusConfig",
+      "sdkShape": "BuildStatusConfig",
+      "members": [
+        {
+          "cfn": "Context",
+          "sdk": "context",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TargetUrl",
+          "sdk": "targetUrl",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "GitSubmodulesConfig|GitSubmodulesConfig": {
+      "id": "GitSubmodulesConfig|GitSubmodulesConfig",
+      "cfnDef": "GitSubmodulesConfig",
+      "sdkShape": "GitSubmodulesConfig",
+      "members": [
+        {
+          "cfn": "FetchSubmodules",
+          "sdk": "fetchSubmodules",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Tag|Tag": {
+      "id": "Tag|Tag",
+      "cfnDef": "Tag",
+      "sdkShape": "Tag",
+      "members": [
+        {
+          "cfn": "Key",
+          "sdk": "key",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Value",
+          "sdk": "value",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "VpcConfig|VpcConfig": {
+      "id": "VpcConfig|VpcConfig",
+      "cfnDef": "VpcConfig",
+      "sdkShape": "VpcConfig",
+      "members": [
+        {
+          "cfn": "SecurityGroupIds",
+          "sdk": "securityGroupIds",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Subnets",
+          "sdk": "subnets",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "VpcId",
+          "sdk": "vpcId",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "#top(UpdateProject)|UpdateProjectInput": {
+      "id": "#top(UpdateProject)|UpdateProjectInput",
+      "cfnDef": "#top(UpdateProject)",
+      "sdkShape": "UpdateProjectInput",
+      "members": [
+        {
+          "cfn": "Artifacts",
+          "sdk": "artifacts",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "Artifacts|ProjectArtifacts",
+          "notes": []
+        },
+        {
+          "cfn": "AutoRetryLimit",
+          "sdk": "autoRetryLimit",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "BadgeEnabled",
+          "sdk": "badgeEnabled",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "BuildBatchConfig",
+          "sdk": "buildBatchConfig",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ProjectBuildBatchConfig|ProjectBuildBatchConfig",
+          "notes": []
+        },
+        {
+          "cfn": "Cache",
+          "sdk": "cache",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ProjectCache|ProjectCache",
+          "notes": []
+        },
+        {
+          "cfn": "ConcurrentBuildLimit",
+          "sdk": "concurrentBuildLimit",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Description",
+          "sdk": "description",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "EncryptionKey",
+          "sdk": "encryptionKey",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Environment",
+          "sdk": "environment",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "Environment|ProjectEnvironment",
+          "notes": []
+        },
+        {
+          "cfn": "FileSystemLocations",
+          "sdk": "fileSystemLocations",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "ProjectFileSystemLocation|ProjectFileSystemLocation",
+          "notes": []
+        },
+        {
+          "cfn": "LogsConfig",
+          "sdk": "logsConfig",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "LogsConfig|LogsConfig",
+          "notes": []
+        },
+        {
+          "cfn": "Name",
+          "sdk": "name",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "QueuedTimeoutInMinutes",
+          "sdk": "queuedTimeoutInMinutes",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ResourceAccessRole",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SecondaryArtifacts",
+          "sdk": "secondaryArtifacts",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Artifacts|ProjectArtifacts",
+          "notes": []
+        },
+        {
+          "cfn": "SecondarySourceVersions",
+          "sdk": "secondarySourceVersions",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "ProjectSourceVersion|ProjectSourceVersion",
+          "notes": []
+        },
+        {
+          "cfn": "SecondarySources",
+          "sdk": "secondarySources",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Source|ProjectSource",
+          "notes": []
+        },
+        {
+          "cfn": "ServiceRole",
+          "sdk": "serviceRole",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Source",
+          "sdk": "source",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "Source|ProjectSource",
+          "notes": []
+        },
+        {
+          "cfn": "SourceVersion",
+          "sdk": "sourceVersion",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Tags",
+          "sdk": "tags",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Tag|Tag",
+          "notes": []
+        },
+        {
+          "cfn": "TimeoutInMinutes",
+          "sdk": "timeoutInMinutes",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Triggers",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Visibility",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "VpcConfig",
+          "sdk": "vpcConfig",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "VpcConfig|VpcConfig",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "ResourceAccessRole",
+        "Triggers",
+        "Visibility"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "#top(DeleteProject)|DeleteProjectInput": {
+      "id": "#top(DeleteProject)|DeleteProjectInput",
+      "cfnDef": "#top(DeleteProject)",
+      "sdkShape": "DeleteProjectInput",
+      "members": [
+        {
+          "cfn": "Artifacts",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "AutoRetryLimit",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "number",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "BadgeEnabled",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "boolean",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "BuildBatchConfig",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Cache",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ConcurrentBuildLimit",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "number",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Description",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "EncryptionKey",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Environment",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "FileSystemLocations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "LogsConfig",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Name",
+          "sdk": "name",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "QueuedTimeoutInMinutes",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "number",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ResourceAccessRole",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SecondaryArtifacts",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SecondarySourceVersions",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SecondarySources",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ServiceRole",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Source",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SourceVersion",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Tags",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TimeoutInMinutes",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "number",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Triggers",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Visibility",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "VpcConfig",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "Artifacts",
+        "AutoRetryLimit",
+        "BadgeEnabled",
+        "BuildBatchConfig",
+        "Cache",
+        "ConcurrentBuildLimit",
+        "Description",
+        "EncryptionKey",
+        "Environment",
+        "FileSystemLocations",
+        "LogsConfig",
+        "QueuedTimeoutInMinutes",
+        "ResourceAccessRole",
+        "SecondaryArtifacts",
+        "SecondarySourceVersions",
+        "SecondarySources",
+        "ServiceRole",
+        "Source",
+        "SourceVersion",
+        "Tags",
+        "TimeoutInMinutes",
+        "Triggers",
+        "Visibility",
+        "VpcConfig"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "#top(UpdateProjectVisibility)|UpdateProjectVisibilityInput": {
+      "id": "#top(UpdateProjectVisibility)|UpdateProjectVisibilityInput",
+      "cfnDef": "#top(UpdateProjectVisibility)",
+      "sdkShape": "UpdateProjectVisibilityInput",
+      "members": [
+        {
+          "cfn": "Visibility",
+          "sdk": "projectVisibility",
+          "match": "rename-candidate",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": [
+            "fuzzy-matched to \"projectVisibility\" (overlap 0.59)"
+          ]
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": [
+        "projectArn"
+      ]
+    }
+  },
+  "readOnlyProperties": [
+    "Id",
+    "Arn"
+  ],
+  "createOnlyProperties": [
+    "Name"
+  ],
+  "stats": {
+    "totalCfnPaths": 150,
+    "matchedExact": 0,
+    "matchedCase": 119,
+    "renameCandidates": 1,
+    "unmatched": 30,
+    "nonDirectTransforms": 30
+  }
+}

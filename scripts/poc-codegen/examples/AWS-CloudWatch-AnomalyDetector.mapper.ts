@@ -12,8 +12,8 @@ function toNum(v: unknown): number | undefined {
 function toBool(v: unknown): boolean | undefined {
   if (v === undefined || v === null) return undefined;
   if (typeof v === 'boolean') return v;
-  if (v === 'true') return true;
-  if (v === 'false') return false;
+  if (v === 'true' || v === 'True') return true;
+  if (v === 'false' || v === 'False') return false;
   throw new Error(`expected a boolean, got: ${JSON.stringify(v)}`);
 }
 function toDateV(v: unknown): Date | undefined {

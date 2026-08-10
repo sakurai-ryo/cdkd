@@ -44,6 +44,9 @@ export function renderReport(spec: ResourceMappingSpec): string {
   // Per-op walks: a CFn property unmatched under delete (identifier-only
   // input) is expected, not a finding — so coverage and findings are
   // collected per op and findings are tagged with the ops they appear in.
+  // Coverage is split HONESTLY (VERIFICATION.md): `auto` counts only members
+  // the generated code actually writes; candidates / collisions / skew /
+  // type-incompatible are visible, never lumped into "matched".
   interface Tagged extends Finding {
     ops: Set<string>;
   }
@@ -51,6 +54,8 @@ export function renderReport(spec: ResourceMappingSpec): string {
   const renames = new Map<string, Tagged>();
   const unmatched = new Map<string, Tagged>();
   const incompatible = new Map<string, Tagged>();
+  const collisions = new Map<string, Tagged>();
+  const skews = new Map<string, Tagged>();
   const requiredUnfed = new Map<string, Set<string>>();
 
   const tag = (map: Map<string, Tagged>, path: string, m: Finding['member'], op: string): void => {
@@ -59,12 +64,26 @@ export function renderReport(spec: ResourceMappingSpec): string {
     else map.set(path, { path, member: m, ops: new Set([op]) });
   };
 
-  for (const kind of ['create', 'update', 'delete'] as const) {
-    const op = spec.operations[kind];
-    if (op === undefined) continue;
+  interface WalkCounts {
+    total: number;
+    auto: number;
+    candidates: number;
+    collisionsN: number;
+    skewN: number;
+    unsupportedN: number;
+    unmatchedN: number;
+  }
+  const walkOp = (rootId: string, opTag: string, pathPrefix: string): WalkCounts => {
     const visited = new Set<string>();
-    let total = 0;
-    let matchedCount = 0;
+    const c: WalkCounts = {
+      total: 0,
+      auto: 0,
+      candidates: 0,
+      collisionsN: 0,
+      skewN: 0,
+      unsupportedN: 0,
+      unmatchedN: 0,
+    };
     const walk = (structId: string, path: string): void => {
       if (visited.has(structId)) return;
       visited.add(structId);
@@ -72,32 +91,57 @@ export function renderReport(spec: ResourceMappingSpec): string {
       for (const req of struct.sdkRequiredUnfed) {
         const key = `${path}${path === '' ? '' : '.'}<${struct.sdkShape}>.${req}`;
         const ops = requiredUnfed.get(key) ?? new Set<string>();
-        ops.add(kind);
+        ops.add(opTag);
         requiredUnfed.set(key, ops);
       }
       for (const m of struct.members) {
         const mPath = path === '' ? m.cfn : `${path}.${m.cfn}`;
-        total += 1;
-        if (m.sdk !== null) matchedCount += 1;
-        if (m.sdk === null) tag(unmatched, mPath, m, kind);
-        else if (
-          m.transform === 'unsupported' &&
-          m.notes.some((n) => n.startsWith('type-incompatible'))
-        ) {
-          tag(incompatible, mPath, m, kind);
-        } else if (m.match === 'case' && !isStyleFlip(m.cfn, m.sdk)) {
-          tag(caseDivergences, mPath, m, kind);
+        c.total += 1;
+        if (m.sdk === null) {
+          c.unmatchedN += 1;
+          tag(unmatched, mPath, m, opTag);
+        } else if (m.skew === true) {
+          c.skewN += 1;
+          tag(skews, mPath, m, opTag);
+        } else if (m.match === 'collision') {
+          c.collisionsN += 1;
+          tag(collisions, mPath, m, opTag);
         } else if (m.match === 'rename-candidate') {
-          tag(renames, mPath, m, kind);
+          c.candidates += 1;
+          tag(renames, mPath, m, opTag);
+        } else if (m.transform === 'unsupported') {
+          c.unsupportedN += 1;
+          if (m.notes.some((n) => n.startsWith('type-incompatible'))) {
+            tag(incompatible, mPath, m, opTag);
+          }
+        } else {
+          c.auto += 1;
+          if (m.match === 'case' && !isStyleFlip(m.cfn, m.sdk as string)) {
+            tag(caseDivergences, mPath, m, opTag);
+          }
         }
         if (m.childId !== undefined) walk(m.childId, mPath);
       }
     };
-    walk(op.rootId, '');
-    lines.push(
-      `**${kind} coverage** (${op.operationName}): ${matchedCount}/${total} CFn paths matched ` +
-        `(${((matchedCount / Math.max(1, total)) * 100).toFixed(1)}%).`
-    );
+    walk(rootId, pathPrefix);
+    return c;
+  };
+
+  const coverageLine = (c: WalkCounts): string => {
+    const parts = [`${c.auto}/${c.total} auto-emitted`];
+    if (c.candidates > 0) parts.push(`${c.candidates} candidate(s) (report-only)`);
+    if (c.collisionsN > 0) parts.push(`${c.collisionsN} collision(s)`);
+    if (c.skewN > 0) parts.push(`${c.skewN} version-skew (not emitted)`);
+    if (c.unsupportedN > 0) parts.push(`${c.unsupportedN} unsupported`);
+    if (c.unmatchedN > 0) parts.push(`${c.unmatchedN} unmatched`);
+    return parts.join(', ');
+  };
+
+  for (const kind of ['create', 'update', 'delete'] as const) {
+    const op = spec.operations[kind];
+    if (op === undefined) continue;
+    const c = walkOp(op.rootId, kind, '');
+    lines.push(`**${kind} coverage** (${op.operationName}): ${coverageLine(c)}.`);
   }
   lines.push('');
 
@@ -107,6 +151,9 @@ export function renderReport(spec: ResourceMappingSpec): string {
     return ` [${Array.from(ops).join(', ')}]`;
   };
 
+  // Sub-operation trees feed the SAME findings sections as the main ops —
+  // they were previously excluded from every findings list, which hid
+  // defect-table items in the JSON only (VERIFICATION.md report blind spot).
   const subOps = Object.entries(spec.subOperations);
   if (subOps.length > 0) {
     lines.push('### Per-property sub-operations (multi-op resource idiom)');
@@ -114,24 +161,8 @@ export function renderReport(spec: ResourceMappingSpec): string {
     lines.push('| CFn property | operation | inner coverage |');
     lines.push('|--------------|-----------|----------------|');
     for (const [prop, op] of subOps) {
-      let total = 0;
-      let matchedCount = 0;
-      const seen = new Set<string>();
-      const count = (structId: string): void => {
-        if (seen.has(structId)) return;
-        seen.add(structId);
-        const struct = spec.structs[structId] as StructMapping;
-        for (const m of struct.members) {
-          total += 1;
-          if (m.sdk !== null) matchedCount += 1;
-          if (m.childId !== undefined) count(m.childId);
-        }
-      };
-      count(op.rootId);
-      lines.push(
-        `| ${prop} | ${op.operationName} | ${matchedCount}/${total} ` +
-          `(${((matchedCount / Math.max(1, total)) * 100).toFixed(0)}%) |`
-      );
+      const c = walkOp(op.rootId, `sub-op:${op.operationName}`, '');
+      lines.push(`| ${prop} | ${op.operationName} | ${coverageLine(c)} |`);
     }
     lines.push('');
   }
@@ -153,9 +184,21 @@ export function renderReport(spec: ResourceMappingSpec): string {
     )
   );
   section(
-    'Rename candidates (need human confirmation)',
+    'Rename candidates (NOT emitted — need human confirmation via override table)',
     Array.from(renames.values()).map(
       (f) => `\`${f.path}\` -> \`${f.member.sdk}\` (${f.member.notes.join('; ')})${renderOps(f.ops)}`
+    )
+  );
+  section(
+    'Collisions: two CFn properties on one SDK member (losers NOT emitted)',
+    Array.from(collisions.values()).map(
+      (f) => `\`${f.path}\` -> \`${f.member.sdk}\`: ${f.member.notes.join('; ')}${renderOps(f.ops)}`
+    )
+  );
+  section(
+    'Members absent from the installed SDK (version skew — NOT emitted)',
+    Array.from(skews.values()).map(
+      (f) => `\`${f.path}\` -> \`${f.member.sdk}\`${renderOps(f.ops)}`
     )
   );
   section(

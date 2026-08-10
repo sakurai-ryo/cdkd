@@ -12,8 +12,8 @@ function toNum(v: unknown): number | undefined {
 function toBool(v: unknown): boolean | undefined {
   if (v === undefined || v === null) return undefined;
   if (typeof v === 'boolean') return v;
-  if (v === 'true') return true;
-  if (v === 'false') return false;
+  if (v === 'true' || v === 'True') return true;
+  if (v === 'false' || v === 'False') return false;
   throw new Error(`expected a boolean, got: ${JSON.stringify(v)}`);
 }
 function toDateV(v: unknown): Date | undefined {
@@ -47,7 +47,7 @@ function map_1(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // DeploymentAlarms -> DeploymentAlarms
-function map_14(input: Record<string, unknown>): Record<string, unknown> {
+function map_13(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['AlarmNames'];
@@ -65,7 +65,7 @@ function map_14(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // CanaryConfiguration -> CanaryConfiguration
-function map_15(input: Record<string, unknown>): Record<string, unknown> {
+function map_14(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['CanaryBakeTimeInMinutes'];
@@ -79,7 +79,7 @@ function map_15(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // ThresholdConfiguration -> ThresholdConfiguration
-function map_19(input: Record<string, unknown>): Record<string, unknown> {
+function map_18(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['Type'];
@@ -93,7 +93,7 @@ function map_19(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // DeploymentCircuitBreaker -> DeploymentCircuitBreaker
-function map_16(input: Record<string, unknown>): Record<string, unknown> {
+function map_15(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['Enable'];
@@ -109,13 +109,13 @@ function map_16(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['ThresholdConfiguration'];
-    if (v !== undefined) out['thresholdConfiguration'] = map_19(v as Record<string, unknown>);
+    if (v !== undefined) out['thresholdConfiguration'] = map_18(v as Record<string, unknown>);
   }
   return out;
 }
 
 // HookTimeoutConfig -> DeploymentLifecycleHookTimeoutConfiguration
-function map_20(input: Record<string, unknown>): Record<string, unknown> {
+function map_19(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['Action'];
@@ -129,7 +129,7 @@ function map_20(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // DeploymentLifecycleHook -> DeploymentLifecycleHook
-function map_17(input: Record<string, unknown>): Record<string, unknown> {
+function map_16(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['HookDetails'];
@@ -153,13 +153,13 @@ function map_17(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['TimeoutConfiguration'];
-    if (v !== undefined) out['timeoutConfiguration'] = map_20(v as Record<string, unknown>);
+    if (v !== undefined) out['timeoutConfiguration'] = map_19(v as Record<string, unknown>);
   }
   return out;
 }
 
 // LinearConfiguration -> LinearConfiguration
-function map_18(input: Record<string, unknown>): Record<string, unknown> {
+function map_17(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['StepBakeTimeInMinutes'];
@@ -177,7 +177,7 @@ function map_2(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['Alarms'];
-    if (v !== undefined) out['alarms'] = map_14(v as Record<string, unknown>);
+    if (v !== undefined) out['alarms'] = map_13(v as Record<string, unknown>);
   }
   {
     const v = input['BakeTimeInMinutes'];
@@ -185,19 +185,19 @@ function map_2(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['CanaryConfiguration'];
-    if (v !== undefined) out['canaryConfiguration'] = map_15(v as Record<string, unknown>);
+    if (v !== undefined) out['canaryConfiguration'] = map_14(v as Record<string, unknown>);
   }
   {
     const v = input['DeploymentCircuitBreaker'];
-    if (v !== undefined) out['deploymentCircuitBreaker'] = map_16(v as Record<string, unknown>);
+    if (v !== undefined) out['deploymentCircuitBreaker'] = map_15(v as Record<string, unknown>);
   }
   {
     const v = input['LifecycleHooks'];
-    if (v !== undefined) out['lifecycleHooks'] = (v as unknown[]).map((e) => map_17(e as Record<string, unknown>));
+    if (v !== undefined) out['lifecycleHooks'] = (v as unknown[]).map((e) => map_16(e as Record<string, unknown>));
   }
   {
     const v = input['LinearConfiguration'];
-    if (v !== undefined) out['linearConfiguration'] = map_18(v as Record<string, unknown>);
+    if (v !== undefined) out['linearConfiguration'] = map_17(v as Record<string, unknown>);
   }
   {
     const v = input['MaximumPercent'];
@@ -225,7 +225,7 @@ function map_3(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // AdvancedConfiguration -> AdvancedConfiguration
-function map_21(input: Record<string, unknown>): Record<string, unknown> {
+function map_20(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['AlternateTargetGroupArn'];
@@ -251,7 +251,7 @@ function map_4(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['AdvancedConfiguration'];
-    if (v !== undefined) out['advancedConfiguration'] = map_21(v as Record<string, unknown>);
+    if (v !== undefined) out['advancedConfiguration'] = map_20(v as Record<string, unknown>);
   }
   {
     const v = input['ContainerName'];
@@ -273,7 +273,7 @@ function map_4(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // MetricConfiguration -> MetricConfiguration
-function map_22(input: Record<string, unknown>): Record<string, unknown> {
+function map_21(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['MetricNames'];
@@ -291,13 +291,13 @@ function map_5(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['MetricConfigurations'];
-    if (v !== undefined) out['metricConfigurations'] = (v as unknown[]).map((e) => map_22(e as Record<string, unknown>));
+    if (v !== undefined) out['metricConfigurations'] = (v as unknown[]).map((e) => map_21(e as Record<string, unknown>));
   }
   return out;
 }
 
 // AwsVpcConfiguration -> AwsVpcConfiguration
-function map_23(input: Record<string, unknown>): Record<string, unknown> {
+function map_22(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['AssignPublicIp'];
@@ -319,7 +319,7 @@ function map_6(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['AwsvpcConfiguration'];
-    if (v !== undefined) out['awsvpcConfiguration'] = map_23(v as Record<string, unknown>);
+    if (v !== undefined) out['awsvpcConfiguration'] = map_22(v as Record<string, unknown>);
   }
   return out;
 }
@@ -338,22 +338,8 @@ function map_7(input: Record<string, unknown>): Record<string, unknown> {
   return out;
 }
 
-// PlacementStrategy -> PlacementStrategy
-function map_8(input: Record<string, unknown>): Record<string, unknown> {
-  const out: Record<string, unknown> = {};
-  {
-    const v = input['Field'];
-    if (v !== undefined) out['field'] = v;
-  }
-  {
-    const v = input['Type'];
-    if (v !== undefined) out['type'] = v;
-  }
-  return out;
-}
-
 // ServiceConnectAccessLogConfiguration -> ServiceConnectAccessLogConfiguration
-function map_24(input: Record<string, unknown>): Record<string, unknown> {
+function map_23(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['Format'];
@@ -367,7 +353,7 @@ function map_24(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // Secret -> Secret
-function map_27(input: Record<string, unknown>): Record<string, unknown> {
+function map_26(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['Name'];
@@ -381,7 +367,7 @@ function map_27(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // LogConfiguration -> LogConfiguration
-function map_25(input: Record<string, unknown>): Record<string, unknown> {
+function map_24(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['LogDriver'];
@@ -393,13 +379,13 @@ function map_25(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['SecretOptions'];
-    if (v !== undefined) out['secretOptions'] = (v as unknown[]).map((e) => map_27(e as Record<string, unknown>));
+    if (v !== undefined) out['secretOptions'] = (v as unknown[]).map((e) => map_26(e as Record<string, unknown>));
   }
   return out;
 }
 
 // ServiceConnectTestTrafficRulesHeaderValue -> ServiceConnectTestTrafficHeaderMatchRules
-function map_33(input: Record<string, unknown>): Record<string, unknown> {
+function map_32(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['Exact'];
@@ -409,7 +395,7 @@ function map_33(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // ServiceConnectTestTrafficRulesHeader -> ServiceConnectTestTrafficHeaderRules
-function map_32(input: Record<string, unknown>): Record<string, unknown> {
+function map_31(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['Name'];
@@ -417,23 +403,23 @@ function map_32(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['Value'];
-    if (v !== undefined) out['value'] = map_33(v as Record<string, unknown>);
+    if (v !== undefined) out['value'] = map_32(v as Record<string, unknown>);
   }
   return out;
 }
 
 // ServiceConnectTestTrafficRules -> ServiceConnectTestTrafficRules
-function map_31(input: Record<string, unknown>): Record<string, unknown> {
+function map_30(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['Header'];
-    if (v !== undefined) out['header'] = map_32(v as Record<string, unknown>);
+    if (v !== undefined) out['header'] = map_31(v as Record<string, unknown>);
   }
   return out;
 }
 
 // ServiceConnectClientAlias -> ServiceConnectClientAlias
-function map_28(input: Record<string, unknown>): Record<string, unknown> {
+function map_27(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['DnsName'];
@@ -445,13 +431,13 @@ function map_28(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['TestTrafficRules'];
-    if (v !== undefined) out['testTrafficRules'] = map_31(v as Record<string, unknown>);
+    if (v !== undefined) out['testTrafficRules'] = map_30(v as Record<string, unknown>);
   }
   return out;
 }
 
 // TimeoutConfiguration -> TimeoutConfiguration
-function map_29(input: Record<string, unknown>): Record<string, unknown> {
+function map_28(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['IdleTimeoutSeconds'];
@@ -465,7 +451,7 @@ function map_29(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // ServiceConnectTlsCertificateAuthority -> ServiceConnectTlsCertificateAuthority
-function map_34(input: Record<string, unknown>): Record<string, unknown> {
+function map_33(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['AwsPcaAuthorityArn'];
@@ -475,11 +461,11 @@ function map_34(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // ServiceConnectTlsConfiguration -> ServiceConnectTlsConfiguration
-function map_30(input: Record<string, unknown>): Record<string, unknown> {
+function map_29(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['IssuerCertificateAuthority'];
-    if (v !== undefined) out['issuerCertificateAuthority'] = map_34(v as Record<string, unknown>);
+    if (v !== undefined) out['issuerCertificateAuthority'] = map_33(v as Record<string, unknown>);
   }
   {
     const v = input['KmsKey'];
@@ -493,11 +479,11 @@ function map_30(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // ServiceConnectService -> ServiceConnectService
-function map_26(input: Record<string, unknown>): Record<string, unknown> {
+function map_25(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['ClientAliases'];
-    if (v !== undefined) out['clientAliases'] = (v as unknown[]).map((e) => map_28(e as Record<string, unknown>));
+    if (v !== undefined) out['clientAliases'] = (v as unknown[]).map((e) => map_27(e as Record<string, unknown>));
   }
   {
     const v = input['DiscoveryName'];
@@ -513,21 +499,21 @@ function map_26(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['Timeout'];
-    if (v !== undefined) out['timeout'] = map_29(v as Record<string, unknown>);
+    if (v !== undefined) out['timeout'] = map_28(v as Record<string, unknown>);
   }
   {
     const v = input['Tls'];
-    if (v !== undefined) out['tls'] = map_30(v as Record<string, unknown>);
+    if (v !== undefined) out['tls'] = map_29(v as Record<string, unknown>);
   }
   return out;
 }
 
 // ServiceConnectConfiguration -> ServiceConnectConfiguration
-function map_9(input: Record<string, unknown>): Record<string, unknown> {
+function map_8(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['AccessLogConfiguration'];
-    if (v !== undefined) out['accessLogConfiguration'] = map_24(v as Record<string, unknown>);
+    if (v !== undefined) out['accessLogConfiguration'] = map_23(v as Record<string, unknown>);
   }
   {
     const v = input['Enabled'];
@@ -535,7 +521,7 @@ function map_9(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['LogConfiguration'];
-    if (v !== undefined) out['logConfiguration'] = map_25(v as Record<string, unknown>);
+    if (v !== undefined) out['logConfiguration'] = map_24(v as Record<string, unknown>);
   }
   {
     const v = input['Namespace'];
@@ -543,13 +529,13 @@ function map_9(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['Services'];
-    if (v !== undefined) out['services'] = (v as unknown[]).map((e) => map_26(e as Record<string, unknown>));
+    if (v !== undefined) out['services'] = (v as unknown[]).map((e) => map_25(e as Record<string, unknown>));
   }
   return out;
 }
 
 // ServiceRegistry -> ServiceRegistry
-function map_10(input: Record<string, unknown>): Record<string, unknown> {
+function map_9(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['ContainerName'];
@@ -571,7 +557,7 @@ function map_10(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // Tag -> Tag
-function map_11(input: Record<string, unknown>): Record<string, unknown> {
+function map_10(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['Key'];
@@ -585,7 +571,7 @@ function map_11(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // EBSTagSpecification -> EBSTagSpecification
-function map_36(input: Record<string, unknown>): Record<string, unknown> {
+function map_35(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['PropagateTags'];
@@ -597,13 +583,13 @@ function map_36(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['Tags'];
-    if (v !== undefined) out['tags'] = (v as unknown[]).map((e) => map_11(e as Record<string, unknown>));
+    if (v !== undefined) out['tags'] = (v as unknown[]).map((e) => map_10(e as Record<string, unknown>));
   }
   return out;
 }
 
 // ServiceManagedEBSVolumeConfiguration -> ServiceManagedEBSVolumeConfiguration
-function map_35(input: Record<string, unknown>): Record<string, unknown> {
+function map_34(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['Encrypted'];
@@ -635,7 +621,7 @@ function map_35(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['TagSpecifications'];
-    if (v !== undefined) out['tagSpecifications'] = (v as unknown[]).map((e) => map_36(e as Record<string, unknown>));
+    if (v !== undefined) out['tagSpecifications'] = (v as unknown[]).map((e) => map_35(e as Record<string, unknown>));
   }
   {
     const v = input['Throughput'];
@@ -653,11 +639,11 @@ function map_35(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // ServiceVolumeConfiguration -> ServiceVolumeConfiguration
-function map_12(input: Record<string, unknown>): Record<string, unknown> {
+function map_11(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['ManagedEBSVolume'];
-    if (v !== undefined) out['managedEBSVolume'] = map_35(v as Record<string, unknown>);
+    if (v !== undefined) out['managedEBSVolume'] = map_34(v as Record<string, unknown>);
   }
   {
     const v = input['Name'];
@@ -667,7 +653,7 @@ function map_12(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // VpcLatticeConfiguration -> VpcLatticeConfiguration
-function map_13(input: Record<string, unknown>): Record<string, unknown> {
+function map_12(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['PortName'];
@@ -744,12 +730,7 @@ function map_0(input: Record<string, unknown>): Record<string, unknown> {
     const v = input['PlacementConstraints'];
     if (v !== undefined) out['placementConstraints'] = (v as unknown[]).map((e) => map_7(e as Record<string, unknown>));
   }
-  // RENAME-CANDIDATE (confirm): 'PlacementStrategies' -> 'placementStrategy'
-  // fuzzy-matched to "placementStrategy" (overlap 0.84)
-  {
-    const v = input['PlacementStrategies'];
-    if (v !== undefined) out['placementStrategy'] = (v as unknown[]).map((e) => map_8(e as Record<string, unknown>));
-  }
+  // RENAME-CANDIDATE (NOT emitted; confirm via override table): 'PlacementStrategies' -> 'placementStrategy' (fuzzy-matched to "placementStrategy" (overlap 0.84))
   {
     const v = input['PlatformVersion'];
     if (v !== undefined) out['platformVersion'] = v;
@@ -768,7 +749,7 @@ function map_0(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['ServiceConnectConfiguration'];
-    if (v !== undefined) out['serviceConnectConfiguration'] = map_9(v as Record<string, unknown>);
+    if (v !== undefined) out['serviceConnectConfiguration'] = map_8(v as Record<string, unknown>);
   }
   {
     const v = input['ServiceName'];
@@ -776,11 +757,11 @@ function map_0(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['ServiceRegistries'];
-    if (v !== undefined) out['serviceRegistries'] = (v as unknown[]).map((e) => map_10(e as Record<string, unknown>));
+    if (v !== undefined) out['serviceRegistries'] = (v as unknown[]).map((e) => map_9(e as Record<string, unknown>));
   }
   {
     const v = input['Tags'];
-    if (v !== undefined) out['tags'] = (v as unknown[]).map((e) => map_11(e as Record<string, unknown>));
+    if (v !== undefined) out['tags'] = (v as unknown[]).map((e) => map_10(e as Record<string, unknown>));
   }
   {
     const v = input['TaskDefinition'];
@@ -788,17 +769,17 @@ function map_0(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['VolumeConfigurations'];
-    if (v !== undefined) out['volumeConfigurations'] = (v as unknown[]).map((e) => map_12(e as Record<string, unknown>));
+    if (v !== undefined) out['volumeConfigurations'] = (v as unknown[]).map((e) => map_11(e as Record<string, unknown>));
   }
   {
     const v = input['VpcLatticeConfigurations'];
-    if (v !== undefined) out['vpcLatticeConfigurations'] = (v as unknown[]).map((e) => map_13(e as Record<string, unknown>));
+    if (v !== undefined) out['vpcLatticeConfigurations'] = (v as unknown[]).map((e) => map_12(e as Record<string, unknown>));
   }
   return out;
 }
 
 // #top(UpdateService) -> UpdateServiceRequest
-function map_37(input: Record<string, unknown>): Record<string, unknown> {
+function map_36(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['AvailabilityZoneRebalancing'];
@@ -854,12 +835,7 @@ function map_37(input: Record<string, unknown>): Record<string, unknown> {
     const v = input['PlacementConstraints'];
     if (v !== undefined) out['placementConstraints'] = (v as unknown[]).map((e) => map_7(e as Record<string, unknown>));
   }
-  // RENAME-CANDIDATE (confirm): 'PlacementStrategies' -> 'placementStrategy'
-  // fuzzy-matched to "placementStrategy" (overlap 0.84)
-  {
-    const v = input['PlacementStrategies'];
-    if (v !== undefined) out['placementStrategy'] = (v as unknown[]).map((e) => map_8(e as Record<string, unknown>));
-  }
+  // RENAME-CANDIDATE (NOT emitted; confirm via override table): 'PlacementStrategies' -> 'placementStrategy' (fuzzy-matched to "placementStrategy" (overlap 0.84))
   {
     const v = input['PlatformVersion'];
     if (v !== undefined) out['platformVersion'] = v;
@@ -872,17 +848,12 @@ function map_37(input: Record<string, unknown>): Record<string, unknown> {
   // UNMATCHED: 'SchedulingStrategy' (string) — no SDK member; verify: CFn-only field or silent drop
   {
     const v = input['ServiceConnectConfiguration'];
-    if (v !== undefined) out['serviceConnectConfiguration'] = map_9(v as Record<string, unknown>);
+    if (v !== undefined) out['serviceConnectConfiguration'] = map_8(v as Record<string, unknown>);
   }
-  // RENAME-CANDIDATE (confirm): 'ServiceName' -> 'service'
-  // fuzzy-matched to "service" (overlap 0.64)
-  {
-    const v = input['ServiceName'];
-    if (v !== undefined) out['service'] = v;
-  }
+  // RENAME-CANDIDATE (NOT emitted; confirm via override table): 'ServiceName' -> 'service' (fuzzy-matched to "service" (overlap 0.64))
   {
     const v = input['ServiceRegistries'];
-    if (v !== undefined) out['serviceRegistries'] = (v as unknown[]).map((e) => map_10(e as Record<string, unknown>));
+    if (v !== undefined) out['serviceRegistries'] = (v as unknown[]).map((e) => map_9(e as Record<string, unknown>));
   }
   // UNMATCHED: 'Tags' (list) — no SDK member; verify: CFn-only field or silent drop
   {
@@ -891,17 +862,17 @@ function map_37(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['VolumeConfigurations'];
-    if (v !== undefined) out['volumeConfigurations'] = (v as unknown[]).map((e) => map_12(e as Record<string, unknown>));
+    if (v !== undefined) out['volumeConfigurations'] = (v as unknown[]).map((e) => map_11(e as Record<string, unknown>));
   }
   {
     const v = input['VpcLatticeConfigurations'];
-    if (v !== undefined) out['vpcLatticeConfigurations'] = (v as unknown[]).map((e) => map_13(e as Record<string, unknown>));
+    if (v !== undefined) out['vpcLatticeConfigurations'] = (v as unknown[]).map((e) => map_12(e as Record<string, unknown>));
   }
   return out;
 }
 
 // #top(DeleteService) -> DeleteServiceRequest
-function map_38(input: Record<string, unknown>): Record<string, unknown> {
+function map_37(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   // UNMATCHED: 'AvailabilityZoneRebalancing' (string) — no SDK member; verify: CFn-only field or silent drop
   // UNMATCHED: 'CapacityProviderStrategy' (list) — no SDK member; verify: CFn-only field or silent drop
@@ -926,19 +897,8 @@ function map_38(input: Record<string, unknown>): Record<string, unknown> {
   // UNMATCHED: 'PropagateTags' (string) — no SDK member; verify: CFn-only field or silent drop
   // UNMATCHED: 'Role' (string) — no SDK member; verify: CFn-only field or silent drop
   // UNMATCHED: 'SchedulingStrategy' (string) — no SDK member; verify: CFn-only field or silent drop
-  // RENAME-CANDIDATE (confirm): 'ServiceConnectConfiguration' -> 'service'
-  // object serialized to JSON string
-  // fuzzy-matched to "service" (overlap 0.26)
-  {
-    const v = input['ServiceConnectConfiguration'];
-    if (v !== undefined) out['service'] = toJsonString(v);
-  }
-  // RENAME-CANDIDATE (confirm): 'ServiceName' -> 'service'
-  // fuzzy-matched to "service" (overlap 0.64)
-  {
-    const v = input['ServiceName'];
-    if (v !== undefined) out['service'] = v;
-  }
+  // UNMATCHED: 'ServiceConnectConfiguration' (structure) — no SDK member; verify: CFn-only field or silent drop
+  // RENAME-CANDIDATE (NOT emitted; confirm via override table): 'ServiceName' -> 'service' (fuzzy-matched to "service" (overlap 0.64))
   // UNMATCHED: 'ServiceRegistries' (list) — no SDK member; verify: CFn-only field or silent drop
   // UNMATCHED: 'Tags' (list) — no SDK member; verify: CFn-only field or silent drop
   // UNMATCHED: 'TaskDefinition' (string) — no SDK member; verify: CFn-only field or silent drop
@@ -954,11 +914,11 @@ export function buildCreateInput(properties: Record<string, unknown>): Record<st
 
 /** UpdateService (handlers) — input shape UpdateServiceRequest */
 export function buildUpdateInput(properties: Record<string, unknown>): Record<string, unknown> {
-  return map_37(properties);
+  return map_36(properties);
 }
 
 /** DeleteService (handlers) — input shape DeleteServiceRequest */
 export function buildDeleteInput(properties: Record<string, unknown>): Record<string, unknown> {
-  return map_38(properties);
+  return map_37(properties);
 }
 

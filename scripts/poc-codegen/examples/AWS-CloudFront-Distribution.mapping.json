@@ -1,0 +1,2154 @@
+{
+  "resourceType": "AWS::CloudFront::Distribution",
+  "subOperations": {},
+  "installedSdk": {
+    "pkg": "client-cloudfront",
+    "checked": true
+  },
+  "service": {
+    "modelPath": "/Users/sakurai/ghq/github.com/aws/api-models-aws/models/cloudfront/service/2020-05-31/cloudfront-2020-05-31.json",
+    "sdkId": "CloudFront",
+    "cloudFormationName": "CloudFront",
+    "arnNamespace": "cloudfront",
+    "namespace": "com.amazonaws.cloudfront"
+  },
+  "operations": {
+    "create": {
+      "operationName": "CreateDistribution",
+      "inputShape": "com.amazonaws.cloudfront#CreateDistributionRequest",
+      "source": "handlers",
+      "rootId": "#top(CreateDistribution)|CreateDistributionRequest",
+      "candidates": [
+        "CreateConnectionGroup",
+        "CreateDistribution",
+        "CreateDistributionWithTags",
+        "GetConnectionGroup",
+        "GetDistribution",
+        "GetDistributionConfig",
+        "GetVpcOrigin",
+        "TagResource"
+      ]
+    },
+    "update": {
+      "operationName": "UpdateDistribution",
+      "inputShape": "com.amazonaws.cloudfront#UpdateDistributionRequest",
+      "source": "handlers",
+      "rootId": "#top(UpdateDistribution)|UpdateDistributionRequest",
+      "candidates": [
+        "CreateConnectionGroup",
+        "GetConnectionGroup",
+        "GetDistribution",
+        "GetDistributionConfig",
+        "GetVpcOrigin",
+        "UpdateDistribution",
+        "UpdateDistributionWithStagingConfig",
+        "ListTagsForResource",
+        "TagResource",
+        "UntagResource"
+      ]
+    },
+    "delete": {
+      "operationName": "DeleteDistribution",
+      "inputShape": "com.amazonaws.cloudfront#DeleteDistributionRequest",
+      "source": "handlers",
+      "rootId": "#top(DeleteDistribution)|DeleteDistributionRequest",
+      "candidates": [
+        "DeleteDistribution",
+        "GetDistribution",
+        "GetDistributionConfig"
+      ]
+    }
+  },
+  "structs": {
+    "#top(CreateDistribution)|CreateDistributionRequest": {
+      "id": "#top(CreateDistribution)|CreateDistributionRequest",
+      "cfnDef": "#top(CreateDistribution)",
+      "sdkShape": "CreateDistributionRequest",
+      "members": [
+        {
+          "cfn": "DistributionConfig",
+          "sdk": "DistributionConfig",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "DistributionConfig|DistributionConfig",
+          "notes": []
+        },
+        {
+          "cfn": "Tags",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "Tags"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "DistributionConfig|DistributionConfig": {
+      "id": "DistributionConfig|DistributionConfig",
+      "cfnDef": "DistributionConfig",
+      "sdkShape": "DistributionConfig",
+      "members": [
+        {
+          "cfn": "Aliases",
+          "sdk": "Aliases",
+          "match": "exact",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity"
+          },
+          "notes": []
+        },
+        {
+          "cfn": "AnycastIpListId",
+          "sdk": "AnycastIpListId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "CNAMEs",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "CacheBehaviors",
+          "sdk": "CacheBehaviors",
+          "match": "exact",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "CacheBehavior|CacheBehavior",
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity"
+          },
+          "notes": []
+        },
+        {
+          "cfn": "CacheTagConfig",
+          "sdk": "CacheTagConfig",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "CacheTagConfig|CacheTagConfig",
+          "notes": []
+        },
+        {
+          "cfn": "Comment",
+          "sdk": "Comment",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "ConnectionFunctionAssociation",
+          "sdk": "ConnectionFunctionAssociation",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ConnectionFunctionAssociation|ConnectionFunctionAssociation",
+          "notes": []
+        },
+        {
+          "cfn": "ConnectionMode",
+          "sdk": "ConnectionMode",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ContinuousDeploymentPolicyId",
+          "sdk": "ContinuousDeploymentPolicyId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "CustomErrorResponses",
+          "sdk": "CustomErrorResponses",
+          "match": "exact",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "CustomErrorResponse|CustomErrorResponse",
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity"
+          },
+          "notes": []
+        },
+        {
+          "cfn": "CustomOrigin",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "DefaultCacheBehavior",
+          "sdk": "DefaultCacheBehavior",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "DefaultCacheBehavior|DefaultCacheBehavior",
+          "notes": []
+        },
+        {
+          "cfn": "DefaultRootObject",
+          "sdk": "DefaultRootObject",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Enabled",
+          "sdk": "Enabled",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "HttpVersion",
+          "sdk": "HttpVersion",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "IPV6Enabled",
+          "sdk": "IsIPV6Enabled",
+          "match": "rename-candidate",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": [
+            "fuzzy-matched to \"IsIPV6Enabled\" (overlap 0.85)"
+          ]
+        },
+        {
+          "cfn": "Logging",
+          "sdk": "Logging",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "Logging|LoggingConfig",
+          "notes": []
+        },
+        {
+          "cfn": "OriginGroups",
+          "sdk": "OriginGroups",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "OriginGroups|OriginGroups",
+          "notes": []
+        },
+        {
+          "cfn": "Origins",
+          "sdk": "Origins",
+          "match": "exact",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "Origin|Origin",
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity"
+          },
+          "notes": []
+        },
+        {
+          "cfn": "PriceClass",
+          "sdk": "PriceClass",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Restrictions",
+          "sdk": "Restrictions",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "Restrictions|Restrictions",
+          "notes": []
+        },
+        {
+          "cfn": "S3Origin",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Staging",
+          "sdk": "Staging",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TenantConfig",
+          "sdk": "TenantConfig",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "DistributionConfig.TenantConfig|TenantConfig",
+          "notes": []
+        },
+        {
+          "cfn": "ViewerCertificate",
+          "sdk": "ViewerCertificate",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ViewerCertificate|ViewerCertificate",
+          "notes": []
+        },
+        {
+          "cfn": "ViewerMtlsConfig",
+          "sdk": "ViewerMtlsConfig",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ViewerMtlsConfig|ViewerMtlsConfig",
+          "notes": []
+        },
+        {
+          "cfn": "WebACLId",
+          "sdk": "WebACLId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "CNAMEs",
+        "CustomOrigin",
+        "S3Origin"
+      ],
+      "sdkRequiredUnfed": [
+        "CallerReference"
+      ]
+    },
+    "CacheBehavior|CacheBehavior": {
+      "id": "CacheBehavior|CacheBehavior",
+      "cfnDef": "CacheBehavior",
+      "sdkShape": "CacheBehavior",
+      "members": [
+        {
+          "cfn": "AllowedMethods",
+          "sdk": "AllowedMethods",
+          "match": "exact",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity"
+          },
+          "notes": []
+        },
+        {
+          "cfn": "CachePolicyId",
+          "sdk": "CachePolicyId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "CachedMethods",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Compress",
+          "sdk": "Compress",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "DefaultTTL",
+          "sdk": "DefaultTTL",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "FieldLevelEncryptionId",
+          "sdk": "FieldLevelEncryptionId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ForwardedValues",
+          "sdk": "ForwardedValues",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ForwardedValues|ForwardedValues",
+          "notes": []
+        },
+        {
+          "cfn": "FunctionAssociations",
+          "sdk": "FunctionAssociations",
+          "match": "exact",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "FunctionAssociation|FunctionAssociation",
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity"
+          },
+          "notes": []
+        },
+        {
+          "cfn": "GrpcConfig",
+          "sdk": "GrpcConfig",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "GrpcConfig|GrpcConfig",
+          "notes": []
+        },
+        {
+          "cfn": "LambdaFunctionAssociations",
+          "sdk": "LambdaFunctionAssociations",
+          "match": "exact",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "LambdaFunctionAssociation|LambdaFunctionAssociation",
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity"
+          },
+          "notes": []
+        },
+        {
+          "cfn": "MaxTTL",
+          "sdk": "MaxTTL",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MinTTL",
+          "sdk": "MinTTL",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "OriginRequestPolicyId",
+          "sdk": "OriginRequestPolicyId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PathPattern",
+          "sdk": "PathPattern",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "RealtimeLogConfigArn",
+          "sdk": "RealtimeLogConfigArn",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ResponseHeadersPolicyId",
+          "sdk": "ResponseHeadersPolicyId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SmoothStreaming",
+          "sdk": "SmoothStreaming",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TargetOriginId",
+          "sdk": "TargetOriginId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "TrustedKeyGroups",
+          "sdk": "TrustedKeyGroups",
+          "match": "exact",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity",
+            "otherRequired": [
+              "Enabled"
+            ]
+          },
+          "notes": [
+            "wrapper has additional required member(s) not derivable from the array: Enabled"
+          ]
+        },
+        {
+          "cfn": "TrustedSigners",
+          "sdk": "TrustedSigners",
+          "match": "exact",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity",
+            "otherRequired": [
+              "Enabled"
+            ]
+          },
+          "notes": [
+            "wrapper has additional required member(s) not derivable from the array: Enabled"
+          ]
+        },
+        {
+          "cfn": "ViewerProtocolPolicy",
+          "sdk": "ViewerProtocolPolicy",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "CachedMethods"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "ForwardedValues|ForwardedValues": {
+      "id": "ForwardedValues|ForwardedValues",
+      "cfnDef": "ForwardedValues",
+      "sdkShape": "ForwardedValues",
+      "members": [
+        {
+          "cfn": "Cookies",
+          "sdk": "Cookies",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "Cookies|CookiePreference",
+          "notes": []
+        },
+        {
+          "cfn": "Headers",
+          "sdk": "Headers",
+          "match": "exact",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity"
+          },
+          "notes": []
+        },
+        {
+          "cfn": "QueryString",
+          "sdk": "QueryString",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "QueryStringCacheKeys",
+          "sdk": "QueryStringCacheKeys",
+          "match": "exact",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity"
+          },
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Cookies|CookiePreference": {
+      "id": "Cookies|CookiePreference",
+      "cfnDef": "Cookies",
+      "sdkShape": "CookiePreference",
+      "members": [
+        {
+          "cfn": "Forward",
+          "sdk": "Forward",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "WhitelistedNames",
+          "sdk": "WhitelistedNames",
+          "match": "exact",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity"
+          },
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "FunctionAssociation|FunctionAssociation": {
+      "id": "FunctionAssociation|FunctionAssociation",
+      "cfnDef": "FunctionAssociation",
+      "sdkShape": "FunctionAssociation",
+      "members": [
+        {
+          "cfn": "EventType",
+          "sdk": "EventType",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "FunctionARN",
+          "sdk": "FunctionARN",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "GrpcConfig|GrpcConfig": {
+      "id": "GrpcConfig|GrpcConfig",
+      "cfnDef": "GrpcConfig",
+      "sdkShape": "GrpcConfig",
+      "members": [
+        {
+          "cfn": "Enabled",
+          "sdk": "Enabled",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "LambdaFunctionAssociation|LambdaFunctionAssociation": {
+      "id": "LambdaFunctionAssociation|LambdaFunctionAssociation",
+      "cfnDef": "LambdaFunctionAssociation",
+      "sdkShape": "LambdaFunctionAssociation",
+      "members": [
+        {
+          "cfn": "EventType",
+          "sdk": "EventType",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "IncludeBody",
+          "sdk": "IncludeBody",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "LambdaFunctionARN",
+          "sdk": "LambdaFunctionARN",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "CacheTagConfig|CacheTagConfig": {
+      "id": "CacheTagConfig|CacheTagConfig",
+      "cfnDef": "CacheTagConfig",
+      "sdkShape": "CacheTagConfig",
+      "members": [
+        {
+          "cfn": "HeaderName",
+          "sdk": "HeaderName",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ConnectionFunctionAssociation|ConnectionFunctionAssociation": {
+      "id": "ConnectionFunctionAssociation|ConnectionFunctionAssociation",
+      "cfnDef": "ConnectionFunctionAssociation",
+      "sdkShape": "ConnectionFunctionAssociation",
+      "members": [
+        {
+          "cfn": "Id",
+          "sdk": "Id",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "CustomErrorResponse|CustomErrorResponse": {
+      "id": "CustomErrorResponse|CustomErrorResponse",
+      "cfnDef": "CustomErrorResponse",
+      "sdkShape": "CustomErrorResponse",
+      "members": [
+        {
+          "cfn": "ErrorCachingMinTTL",
+          "sdk": "ErrorCachingMinTTL",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ErrorCode",
+          "sdk": "ErrorCode",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "ResponseCode",
+          "sdk": "ResponseCode",
+          "match": "exact",
+          "transform": "to-string",
+          "cfnKind": "number",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ResponsePagePath",
+          "sdk": "ResponsePagePath",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "DefaultCacheBehavior|DefaultCacheBehavior": {
+      "id": "DefaultCacheBehavior|DefaultCacheBehavior",
+      "cfnDef": "DefaultCacheBehavior",
+      "sdkShape": "DefaultCacheBehavior",
+      "members": [
+        {
+          "cfn": "AllowedMethods",
+          "sdk": "AllowedMethods",
+          "match": "exact",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity"
+          },
+          "notes": []
+        },
+        {
+          "cfn": "CachePolicyId",
+          "sdk": "CachePolicyId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "CachedMethods",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Compress",
+          "sdk": "Compress",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "DefaultTTL",
+          "sdk": "DefaultTTL",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "FieldLevelEncryptionId",
+          "sdk": "FieldLevelEncryptionId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ForwardedValues",
+          "sdk": "ForwardedValues",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ForwardedValues|ForwardedValues",
+          "notes": []
+        },
+        {
+          "cfn": "FunctionAssociations",
+          "sdk": "FunctionAssociations",
+          "match": "exact",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "FunctionAssociation|FunctionAssociation",
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity"
+          },
+          "notes": []
+        },
+        {
+          "cfn": "GrpcConfig",
+          "sdk": "GrpcConfig",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "GrpcConfig|GrpcConfig",
+          "notes": []
+        },
+        {
+          "cfn": "LambdaFunctionAssociations",
+          "sdk": "LambdaFunctionAssociations",
+          "match": "exact",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "LambdaFunctionAssociation|LambdaFunctionAssociation",
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity"
+          },
+          "notes": []
+        },
+        {
+          "cfn": "MaxTTL",
+          "sdk": "MaxTTL",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MinTTL",
+          "sdk": "MinTTL",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "OriginRequestPolicyId",
+          "sdk": "OriginRequestPolicyId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "RealtimeLogConfigArn",
+          "sdk": "RealtimeLogConfigArn",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ResponseHeadersPolicyId",
+          "sdk": "ResponseHeadersPolicyId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SmoothStreaming",
+          "sdk": "SmoothStreaming",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TargetOriginId",
+          "sdk": "TargetOriginId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "TrustedKeyGroups",
+          "sdk": "TrustedKeyGroups",
+          "match": "exact",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity",
+            "otherRequired": [
+              "Enabled"
+            ]
+          },
+          "notes": [
+            "wrapper has additional required member(s) not derivable from the array: Enabled"
+          ]
+        },
+        {
+          "cfn": "TrustedSigners",
+          "sdk": "TrustedSigners",
+          "match": "exact",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity",
+            "otherRequired": [
+              "Enabled"
+            ]
+          },
+          "notes": [
+            "wrapper has additional required member(s) not derivable from the array: Enabled"
+          ]
+        },
+        {
+          "cfn": "ViewerProtocolPolicy",
+          "sdk": "ViewerProtocolPolicy",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "CachedMethods"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "Logging|LoggingConfig": {
+      "id": "Logging|LoggingConfig",
+      "cfnDef": "Logging",
+      "sdkShape": "LoggingConfig",
+      "members": [
+        {
+          "cfn": "Bucket",
+          "sdk": "Bucket",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "IncludeCookies",
+          "sdk": "IncludeCookies",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Prefix",
+          "sdk": "Prefix",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "OriginGroups|OriginGroups": {
+      "id": "OriginGroups|OriginGroups",
+      "cfnDef": "OriginGroups",
+      "sdkShape": "OriginGroups",
+      "members": [
+        {
+          "cfn": "Items",
+          "sdk": "Items",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "OriginGroup|OriginGroup",
+          "notes": []
+        },
+        {
+          "cfn": "Quantity",
+          "sdk": "Quantity",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "OriginGroup|OriginGroup": {
+      "id": "OriginGroup|OriginGroup",
+      "cfnDef": "OriginGroup",
+      "sdkShape": "OriginGroup",
+      "members": [
+        {
+          "cfn": "FailoverCriteria",
+          "sdk": "FailoverCriteria",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "OriginGroupFailoverCriteria|OriginGroupFailoverCriteria",
+          "notes": []
+        },
+        {
+          "cfn": "Id",
+          "sdk": "Id",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Members",
+          "sdk": "Members",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "OriginGroupMembers|OriginGroupMembers",
+          "notes": []
+        },
+        {
+          "cfn": "SelectionCriteria",
+          "sdk": "SelectionCriteria",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "OriginGroupFailoverCriteria|OriginGroupFailoverCriteria": {
+      "id": "OriginGroupFailoverCriteria|OriginGroupFailoverCriteria",
+      "cfnDef": "OriginGroupFailoverCriteria",
+      "sdkShape": "OriginGroupFailoverCriteria",
+      "members": [
+        {
+          "cfn": "StatusCodes",
+          "sdk": "StatusCodes",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "StatusCodes|StatusCodes",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "StatusCodes|StatusCodes": {
+      "id": "StatusCodes|StatusCodes",
+      "cfnDef": "StatusCodes",
+      "sdkShape": "StatusCodes",
+      "members": [
+        {
+          "cfn": "Items",
+          "sdk": "Items",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Quantity",
+          "sdk": "Quantity",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "OriginGroupMembers|OriginGroupMembers": {
+      "id": "OriginGroupMembers|OriginGroupMembers",
+      "cfnDef": "OriginGroupMembers",
+      "sdkShape": "OriginGroupMembers",
+      "members": [
+        {
+          "cfn": "Items",
+          "sdk": "Items",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": true,
+          "childId": "OriginGroupMember|OriginGroupMember",
+          "notes": []
+        },
+        {
+          "cfn": "Quantity",
+          "sdk": "Quantity",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "OriginGroupMember|OriginGroupMember": {
+      "id": "OriginGroupMember|OriginGroupMember",
+      "cfnDef": "OriginGroupMember",
+      "sdkShape": "OriginGroupMember",
+      "members": [
+        {
+          "cfn": "OriginId",
+          "sdk": "OriginId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Origin|Origin": {
+      "id": "Origin|Origin",
+      "cfnDef": "Origin",
+      "sdkShape": "Origin",
+      "members": [
+        {
+          "cfn": "ConnectionAttempts",
+          "sdk": "ConnectionAttempts",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ConnectionTimeout",
+          "sdk": "ConnectionTimeout",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "CustomOriginConfig",
+          "sdk": "CustomOriginConfig",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "CustomOriginConfig|CustomOriginConfig",
+          "notes": []
+        },
+        {
+          "cfn": "DomainName",
+          "sdk": "DomainName",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Id",
+          "sdk": "Id",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "OriginAccessControlId",
+          "sdk": "OriginAccessControlId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "OriginCustomHeaders",
+          "sdk": "CustomHeaders",
+          "match": "rename-candidate",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "OriginCustomHeader|OriginCustomHeader",
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity"
+          },
+          "notes": [
+            "fuzzy-matched to \"CustomHeaders\" (overlap 0.68)"
+          ]
+        },
+        {
+          "cfn": "OriginPath",
+          "sdk": "OriginPath",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "OriginShield",
+          "sdk": "OriginShield",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "OriginShield|OriginShield",
+          "notes": []
+        },
+        {
+          "cfn": "ResponseCompletionTimeout",
+          "sdk": "ResponseCompletionTimeout",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "S3OriginConfig",
+          "sdk": "S3OriginConfig",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "S3OriginConfig|S3OriginConfig",
+          "notes": []
+        },
+        {
+          "cfn": "VpcOriginConfig",
+          "sdk": "VpcOriginConfig",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "VpcOriginConfig|VpcOriginConfig",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "CustomOriginConfig|CustomOriginConfig": {
+      "id": "CustomOriginConfig|CustomOriginConfig",
+      "cfnDef": "CustomOriginConfig",
+      "sdkShape": "CustomOriginConfig",
+      "members": [
+        {
+          "cfn": "HTTPPort",
+          "sdk": "HTTPPort",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "HTTPSPort",
+          "sdk": "HTTPSPort",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "IpAddressType",
+          "sdk": "IpAddressType",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "OriginKeepaliveTimeout",
+          "sdk": "OriginKeepaliveTimeout",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "OriginMtlsConfig",
+          "sdk": "OriginMtlsConfig",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "OriginMtlsConfig|OriginMtlsConfig",
+          "notes": []
+        },
+        {
+          "cfn": "OriginProtocolPolicy",
+          "sdk": "OriginProtocolPolicy",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "OriginReadTimeout",
+          "sdk": "OriginReadTimeout",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "OriginSSLProtocols",
+          "sdk": "OriginSslProtocols",
+          "match": "case",
+          "transform": "wrap-quantity-items",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "wrapper": {
+            "itemsMember": "Items",
+            "quantityMember": "Quantity"
+          },
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "OriginMtlsConfig|OriginMtlsConfig": {
+      "id": "OriginMtlsConfig|OriginMtlsConfig",
+      "cfnDef": "OriginMtlsConfig",
+      "sdkShape": "OriginMtlsConfig",
+      "members": [
+        {
+          "cfn": "ClientCertificateArn",
+          "sdk": "ClientCertificateArn",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "OriginCustomHeader|OriginCustomHeader": {
+      "id": "OriginCustomHeader|OriginCustomHeader",
+      "cfnDef": "OriginCustomHeader",
+      "sdkShape": "OriginCustomHeader",
+      "members": [
+        {
+          "cfn": "HeaderName",
+          "sdk": "HeaderName",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "HeaderValue",
+          "sdk": "HeaderValue",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "OriginShield|OriginShield": {
+      "id": "OriginShield|OriginShield",
+      "cfnDef": "OriginShield",
+      "sdkShape": "OriginShield",
+      "members": [
+        {
+          "cfn": "Enabled",
+          "sdk": "Enabled",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "OriginShieldRegion",
+          "sdk": "OriginShieldRegion",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "S3OriginConfig|S3OriginConfig": {
+      "id": "S3OriginConfig|S3OriginConfig",
+      "cfnDef": "S3OriginConfig",
+      "sdkShape": "S3OriginConfig",
+      "members": [
+        {
+          "cfn": "OriginAccessIdentity",
+          "sdk": "OriginAccessIdentity",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "OriginReadTimeout",
+          "sdk": "OriginReadTimeout",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "VpcOriginConfig|VpcOriginConfig": {
+      "id": "VpcOriginConfig|VpcOriginConfig",
+      "cfnDef": "VpcOriginConfig",
+      "sdkShape": "VpcOriginConfig",
+      "members": [
+        {
+          "cfn": "OriginKeepaliveTimeout",
+          "sdk": "OriginKeepaliveTimeout",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "OriginReadTimeout",
+          "sdk": "OriginReadTimeout",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "OwnerAccountId",
+          "sdk": "OwnerAccountId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "VpcOriginId",
+          "sdk": "VpcOriginId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Restrictions|Restrictions": {
+      "id": "Restrictions|Restrictions",
+      "cfnDef": "Restrictions",
+      "sdkShape": "Restrictions",
+      "members": [
+        {
+          "cfn": "GeoRestriction",
+          "sdk": "GeoRestriction",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "GeoRestriction|GeoRestriction",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "GeoRestriction|GeoRestriction": {
+      "id": "GeoRestriction|GeoRestriction",
+      "cfnDef": "GeoRestriction",
+      "sdkShape": "GeoRestriction",
+      "members": [
+        {
+          "cfn": "Locations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "RestrictionType",
+          "sdk": "RestrictionType",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "Locations"
+      ],
+      "sdkRequiredUnfed": [
+        "Quantity"
+      ]
+    },
+    "DistributionConfig.TenantConfig|TenantConfig": {
+      "id": "DistributionConfig.TenantConfig|TenantConfig",
+      "cfnDef": "DistributionConfig.TenantConfig",
+      "sdkShape": "TenantConfig",
+      "members": [
+        {
+          "cfn": "ParameterDefinitions",
+          "sdk": "ParameterDefinitions",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "ParameterDefinition|ParameterDefinition",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ParameterDefinition|ParameterDefinition": {
+      "id": "ParameterDefinition|ParameterDefinition",
+      "cfnDef": "ParameterDefinition",
+      "sdkShape": "ParameterDefinition",
+      "members": [
+        {
+          "cfn": "Definition",
+          "sdk": "Definition",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "ParameterDefinition.Definition|ParameterDefinitionSchema",
+          "notes": []
+        },
+        {
+          "cfn": "Name",
+          "sdk": "Name",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ParameterDefinition.Definition|ParameterDefinitionSchema": {
+      "id": "ParameterDefinition.Definition|ParameterDefinitionSchema",
+      "cfnDef": "ParameterDefinition.Definition",
+      "sdkShape": "ParameterDefinitionSchema",
+      "members": [
+        {
+          "cfn": "StringSchema",
+          "sdk": "StringSchema",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ParameterDefinition.Definition.StringSchema|StringSchemaConfig",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ParameterDefinition.Definition.StringSchema|StringSchemaConfig": {
+      "id": "ParameterDefinition.Definition.StringSchema|StringSchemaConfig",
+      "cfnDef": "ParameterDefinition.Definition.StringSchema",
+      "sdkShape": "StringSchemaConfig",
+      "members": [
+        {
+          "cfn": "Comment",
+          "sdk": "Comment",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "DefaultValue",
+          "sdk": "DefaultValue",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Required",
+          "sdk": "Required",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ViewerCertificate|ViewerCertificate": {
+      "id": "ViewerCertificate|ViewerCertificate",
+      "cfnDef": "ViewerCertificate",
+      "sdkShape": "ViewerCertificate",
+      "members": [
+        {
+          "cfn": "AcmCertificateArn",
+          "sdk": "ACMCertificateArn",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "CloudFrontDefaultCertificate",
+          "sdk": "CloudFrontDefaultCertificate",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "IamCertificateId",
+          "sdk": "IAMCertificateId",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MinimumProtocolVersion",
+          "sdk": "MinimumProtocolVersion",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SslSupportMethod",
+          "sdk": "SSLSupportMethod",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ViewerMtlsConfig|ViewerMtlsConfig": {
+      "id": "ViewerMtlsConfig|ViewerMtlsConfig",
+      "cfnDef": "ViewerMtlsConfig",
+      "sdkShape": "ViewerMtlsConfig",
+      "members": [
+        {
+          "cfn": "Mode",
+          "sdk": "Mode",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TrustStoreConfig",
+          "sdk": "TrustStoreConfig",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "TrustStoreConfig|TrustStoreConfig",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "TrustStoreConfig|TrustStoreConfig": {
+      "id": "TrustStoreConfig|TrustStoreConfig",
+      "cfnDef": "TrustStoreConfig",
+      "sdkShape": "TrustStoreConfig",
+      "members": [
+        {
+          "cfn": "AdvertiseTrustStoreCaNames",
+          "sdk": "AdvertiseTrustStoreCaNames",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "IgnoreCertificateExpiry",
+          "sdk": "IgnoreCertificateExpiry",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TrustStoreId",
+          "sdk": "TrustStoreId",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "#top(UpdateDistribution)|UpdateDistributionRequest": {
+      "id": "#top(UpdateDistribution)|UpdateDistributionRequest",
+      "cfnDef": "#top(UpdateDistribution)",
+      "sdkShape": "UpdateDistributionRequest",
+      "members": [
+        {
+          "cfn": "DistributionConfig",
+          "sdk": "DistributionConfig",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "DistributionConfig|DistributionConfig",
+          "notes": []
+        },
+        {
+          "cfn": "Tags",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "Tags"
+      ],
+      "sdkRequiredUnfed": [
+        "Id"
+      ]
+    },
+    "#top(DeleteDistribution)|DeleteDistributionRequest": {
+      "id": "#top(DeleteDistribution)|DeleteDistributionRequest",
+      "cfnDef": "#top(DeleteDistribution)",
+      "sdkShape": "DeleteDistributionRequest",
+      "members": [
+        {
+          "cfn": "DistributionConfig",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Tags",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "DistributionConfig",
+        "Tags"
+      ],
+      "sdkRequiredUnfed": [
+        "Id"
+      ]
+    }
+  },
+  "readOnlyProperties": [
+    "Id",
+    "DomainName"
+  ],
+  "createOnlyProperties": [],
+  "stats": {
+    "totalCfnPaths": 158,
+    "matchedExact": 142,
+    "matchedCase": 4,
+    "renameCandidates": 2,
+    "unmatched": 10,
+    "nonDirectTransforms": 30
+  }
+}

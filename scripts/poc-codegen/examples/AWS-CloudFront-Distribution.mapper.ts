@@ -12,8 +12,8 @@ function toNum(v: unknown): number | undefined {
 function toBool(v: unknown): boolean | undefined {
   if (v === undefined || v === null) return undefined;
   if (typeof v === 'boolean') return v;
-  if (v === 'true') return true;
-  if (v === 'false') return false;
+  if (v === 'true' || v === 'True') return true;
+  if (v === 'false' || v === 'False') return false;
   throw new Error(`expected a boolean, got: ${JSON.stringify(v)}`);
 }
 function toDateV(v: unknown): Date | undefined {
@@ -178,10 +178,14 @@ function map_2(input: Record<string, unknown>): Record<string, unknown> {
     const v = input['TargetOriginId'];
     if (v !== undefined) out['TargetOriginId'] = v;
   }
+  // wrapper has additional required member(s) not derivable from the array: Enabled
+  // TODO(required-wrapper): 'TrustedKeyGroups' also requires { Enabled } — not derivable from the CFn array; set in glue code
   {
     const v = input['TrustedKeyGroups'];
     if (v !== undefined) out['TrustedKeyGroups'] = { Quantity: (v as unknown[]).length, Items: v };
   }
+  // wrapper has additional required member(s) not derivable from the array: Enabled
+  // TODO(required-wrapper): 'TrustedSigners' also requires { Enabled } — not derivable from the CFn array; set in glue code
   {
     const v = input['TrustedSigners'];
     if (v !== undefined) out['TrustedSigners'] = { Quantity: (v as unknown[]).length, Items: v };
@@ -303,10 +307,14 @@ function map_6(input: Record<string, unknown>): Record<string, unknown> {
     const v = input['TargetOriginId'];
     if (v !== undefined) out['TargetOriginId'] = v;
   }
+  // wrapper has additional required member(s) not derivable from the array: Enabled
+  // TODO(required-wrapper): 'TrustedKeyGroups' also requires { Enabled } — not derivable from the CFn array; set in glue code
   {
     const v = input['TrustedKeyGroups'];
     if (v !== undefined) out['TrustedKeyGroups'] = { Quantity: (v as unknown[]).length, Items: v };
   }
+  // wrapper has additional required member(s) not derivable from the array: Enabled
+  // TODO(required-wrapper): 'TrustedSigners' also requires { Enabled } — not derivable from the CFn array; set in glue code
   {
     const v = input['TrustedSigners'];
     if (v !== undefined) out['TrustedSigners'] = { Quantity: (v as unknown[]).length, Items: v };
@@ -421,7 +429,7 @@ function map_8(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // OriginMtlsConfig -> OriginMtlsConfig
-function map_29(input: Record<string, unknown>): Record<string, unknown> {
+function map_28(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['ClientCertificateArn'];
@@ -451,7 +459,7 @@ function map_24(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['OriginMtlsConfig'];
-    if (v !== undefined) out['OriginMtlsConfig'] = map_29(v as Record<string, unknown>);
+    if (v !== undefined) out['OriginMtlsConfig'] = map_28(v as Record<string, unknown>);
   }
   {
     const v = input['OriginProtocolPolicy'];
@@ -469,22 +477,8 @@ function map_24(input: Record<string, unknown>): Record<string, unknown> {
   return out;
 }
 
-// OriginCustomHeader -> OriginCustomHeader
-function map_25(input: Record<string, unknown>): Record<string, unknown> {
-  const out: Record<string, unknown> = {};
-  {
-    const v = input['HeaderName'];
-    if (v !== undefined) out['HeaderName'] = v;
-  }
-  {
-    const v = input['HeaderValue'];
-    if (v !== undefined) out['HeaderValue'] = v;
-  }
-  return out;
-}
-
 // OriginShield -> OriginShield
-function map_26(input: Record<string, unknown>): Record<string, unknown> {
+function map_25(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['Enabled'];
@@ -498,7 +492,7 @@ function map_26(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // S3OriginConfig -> S3OriginConfig
-function map_27(input: Record<string, unknown>): Record<string, unknown> {
+function map_26(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['OriginAccessIdentity'];
@@ -512,7 +506,7 @@ function map_27(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // VpcOriginConfig -> VpcOriginConfig
-function map_28(input: Record<string, unknown>): Record<string, unknown> {
+function map_27(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['OriginKeepaliveTimeout'];
@@ -560,19 +554,14 @@ function map_9(input: Record<string, unknown>): Record<string, unknown> {
     const v = input['OriginAccessControlId'];
     if (v !== undefined) out['OriginAccessControlId'] = v;
   }
-  // RENAME-CANDIDATE (confirm): 'OriginCustomHeaders' -> 'CustomHeaders'
-  // fuzzy-matched to "CustomHeaders" (overlap 0.68)
-  {
-    const v = input['OriginCustomHeaders'];
-    if (v !== undefined) out['CustomHeaders'] = { Quantity: (v as unknown[]).length, Items: (v as unknown[]).map((e) => map_25(e as Record<string, unknown>)) };
-  }
+  // RENAME-CANDIDATE (NOT emitted; confirm via override table): 'OriginCustomHeaders' -> 'CustomHeaders' (fuzzy-matched to "CustomHeaders" (overlap 0.68))
   {
     const v = input['OriginPath'];
     if (v !== undefined) out['OriginPath'] = v;
   }
   {
     const v = input['OriginShield'];
-    if (v !== undefined) out['OriginShield'] = map_26(v as Record<string, unknown>);
+    if (v !== undefined) out['OriginShield'] = map_25(v as Record<string, unknown>);
   }
   {
     const v = input['ResponseCompletionTimeout'];
@@ -580,17 +569,17 @@ function map_9(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['S3OriginConfig'];
-    if (v !== undefined) out['S3OriginConfig'] = map_27(v as Record<string, unknown>);
+    if (v !== undefined) out['S3OriginConfig'] = map_26(v as Record<string, unknown>);
   }
   {
     const v = input['VpcOriginConfig'];
-    if (v !== undefined) out['VpcOriginConfig'] = map_28(v as Record<string, unknown>);
+    if (v !== undefined) out['VpcOriginConfig'] = map_27(v as Record<string, unknown>);
   }
   return out;
 }
 
 // GeoRestriction -> GeoRestriction
-function map_30(input: Record<string, unknown>): Record<string, unknown> {
+function map_29(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   // UNMATCHED: 'Locations' (list) — no SDK member; verify: CFn-only field or silent drop
   {
@@ -606,13 +595,13 @@ function map_10(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['GeoRestriction'];
-    if (v !== undefined) out['GeoRestriction'] = map_30(v as Record<string, unknown>);
+    if (v !== undefined) out['GeoRestriction'] = map_29(v as Record<string, unknown>);
   }
   return out;
 }
 
 // ParameterDefinition.Definition.StringSchema -> StringSchemaConfig
-function map_33(input: Record<string, unknown>): Record<string, unknown> {
+function map_32(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['Comment'];
@@ -630,21 +619,21 @@ function map_33(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // ParameterDefinition.Definition -> ParameterDefinitionSchema
-function map_32(input: Record<string, unknown>): Record<string, unknown> {
+function map_31(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['StringSchema'];
-    if (v !== undefined) out['StringSchema'] = map_33(v as Record<string, unknown>);
+    if (v !== undefined) out['StringSchema'] = map_32(v as Record<string, unknown>);
   }
   return out;
 }
 
 // ParameterDefinition -> ParameterDefinition
-function map_31(input: Record<string, unknown>): Record<string, unknown> {
+function map_30(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['Definition'];
-    if (v !== undefined) out['Definition'] = map_32(v as Record<string, unknown>);
+    if (v !== undefined) out['Definition'] = map_31(v as Record<string, unknown>);
   }
   {
     const v = input['Name'];
@@ -658,7 +647,7 @@ function map_11(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['ParameterDefinitions'];
-    if (v !== undefined) out['ParameterDefinitions'] = (v as unknown[]).map((e) => map_31(e as Record<string, unknown>));
+    if (v !== undefined) out['ParameterDefinitions'] = (v as unknown[]).map((e) => map_30(e as Record<string, unknown>));
   }
   return out;
 }
@@ -693,7 +682,7 @@ function map_12(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // TrustStoreConfig -> TrustStoreConfig
-function map_34(input: Record<string, unknown>): Record<string, unknown> {
+function map_33(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['AdvertiseTrustStoreCaNames'];
@@ -719,7 +708,7 @@ function map_13(input: Record<string, unknown>): Record<string, unknown> {
   }
   {
     const v = input['TrustStoreConfig'];
-    if (v !== undefined) out['TrustStoreConfig'] = map_34(v as Record<string, unknown>);
+    if (v !== undefined) out['TrustStoreConfig'] = map_33(v as Record<string, unknown>);
   }
   return out;
 }
@@ -781,12 +770,7 @@ function map_1(input: Record<string, unknown>): Record<string, unknown> {
     const v = input['HttpVersion'];
     if (v !== undefined) out['HttpVersion'] = v;
   }
-  // RENAME-CANDIDATE (confirm): 'IPV6Enabled' -> 'IsIPV6Enabled'
-  // fuzzy-matched to "IsIPV6Enabled" (overlap 0.85)
-  {
-    const v = input['IPV6Enabled'];
-    if (v !== undefined) out['IsIPV6Enabled'] = v;
-  }
+  // RENAME-CANDIDATE (NOT emitted; confirm via override table): 'IPV6Enabled' -> 'IsIPV6Enabled' (fuzzy-matched to "IsIPV6Enabled" (overlap 0.85))
   {
     const v = input['Logging'];
     if (v !== undefined) out['Logging'] = map_7(v as Record<string, unknown>);
@@ -845,7 +829,7 @@ function map_0(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // #top(UpdateDistribution) -> UpdateDistributionRequest
-function map_35(input: Record<string, unknown>): Record<string, unknown> {
+function map_34(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   {
     const v = input['DistributionConfig'];
@@ -857,7 +841,7 @@ function map_35(input: Record<string, unknown>): Record<string, unknown> {
 }
 
 // #top(DeleteDistribution) -> DeleteDistributionRequest
-function map_36(input: Record<string, unknown>): Record<string, unknown> {
+function map_35(input: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   // UNMATCHED: 'DistributionConfig' (structure) — no SDK member; verify: CFn-only field or silent drop
   // UNMATCHED: 'Tags' (list) — no SDK member; verify: CFn-only field or silent drop
@@ -872,11 +856,11 @@ export function buildCreateInput(properties: Record<string, unknown>): Record<st
 
 /** UpdateDistribution (handlers) — input shape UpdateDistributionRequest */
 export function buildUpdateInput(properties: Record<string, unknown>): Record<string, unknown> {
-  return map_35(properties);
+  return map_34(properties);
 }
 
 /** DeleteDistribution (handlers) — input shape DeleteDistributionRequest */
 export function buildDeleteInput(properties: Record<string, unknown>): Record<string, unknown> {
-  return map_36(properties);
+  return map_35(properties);
 }
 

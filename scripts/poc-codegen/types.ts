@@ -27,8 +27,11 @@ export type MatchTier =
   | 'exact' // identical spelling
   | 'case' // case-insensitive match (covers Pascal->camel style flips AND same-style
   // case divergences like MetricTimeZone -> MetricTimezone)
-  | 'rename-candidate' // normalized-substring containment (IPV6Enabled -> IsIPV6Enabled);
-  // needs human confirmation
+  | 'rename-candidate' // normalized-substring containment / prefix ratio
+  // (IPV6Enabled -> IsIPV6Enabled); needs human confirmation and is
+  // NEVER emitted as live code (VERIFICATION.md C2)
+  | 'collision' // two CFn properties resolved to the SAME SDK member; the
+  // lower-tier loser is demoted here and never emitted (VERIFICATION.md C2)
   | 'unmatched'; // no SDK member found — the silent-drop class
 
 /** Value transform the generated mapper applies for this member. */
@@ -66,7 +69,23 @@ export interface MemberMapping {
    */
   childId?: string;
   /** For wrap-quantity-items: the SDK wrapper's Items member name + shapes. */
-  wrapper?: { itemsMember: string; quantityMember: string | null };
+  wrapper?: {
+    itemsMember: string;
+    quantityMember: string | null;
+    /**
+     * Wrapper members that are smithy.api#required but NOT derivable from
+     * the CFn array (e.g. CloudFront TrustedSigners.Enabled) — the emitter
+     * must surface a TODO instead of emitting an invalid empty default
+     * (VERIFICATION.md M1).
+     */
+    otherRequired?: string[];
+  };
+  /**
+   * The generated SDK member name is ABSENT from the installed
+   * @aws-sdk client's typings (model-newer-than-runtime skew) — never
+   * emitted; the serializer would silently drop it (VERIFICATION.md C3).
+   */
+  skew?: boolean;
   notes: string[];
 }
 
@@ -119,6 +138,13 @@ export interface ResourceMappingSpec {
   subOperations: Record<string, OperationMapping>;
   /** All struct mappings reachable from the operations, keyed by id. */
   structs: Record<string, StructMapping>;
+  /**
+   * Installed-SDK reconciliation (VERIFICATION.md C3): which client package
+   * was checked; `checked: false` means the package was not found and the
+   * skew check was SKIPPED (the spec may then contain members the runtime
+   * SDK cannot serialize).
+   */
+  installedSdk: { pkg: string; checked: boolean };
   /** CFn top-level properties that are readOnly (never inputs). */
   readOnlyProperties: string[];
   createOnlyProperties: string[];

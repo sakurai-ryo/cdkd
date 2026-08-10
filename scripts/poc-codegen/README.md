@@ -1,18 +1,29 @@
 # PoC: generating the CFn -> SDK conversion from schemas
 
-**Verdict: feasible and strongly positive.** The CFn-property -> SDK-input
-conversion that every SDK provider hand-writes today — and that the
-`gen-nested-key-coverage` critic family audits after the fact — can be
-derived mechanically from two authoritative, machine-readable sources. Run
-against the six types with the richest known-defect history, the generator
+> This PoC was adversarially verified by three independent review agents;
+> several of its original claims were refuted or corrected, and the
+> generator was hardened in response. [VERIFICATION.md](VERIFICATION.md)
+> is the record; this README reflects the post-verification state.
+
+**Verdict: the mechanism works; the safety story requires three inputs,
+not two.** The CFn-property -> SDK-input conversion that every SDK
+provider hand-writes today — and that the `gen-nested-key-coverage` critic
+family audits after the fact — can be derived mechanically from the CFn
+registry schema plus the Smithy models, RECONCILED against the installed
+@aws-sdk clients (without that third input the pipeline re-creates the
+silent-drop class it exists to eliminate — see VERIFICATION.md C3). Run
+against six types with a rich known-defect history, the generator
 auto-resolves (or surfaces as an explicit review candidate) **every
-nested-key silent-drop bug this repo has ever shipped**, including the five
-CloudFront keys (#1370/#1372), `MetricTimeZone -> MetricTimezone` (#1304),
-the ECS blue/green `AdvancedConfiguration` block (#1473),
-`ContainerPortRange` (#1472), `BatchReportMode` (#1432), the irregular
-`s3filesVolumeConfiguration` casing, and most of the 20 confirmed S3 drops
-filed as #1495. A 21-check runtime equivalence suite over the generated
-mappers passes 21/21.
+nested-key silent-drop bug those six types shipped**, including four of
+the five CloudFront keys (#1370/#1372) with the fifth as a candidate,
+`MetricTimeZone -> MetricTimezone` (#1304), the ECS blue/green
+`AdvancedConfiguration` block (#1473), `ContainerPortRange` (#1472),
+`BatchReportMode` (#1432), the irregular `s3filesVolumeConfiguration`
+casing, and 13 of the 20 confirmed-looking S3 drops filed as #1495. Two
+shipped drops in OTHER services (ECR #920, Glue #918) were outside the
+validated set — the claim is scoped to what was run. A 25-check runtime
+smoke suite over the committed mappers passes
+(`node scripts/poc-codegen/validate-mappers.ts`).
 
 ## Inputs
 
@@ -42,11 +53,15 @@ Two trait fields make the join mechanical:
    verb + resource-name heuristic over the full operation set. Every
    candidate set is preserved in the report for an override table.
 3. **Per-property sub-operations** — a top-level property the create input
-   does not carry is resolved to its own Put/Update operation (the S3
-   idiom). All 16 of S3's config-blob operations (`PutBucketCors`,
-   `PutBucketLogging`, `PutObjectLockConfiguration`, ...) were derived
-   automatically — i.e. the generator recovers the hand-written
-   `s3-bucket-provider`'s orchestration plan from the schemas.
+   does not carry (or only fuzzy-matches) is resolved to its own
+   Put/Update operation (the S3 idiom), with an anchored name match
+   (VERIFICATION.md M4). 19 S3 sub-operations derive (`PutBucketCors`,
+   `PutBucketLogging`, `PutObjectLockConfiguration`,
+   `PutBucketEncryption`, ...) — covering all 17 config Put-family calls
+   the hand-written `s3-bucket-provider` issues, plus the two Metadata
+   create ops. Deriving the OPERATION does not guarantee the inner blob
+   member matches (`BucketEncryption` vs the request's
+   `ServerSideEncryptionConfiguration` needs an override entry).
 4. **Structural matching** — parallel walk of the CFn property tree
    (`$ref`-resolved) and the Smithy input shape. Name tiers: exact ->
    case-insensitive -> fuzzy (normalized containment / common-prefix
@@ -56,23 +71,44 @@ Two trait fields make the join mechanical:
    (`Tagging.TagSet`), ISO-string -> `Date`, string<->number/boolean
    coercion, object -> JSON-string, plus required-member detection
    (`smithy.api#required`).
-5. **Emission** — per type: a mapping-spec JSON (the auditable artifact),
+5. **Installed-SDK reconciliation** (added after adversarial verification —
+   VERIFICATION.md C3) — every generated SDK member name is checked against
+   the pinned `@aws-sdk/client-*` typings under `node_modules`; a member
+   the installed serializer does not know is flagged `version-skew` and
+   never emitted (live catches: CodeBuild `hostKernel`, S3
+   `AnnotationTableConfiguration`, Lambda `S3ObjectStorageMode`).
+6. **Emission** — per type: a mapping-spec JSON (the auditable artifact),
    a readable dependency-free TS mapper (`buildCreateInput` /
    `buildUpdateInput` / `buildDeleteInput`), and a divergence report
-   listing everything below the high-confidence bar.
+   listing everything below the high-confidence bar. **Only exact / case
+   tier mappings with supported transforms are emitted as code** — fuzzy
+   rename candidates, collision losers and skew members are report-only
+   (an unconfirmed guess that executes is worse than a visible gap).
 
 ## Results
 
-### Deep dive (the six types with known-defect history)
+### Deep dive (six types with known-defect history)
 
-| Type | create-input coverage | Notes |
-|------|----------------------|-------|
-| AWS::CloudWatch::AnomalyDetector | 35/35 (100%) | ops resolved with EMPTY handlers; `Date` coercion derived |
-| AWS::ECS::TaskDefinition | 158/158 (100%) | all camelCase + irregular casings auto |
-| AWS::ECS::Service | 136/137 (99.3%) | miss = `ForceNewDeployment` (CFn structure vs SDK boolean — real type divergence, flagged) |
-| AWS::CodeBuild::Project | 96/99 (97.0%) | misses = `Triggers`/`Visibility`/`ResourceAccessRole` (separate webhook / visibility APIs — flagged, `Visibility` sub-op auto-found) |
-| AWS::CloudFront::Distribution | 147/154 (95.5%) | misses = legacy pre-2012 members (`S3Origin`, `CNAMEs`, ...) + `CachedMethods` nesting + `GeoRestriction.Locations` — exactly today's allow-list entries |
-| AWS::S3::Bucket | CreateBucket 5/23 + 16 auto-derived sub-ops | Website 100%, ObjectLock/PublicAccessBlock/Ownership/Versioning/Accelerate 100%, Replication 94%, Lifecycle 61% |
+Coverage is the HONEST split (post-verification): `auto` counts only
+members the generated code actually writes; candidates / skew /
+type-incompatible members are visible buckets, never lumped into
+"matched".
+
+| Type | create-input coverage (auto-emitted) | Notes |
+|------|--------------------------------------|-------|
+| AWS::CloudWatch::AnomalyDetector | 35/35 | ops resolved with EMPTY handlers; `Date` coercion derived |
+| AWS::ECS::TaskDefinition | 157/158 + 1 candidate | camelCase + irregular casings auto; `ProxyConfigurationProperties` is the candidate |
+| AWS::ECS::Service | 135/137 + 1 candidate | `ForceNewDeployment` type-divergence flagged; `PlacementStrategies` is the candidate |
+| AWS::CodeBuild::Project | 95/99 + 1 version-skew | skew = `HostKernel` (absent from the pinned SDK — correctly NOT emitted); `Triggers`/`Visibility`/`ResourceAccessRole` unmatched (separate APIs; `Visibility` sub-op auto-found) |
+| AWS::CloudFront::Distribution | 145/154 + 2 candidates | unmatched = legacy pre-2012 members (`S3Origin`, `CNAMEs`, ...) + `CachedMethods` nesting + `GeoRestriction.Locations` |
+| AWS::S3::Bucket | CreateBucket 1/25 + 19 auto-derived sub-ops | ObjectLock/PublicAccessBlock/Ownership/Versioning 100%; Replication 33/35; Lifecycle 15/28; Website 12/16; several sub-op blob members still need override entries (PutBucketEncryption 0/1, Logging 0/1, Tagging 0/1) |
+
+The hand-written `s3-bucket-provider` issues 17 config Put-family calls;
+the derivation now finds all of them plus the two Metadata create ops (19
+total). The blob-MEMBER match inside a derived sub-op is a separate step
+and still misses where CFn and SDK names are unrelated
+(`BucketEncryption` vs `ServerSideEncryptionConfiguration`) — override
+territory, reported as such.
 
 ### Every known shipped silent-drop, re-derived from schemas
 
@@ -89,15 +125,18 @@ Two trait fields make the join mechanical:
 | ECS `PortMappings.ContainerPortRange` (#1472) | write-evidence walk | **auto** (case tier) |
 | ECS `PlacementStrategies -> placementStrategy` | hand-written | **rename candidate** (prefix ratio) |
 | ECS `ProxyConfigurationProperties -> properties` (#1464 `segmentRenames`) | false positive during critic deepening | **rename candidate** (0.36) |
-| CodeBuild `BuildBatchConfig.BatchReportMode` (#1432) | proved the `no-write-evidence` class | **auto** — generated code writes every matched member, so the fresh-object-mapper drop class is structurally impossible |
+| CodeBuild `BuildBatchConfig.BatchReportMode` (#1432) | proved the `no-write-evidence` class | **auto** — generated code writes every matched member. (This closes the forgot-to-write class ONLY under the installed-SDK reconciliation: without it, model-newer-than-runtime members are silently dropped by the serializer — VERIFICATION.md C3) |
 | S3 `ReplicationConfiguration.Rules.Destination.{AccessControlTranslation, EncryptionConfiguration, Metrics, ReplicationTime}` + `SourceSelectionCriteria` (#1495, unfixed) | write-evidence walk, filed | **auto** (exact tier, via the derived `PutBucketReplication` sub-op) |
 | S3 `RoutingRules.RedirectRule -> Redirect`, `RoutingRuleCondition -> Condition` (#1448-noted renames) | hand analysis | **rename candidates** (0.67 / 0.45) |
 | S3 `EventBridgeEnabled` boolean vs SDK empty-struct (#1430) | critic first run on S3 | **flagged** (unmatched inside `EventBridgeConfiguration` — cannot be auto-mapped, correctly) |
 
-Runtime equivalence: `validate-mappers.ts` (scratch harness) feeds sample
-CFn property bags through the generated AnomalyDetector / ECS Service /
-CloudFront mappers — 21/21 assertions pass, including
-Date-coercion, wrapper shapes, and every rename above.
+Runtime checks: [validate-mappers.ts](validate-mappers.ts) (committed)
+feeds sample CFn property bags through the committed mappers — 25/25
+assertions pass, pinning both directions: auto-tier mappings ARE emitted
+with their transforms, and candidates / collisions / skew members are NOT
+(e.g. `HostKernel` must be absent from the CodeBuild input). It is a smoke
+test with hand-picked expectations, not a differential equivalence suite
+against the hand-written providers.
 
 ### Breadth (16 more types, one run, no per-type work)
 
@@ -197,5 +236,13 @@ for the six deep-dive types live in [examples/](examples/).
 - `oneOf`/`anyOf` CFn variants and SDK unions are flagged, not resolved.
 - The grep-based model discovery is a PoC shortcut; production would keep
   a committed `cloudFormationName -> model` index.
-- Smithy models describe the CURRENT API; a CFn property AWS still accepts
-  but the current API dropped would surface as unmatched (safe direction).
+- Both skew directions are handled but asymmetrically: a CFn property the
+  current API dropped surfaces as unmatched (safe); a model member newer
+  than the pinned SDK is caught by the installed-SDK reconciliation —
+  at member-NAME-set granularity, not per-shape (VERIFICATION.md C3).
+- Single-op UPDATE resolution stays heuristic (`LogGroup update =
+  PutLogGroupDeletionProtection`-style wrong-but-plausible picks are
+  possible — VERIFICATION.md M3); candidate sets are preserved in the
+  spec for an override table.
+- CFn number -> SDK timestamp would treat epoch-seconds as milliseconds;
+  no such pair exists in the probed corpus (latent, noted in code).

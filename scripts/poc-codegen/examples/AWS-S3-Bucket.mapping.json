@@ -1,0 +1,3575 @@
+{
+  "resourceType": "AWS::S3::Bucket",
+  "subOperations": {
+    "AccelerateConfiguration": {
+      "operationName": "PutBucketAccelerateConfiguration",
+      "inputShape": "com.amazonaws.s3#PutBucketAccelerateConfigurationRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutBucketAccelerateConfiguration)|PutBucketAccelerateConfigurationRequest",
+      "candidates": [
+        "PutBucketAccelerateConfiguration"
+      ]
+    },
+    "AnalyticsConfigurations": {
+      "operationName": "PutBucketAnalyticsConfiguration",
+      "inputShape": "com.amazonaws.s3#PutBucketAnalyticsConfigurationRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutBucketAnalyticsConfiguration)|PutBucketAnalyticsConfigurationRequest",
+      "candidates": [
+        "PutBucketAnalyticsConfiguration"
+      ]
+    },
+    "BucketEncryption": {
+      "operationName": "PutBucketEncryption",
+      "inputShape": "com.amazonaws.s3#PutBucketEncryptionRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutBucketEncryption)|PutBucketEncryptionRequest",
+      "candidates": [
+        "PutBucketEncryption"
+      ]
+    },
+    "CorsConfiguration": {
+      "operationName": "PutBucketCors",
+      "inputShape": "com.amazonaws.s3#PutBucketCorsRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutBucketCors)|PutBucketCorsRequest",
+      "candidates": [
+        "PutBucketCors"
+      ]
+    },
+    "IntelligentTieringConfigurations": {
+      "operationName": "PutBucketIntelligentTieringConfiguration",
+      "inputShape": "com.amazonaws.s3#PutBucketIntelligentTieringConfigurationRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutBucketIntelligentTieringConfiguration)|PutBucketIntelligentTieringConfigurationRequest",
+      "candidates": [
+        "PutBucketIntelligentTieringConfiguration"
+      ]
+    },
+    "InventoryConfigurations": {
+      "operationName": "PutBucketInventoryConfiguration",
+      "inputShape": "com.amazonaws.s3#PutBucketInventoryConfigurationRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutBucketInventoryConfiguration)|PutBucketInventoryConfigurationRequest",
+      "candidates": [
+        "PutBucketInventoryConfiguration"
+      ]
+    },
+    "LifecycleConfiguration": {
+      "operationName": "PutBucketLifecycleConfiguration",
+      "inputShape": "com.amazonaws.s3#PutBucketLifecycleConfigurationRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutBucketLifecycleConfiguration)|PutBucketLifecycleConfigurationRequest",
+      "candidates": [
+        "PutBucketLifecycleConfiguration"
+      ]
+    },
+    "LoggingConfiguration": {
+      "operationName": "PutBucketLogging",
+      "inputShape": "com.amazonaws.s3#PutBucketLoggingRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutBucketLogging)|PutBucketLoggingRequest",
+      "candidates": [
+        "PutBucketLogging"
+      ]
+    },
+    "MetadataConfiguration": {
+      "operationName": "CreateBucketMetadataConfiguration",
+      "inputShape": "com.amazonaws.s3#CreateBucketMetadataConfigurationRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(CreateBucketMetadataConfiguration)|CreateBucketMetadataConfigurationRequest",
+      "candidates": [
+        "CreateBucketMetadataConfiguration",
+        "CreateBucketMetadataTableConfiguration",
+        "UpdateBucketMetadataJournalTableConfiguration",
+        "UpdateBucketMetadataInventoryTableConfiguration",
+        "UpdateBucketMetadataAnnotationTableConfiguration"
+      ]
+    },
+    "MetadataTableConfiguration": {
+      "operationName": "CreateBucketMetadataTableConfiguration",
+      "inputShape": "com.amazonaws.s3#CreateBucketMetadataTableConfigurationRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(CreateBucketMetadataTableConfiguration)|CreateBucketMetadataTableConfigurationRequest",
+      "candidates": [
+        "CreateBucketMetadataTableConfiguration"
+      ]
+    },
+    "MetricsConfigurations": {
+      "operationName": "PutBucketMetricsConfiguration",
+      "inputShape": "com.amazonaws.s3#PutBucketMetricsConfigurationRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutBucketMetricsConfiguration)|PutBucketMetricsConfigurationRequest",
+      "candidates": [
+        "PutBucketMetricsConfiguration"
+      ]
+    },
+    "NotificationConfiguration": {
+      "operationName": "PutBucketNotificationConfiguration",
+      "inputShape": "com.amazonaws.s3#PutBucketNotificationConfigurationRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutBucketNotificationConfiguration)|PutBucketNotificationConfigurationRequest",
+      "candidates": [
+        "PutBucketNotificationConfiguration"
+      ]
+    },
+    "ObjectLockConfiguration": {
+      "operationName": "PutObjectLockConfiguration",
+      "inputShape": "com.amazonaws.s3#PutObjectLockConfigurationRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutObjectLockConfiguration)|PutObjectLockConfigurationRequest",
+      "candidates": [
+        "PutObjectLockConfiguration"
+      ]
+    },
+    "OwnershipControls": {
+      "operationName": "PutBucketOwnershipControls",
+      "inputShape": "com.amazonaws.s3#PutBucketOwnershipControlsRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutBucketOwnershipControls)|PutBucketOwnershipControlsRequest",
+      "candidates": [
+        "PutBucketOwnershipControls"
+      ]
+    },
+    "PublicAccessBlockConfiguration": {
+      "operationName": "PutPublicAccessBlock",
+      "inputShape": "com.amazonaws.s3#PutPublicAccessBlockRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutPublicAccessBlock)|PutPublicAccessBlockRequest",
+      "candidates": [
+        "PutPublicAccessBlock"
+      ]
+    },
+    "ReplicationConfiguration": {
+      "operationName": "PutBucketReplication",
+      "inputShape": "com.amazonaws.s3#PutBucketReplicationRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutBucketReplication)|PutBucketReplicationRequest",
+      "candidates": [
+        "PutBucketReplication"
+      ]
+    },
+    "Tags": {
+      "operationName": "PutBucketTagging",
+      "inputShape": "com.amazonaws.s3#PutBucketTaggingRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutBucketTagging)|PutBucketTaggingRequest",
+      "candidates": [
+        "PutBucketTagging"
+      ]
+    },
+    "VersioningConfiguration": {
+      "operationName": "PutBucketVersioning",
+      "inputShape": "com.amazonaws.s3#PutBucketVersioningRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutBucketVersioning)|PutBucketVersioningRequest",
+      "candidates": [
+        "PutBucketVersioning"
+      ]
+    },
+    "WebsiteConfiguration": {
+      "operationName": "PutBucketWebsite",
+      "inputShape": "com.amazonaws.s3#PutBucketWebsiteRequest",
+      "source": "verb-heuristic",
+      "rootId": "#top(PutBucketWebsite)|PutBucketWebsiteRequest",
+      "candidates": [
+        "PutBucketWebsite"
+      ]
+    }
+  },
+  "installedSdk": {
+    "pkg": "client-s3",
+    "checked": true
+  },
+  "service": {
+    "modelPath": "/Users/sakurai/ghq/github.com/aws/api-models-aws/models/s3/service/2006-03-01/s3-2006-03-01.json",
+    "sdkId": "S3",
+    "cloudFormationName": "S3",
+    "arnNamespace": "s3",
+    "namespace": "com.amazonaws.s3"
+  },
+  "operations": {
+    "create": {
+      "operationName": "CreateBucket",
+      "inputShape": "com.amazonaws.s3#CreateBucketRequest",
+      "source": "handlers",
+      "rootId": "#top(CreateBucket)|CreateBucketRequest",
+      "candidates": [
+        "CreateBucket",
+        "PutBucketTagging",
+        "PutBucketAbac",
+        "PutBucketReplication",
+        "PutBucketWebsite",
+        "PutObjectAcl",
+        "GetBucketAcl",
+        "DeleteObject",
+        "PutBucketLogging",
+        "PutBucketVersioning",
+        "PutObjectLockConfiguration",
+        "PutBucketOwnershipControls",
+        "GetBucketMetadataTableConfiguration",
+        "CreateBucketMetadataTableConfiguration"
+      ]
+    },
+    "update": {
+      "operationName": "UpdateBucketMetadataJournalTableConfiguration",
+      "inputShape": "com.amazonaws.s3#UpdateBucketMetadataJournalTableConfigurationRequest",
+      "source": "handlers",
+      "rootId": "#top(UpdateBucketMetadataJournalTableConfiguration)|UpdateBucketMetadataJournalTableConfigurationRequest",
+      "candidates": [
+        "PutBucketAcl",
+        "PutBucketTagging",
+        "PutBucketAbac",
+        "PutBucketReplication",
+        "PutBucketWebsite",
+        "GetBucketMetadataTableConfiguration",
+        "DeleteBucketMetadataTableConfiguration",
+        "CreateBucketMetadataTableConfiguration",
+        "UpdateBucketMetadataJournalTableConfiguration",
+        "UpdateBucketMetadataInventoryTableConfiguration",
+        "UpdateBucketMetadataAnnotationTableConfiguration",
+        "PutBucketOwnershipControls",
+        "DeleteBucketWebsite",
+        "PutBucketLogging",
+        "PutBucketVersioning",
+        "PutObjectLockConfiguration",
+        "DeleteBucketAnalyticsConfiguration",
+        "DeleteBucketCors",
+        "DeleteBucketMetricsConfiguration",
+        "DeleteBucketEncryption",
+        "DeleteBucketLifecycle",
+        "DeleteBucketReplication"
+      ]
+    },
+    "delete": {
+      "operationName": "DeleteBucket",
+      "inputShape": "com.amazonaws.s3#DeleteBucketRequest",
+      "source": "handlers",
+      "rootId": "#top(DeleteBucket)|DeleteBucketRequest",
+      "candidates": [
+        "DeleteBucket"
+      ]
+    }
+  },
+  "structs": {
+    "#top(CreateBucket)|CreateBucketRequest": {
+      "id": "#top(CreateBucket)|CreateBucketRequest",
+      "cfnDef": "#top(CreateBucket)",
+      "sdkShape": "CreateBucketRequest",
+      "members": [
+        {
+          "cfn": "AbacStatus",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "AccelerateConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "AccessControl",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "AnalyticsConfigurations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "BucketEncryption",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "BucketName",
+          "sdk": "BucketNamespace",
+          "match": "collision",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": [
+            "fuzzy-matched to \"BucketNamespace\" (overlap 0.67)",
+            "collides with 'BucketNamespace' on SDK member 'BucketNamespace' — NOT emitted; needs an override-table decision"
+          ]
+        },
+        {
+          "cfn": "BucketNamePrefix",
+          "sdk": "Bucket",
+          "match": "rename-candidate",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": [
+            "fuzzy-matched to \"Bucket\" (overlap 0.38)"
+          ]
+        },
+        {
+          "cfn": "BucketNamespace",
+          "sdk": "BucketNamespace",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "CorsConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "IntelligentTieringConfigurations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "InventoryConfigurations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "LifecycleConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "LoggingConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MetadataConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MetadataTableConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MetricsConfigurations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "NotificationConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ObjectLockConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ObjectLockEnabled",
+          "sdk": "ObjectLockEnabledForBucket",
+          "match": "rename-candidate",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": [
+            "fuzzy-matched to \"ObjectLockEnabledForBucket\" (overlap 0.65)"
+          ]
+        },
+        {
+          "cfn": "OwnershipControls",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PublicAccessBlockConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ReplicationConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Tags",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "VersioningConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "WebsiteConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "AbacStatus",
+        "AccelerateConfiguration",
+        "AccessControl",
+        "AnalyticsConfigurations",
+        "BucketEncryption",
+        "CorsConfiguration",
+        "IntelligentTieringConfigurations",
+        "InventoryConfigurations",
+        "LifecycleConfiguration",
+        "LoggingConfiguration",
+        "MetadataConfiguration",
+        "MetadataTableConfiguration",
+        "MetricsConfigurations",
+        "NotificationConfiguration",
+        "ObjectLockConfiguration",
+        "OwnershipControls",
+        "PublicAccessBlockConfiguration",
+        "ReplicationConfiguration",
+        "Tags",
+        "VersioningConfiguration",
+        "WebsiteConfiguration"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "#top(UpdateBucketMetadataJournalTableConfiguration)|UpdateBucketMetadataJournalTableConfigurationRequest": {
+      "id": "#top(UpdateBucketMetadataJournalTableConfiguration)|UpdateBucketMetadataJournalTableConfigurationRequest",
+      "cfnDef": "#top(UpdateBucketMetadataJournalTableConfiguration)",
+      "sdkShape": "UpdateBucketMetadataJournalTableConfigurationRequest",
+      "members": [
+        {
+          "cfn": "AbacStatus",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "AccelerateConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "AccessControl",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "AnalyticsConfigurations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "BucketEncryption",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "BucketName",
+          "sdk": "Bucket",
+          "match": "rename-candidate",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": [
+            "fuzzy-matched to \"Bucket\" (overlap 0.60)"
+          ]
+        },
+        {
+          "cfn": "BucketNamePrefix",
+          "sdk": "Bucket",
+          "match": "collision",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": [
+            "fuzzy-matched to \"Bucket\" (overlap 0.38)",
+            "collides with 'BucketName' on SDK member 'Bucket' — NOT emitted; needs an override-table decision"
+          ]
+        },
+        {
+          "cfn": "BucketNamespace",
+          "sdk": "Bucket",
+          "match": "collision",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": [
+            "fuzzy-matched to \"Bucket\" (overlap 0.40)",
+            "collides with 'BucketName' on SDK member 'Bucket' — NOT emitted; needs an override-table decision"
+          ]
+        },
+        {
+          "cfn": "CorsConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "IntelligentTieringConfigurations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "InventoryConfigurations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "LifecycleConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "LoggingConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MetadataConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MetadataTableConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MetricsConfigurations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "NotificationConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ObjectLockConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ObjectLockEnabled",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "boolean",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "OwnershipControls",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PublicAccessBlockConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ReplicationConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Tags",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "VersioningConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "WebsiteConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "AbacStatus",
+        "AccelerateConfiguration",
+        "AccessControl",
+        "AnalyticsConfigurations",
+        "BucketEncryption",
+        "CorsConfiguration",
+        "IntelligentTieringConfigurations",
+        "InventoryConfigurations",
+        "LifecycleConfiguration",
+        "LoggingConfiguration",
+        "MetadataConfiguration",
+        "MetadataTableConfiguration",
+        "MetricsConfigurations",
+        "NotificationConfiguration",
+        "ObjectLockConfiguration",
+        "ObjectLockEnabled",
+        "OwnershipControls",
+        "PublicAccessBlockConfiguration",
+        "ReplicationConfiguration",
+        "Tags",
+        "VersioningConfiguration",
+        "WebsiteConfiguration"
+      ],
+      "sdkRequiredUnfed": [
+        "JournalTableConfiguration"
+      ]
+    },
+    "#top(DeleteBucket)|DeleteBucketRequest": {
+      "id": "#top(DeleteBucket)|DeleteBucketRequest",
+      "cfnDef": "#top(DeleteBucket)",
+      "sdkShape": "DeleteBucketRequest",
+      "members": [
+        {
+          "cfn": "AbacStatus",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "AccelerateConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "AccessControl",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "AnalyticsConfigurations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "BucketEncryption",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "BucketName",
+          "sdk": "Bucket",
+          "match": "rename-candidate",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": [
+            "fuzzy-matched to \"Bucket\" (overlap 0.60)"
+          ]
+        },
+        {
+          "cfn": "BucketNamePrefix",
+          "sdk": "Bucket",
+          "match": "collision",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": [
+            "fuzzy-matched to \"Bucket\" (overlap 0.38)",
+            "collides with 'BucketName' on SDK member 'Bucket' — NOT emitted; needs an override-table decision"
+          ]
+        },
+        {
+          "cfn": "BucketNamespace",
+          "sdk": "Bucket",
+          "match": "collision",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": [
+            "fuzzy-matched to \"Bucket\" (overlap 0.40)",
+            "collides with 'BucketName' on SDK member 'Bucket' — NOT emitted; needs an override-table decision"
+          ]
+        },
+        {
+          "cfn": "CorsConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "IntelligentTieringConfigurations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "InventoryConfigurations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "LifecycleConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "LoggingConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MetadataConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MetadataTableConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MetricsConfigurations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "NotificationConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ObjectLockConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ObjectLockEnabled",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "boolean",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "OwnershipControls",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "PublicAccessBlockConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ReplicationConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Tags",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "VersioningConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "WebsiteConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "AbacStatus",
+        "AccelerateConfiguration",
+        "AccessControl",
+        "AnalyticsConfigurations",
+        "BucketEncryption",
+        "CorsConfiguration",
+        "IntelligentTieringConfigurations",
+        "InventoryConfigurations",
+        "LifecycleConfiguration",
+        "LoggingConfiguration",
+        "MetadataConfiguration",
+        "MetadataTableConfiguration",
+        "MetricsConfigurations",
+        "NotificationConfiguration",
+        "ObjectLockConfiguration",
+        "ObjectLockEnabled",
+        "OwnershipControls",
+        "PublicAccessBlockConfiguration",
+        "ReplicationConfiguration",
+        "Tags",
+        "VersioningConfiguration",
+        "WebsiteConfiguration"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "#top(PutBucketAccelerateConfiguration)|PutBucketAccelerateConfigurationRequest": {
+      "id": "#top(PutBucketAccelerateConfiguration)|PutBucketAccelerateConfigurationRequest",
+      "cfnDef": "#top(PutBucketAccelerateConfiguration)",
+      "sdkShape": "PutBucketAccelerateConfigurationRequest",
+      "members": [
+        {
+          "cfn": "AccelerateConfiguration",
+          "sdk": "AccelerateConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "AccelerateConfiguration|AccelerateConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": [
+        "Bucket"
+      ]
+    },
+    "AccelerateConfiguration|AccelerateConfiguration": {
+      "id": "AccelerateConfiguration|AccelerateConfiguration",
+      "cfnDef": "AccelerateConfiguration",
+      "sdkShape": "AccelerateConfiguration",
+      "members": [
+        {
+          "cfn": "AccelerationStatus",
+          "sdk": "Status",
+          "match": "rename-candidate",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": [
+            "fuzzy-matched to \"Status\" (overlap 0.33)"
+          ]
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "#top(PutBucketAnalyticsConfiguration)|PutBucketAnalyticsConfigurationRequest": {
+      "id": "#top(PutBucketAnalyticsConfiguration)|PutBucketAnalyticsConfigurationRequest",
+      "cfnDef": "#top(PutBucketAnalyticsConfiguration)",
+      "sdkShape": "PutBucketAnalyticsConfigurationRequest",
+      "members": [
+        {
+          "cfn": "AnalyticsConfigurations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "AnalyticsConfigurations"
+      ],
+      "sdkRequiredUnfed": [
+        "Bucket",
+        "Id",
+        "AnalyticsConfiguration"
+      ]
+    },
+    "#top(PutBucketEncryption)|PutBucketEncryptionRequest": {
+      "id": "#top(PutBucketEncryption)|PutBucketEncryptionRequest",
+      "cfnDef": "#top(PutBucketEncryption)",
+      "sdkShape": "PutBucketEncryptionRequest",
+      "members": [
+        {
+          "cfn": "BucketEncryption",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "BucketEncryption"
+      ],
+      "sdkRequiredUnfed": [
+        "Bucket",
+        "ServerSideEncryptionConfiguration"
+      ]
+    },
+    "#top(PutBucketCors)|PutBucketCorsRequest": {
+      "id": "#top(PutBucketCors)|PutBucketCorsRequest",
+      "cfnDef": "#top(PutBucketCors)",
+      "sdkShape": "PutBucketCorsRequest",
+      "members": [
+        {
+          "cfn": "CorsConfiguration",
+          "sdk": "CORSConfiguration",
+          "match": "case",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "CorsConfiguration|CORSConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": [
+        "Bucket"
+      ]
+    },
+    "CorsConfiguration|CORSConfiguration": {
+      "id": "CorsConfiguration|CORSConfiguration",
+      "cfnDef": "CorsConfiguration",
+      "sdkShape": "CORSConfiguration",
+      "members": [
+        {
+          "cfn": "CorsRules",
+          "sdk": "CORSRules",
+          "match": "case",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": true,
+          "childId": "CorsRule|CORSRule",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "CorsRule|CORSRule": {
+      "id": "CorsRule|CORSRule",
+      "cfnDef": "CorsRule",
+      "sdkShape": "CORSRule",
+      "members": [
+        {
+          "cfn": "AllowedHeaders",
+          "sdk": "AllowedHeaders",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "AllowedMethods",
+          "sdk": "AllowedMethods",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "AllowedOrigins",
+          "sdk": "AllowedOrigins",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "ExposedHeaders",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Id",
+          "sdk": "ID",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "MaxAge",
+          "sdk": "MaxAgeSeconds",
+          "match": "rename-candidate",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": [
+            "fuzzy-matched to \"MaxAgeSeconds\" (overlap 0.46)"
+          ]
+        }
+      ],
+      "unmatchedCfn": [
+        "ExposedHeaders"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "#top(PutBucketIntelligentTieringConfiguration)|PutBucketIntelligentTieringConfigurationRequest": {
+      "id": "#top(PutBucketIntelligentTieringConfiguration)|PutBucketIntelligentTieringConfigurationRequest",
+      "cfnDef": "#top(PutBucketIntelligentTieringConfiguration)",
+      "sdkShape": "PutBucketIntelligentTieringConfigurationRequest",
+      "members": [
+        {
+          "cfn": "IntelligentTieringConfigurations",
+          "sdk": "IntelligentTieringConfiguration",
+          "match": "rename-candidate",
+          "transform": "wrap-single-list-member",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "IntelligentTieringConfiguration|Tiering",
+          "wrapper": {
+            "itemsMember": "Tierings",
+            "quantityMember": null,
+            "otherRequired": [
+              "Id",
+              "Status"
+            ]
+          },
+          "notes": [
+            "wraps into .Tierings",
+            "wrapper has additional required member(s) not derivable from the array: Id, Status",
+            "fuzzy-matched to \"IntelligentTieringConfiguration\" (overlap 0.97)"
+          ]
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": [
+        "Bucket",
+        "Id"
+      ]
+    },
+    "IntelligentTieringConfiguration|Tiering": {
+      "id": "IntelligentTieringConfiguration|Tiering",
+      "cfnDef": "IntelligentTieringConfiguration",
+      "sdkShape": "Tiering",
+      "members": [
+        {
+          "cfn": "Id",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Prefix",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Status",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TagFilters",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Tierings",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "Id",
+        "Prefix",
+        "Status",
+        "TagFilters",
+        "Tierings"
+      ],
+      "sdkRequiredUnfed": [
+        "Days",
+        "AccessTier"
+      ]
+    },
+    "#top(PutBucketInventoryConfiguration)|PutBucketInventoryConfigurationRequest": {
+      "id": "#top(PutBucketInventoryConfiguration)|PutBucketInventoryConfigurationRequest",
+      "cfnDef": "#top(PutBucketInventoryConfiguration)",
+      "sdkShape": "PutBucketInventoryConfigurationRequest",
+      "members": [
+        {
+          "cfn": "InventoryConfigurations",
+          "sdk": "InventoryConfiguration",
+          "match": "rename-candidate",
+          "transform": "wrap-single-list-member",
+          "cfnKind": "list",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "wrapper": {
+            "itemsMember": "OptionalFields",
+            "quantityMember": null,
+            "otherRequired": [
+              "Destination",
+              "IsEnabled",
+              "Id",
+              "IncludedObjectVersions",
+              "Schedule"
+            ]
+          },
+          "notes": [
+            "wraps into .OptionalFields",
+            "wrapper has additional required member(s) not derivable from the array: Destination, IsEnabled, Id, IncludedObjectVersions, Schedule",
+            "fuzzy-matched to \"InventoryConfiguration\" (overlap 0.96)"
+          ]
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": [
+        "Bucket",
+        "Id"
+      ]
+    },
+    "#top(PutBucketLifecycleConfiguration)|PutBucketLifecycleConfigurationRequest": {
+      "id": "#top(PutBucketLifecycleConfiguration)|PutBucketLifecycleConfigurationRequest",
+      "cfnDef": "#top(PutBucketLifecycleConfiguration)",
+      "sdkShape": "PutBucketLifecycleConfigurationRequest",
+      "members": [
+        {
+          "cfn": "LifecycleConfiguration",
+          "sdk": "LifecycleConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "LifecycleConfiguration|BucketLifecycleConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": [
+        "Bucket"
+      ]
+    },
+    "LifecycleConfiguration|BucketLifecycleConfiguration": {
+      "id": "LifecycleConfiguration|BucketLifecycleConfiguration",
+      "cfnDef": "LifecycleConfiguration",
+      "sdkShape": "BucketLifecycleConfiguration",
+      "members": [
+        {
+          "cfn": "Rules",
+          "sdk": "Rules",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": true,
+          "childId": "Rule|LifecycleRule",
+          "notes": []
+        },
+        {
+          "cfn": "TransitionDefaultMinimumObjectSize",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "TransitionDefaultMinimumObjectSize"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "Rule|LifecycleRule": {
+      "id": "Rule|LifecycleRule",
+      "cfnDef": "Rule",
+      "sdkShape": "LifecycleRule",
+      "members": [
+        {
+          "cfn": "AbortIncompleteMultipartUpload",
+          "sdk": "AbortIncompleteMultipartUpload",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "AbortIncompleteMultipartUpload|AbortIncompleteMultipartUpload",
+          "notes": []
+        },
+        {
+          "cfn": "ExpirationDate",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ExpirationInDays",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "number",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ExpiredObjectDeleteMarker",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "boolean",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Id",
+          "sdk": "ID",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "NoncurrentVersionExpiration",
+          "sdk": "NoncurrentVersionExpiration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "NoncurrentVersionExpiration|NoncurrentVersionExpiration",
+          "notes": []
+        },
+        {
+          "cfn": "NoncurrentVersionExpirationInDays",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "number",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "NoncurrentVersionTransition",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "NoncurrentVersionTransitions",
+          "sdk": "NoncurrentVersionTransitions",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "NoncurrentVersionTransition|NoncurrentVersionTransition",
+          "notes": []
+        },
+        {
+          "cfn": "ObjectSizeGreaterThan",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ObjectSizeLessThan",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Prefix",
+          "sdk": "Prefix",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Status",
+          "sdk": "Status",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "TagFilters",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Transition",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Transitions",
+          "sdk": "Transitions",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "Transition|Transition",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "ExpirationDate",
+        "ExpirationInDays",
+        "ExpiredObjectDeleteMarker",
+        "NoncurrentVersionExpirationInDays",
+        "NoncurrentVersionTransition",
+        "ObjectSizeGreaterThan",
+        "ObjectSizeLessThan",
+        "TagFilters",
+        "Transition"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "AbortIncompleteMultipartUpload|AbortIncompleteMultipartUpload": {
+      "id": "AbortIncompleteMultipartUpload|AbortIncompleteMultipartUpload",
+      "cfnDef": "AbortIncompleteMultipartUpload",
+      "sdkShape": "AbortIncompleteMultipartUpload",
+      "members": [
+        {
+          "cfn": "DaysAfterInitiation",
+          "sdk": "DaysAfterInitiation",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "NoncurrentVersionExpiration|NoncurrentVersionExpiration": {
+      "id": "NoncurrentVersionExpiration|NoncurrentVersionExpiration",
+      "cfnDef": "NoncurrentVersionExpiration",
+      "sdkShape": "NoncurrentVersionExpiration",
+      "members": [
+        {
+          "cfn": "NewerNoncurrentVersions",
+          "sdk": "NewerNoncurrentVersions",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "NoncurrentDays",
+          "sdk": "NoncurrentDays",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "NoncurrentVersionTransition|NoncurrentVersionTransition": {
+      "id": "NoncurrentVersionTransition|NoncurrentVersionTransition",
+      "cfnDef": "NoncurrentVersionTransition",
+      "sdkShape": "NoncurrentVersionTransition",
+      "members": [
+        {
+          "cfn": "NewerNoncurrentVersions",
+          "sdk": "NewerNoncurrentVersions",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "StorageClass",
+          "sdk": "StorageClass",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TransitionInDays",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "number",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "TransitionInDays"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "Transition|Transition": {
+      "id": "Transition|Transition",
+      "cfnDef": "Transition",
+      "sdkShape": "Transition",
+      "members": [
+        {
+          "cfn": "StorageClass",
+          "sdk": "StorageClass",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TransitionDate",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TransitionInDays",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "number",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "TransitionDate",
+        "TransitionInDays"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "#top(PutBucketLogging)|PutBucketLoggingRequest": {
+      "id": "#top(PutBucketLogging)|PutBucketLoggingRequest",
+      "cfnDef": "#top(PutBucketLogging)",
+      "sdkShape": "PutBucketLoggingRequest",
+      "members": [
+        {
+          "cfn": "LoggingConfiguration",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "LoggingConfiguration"
+      ],
+      "sdkRequiredUnfed": [
+        "Bucket",
+        "BucketLoggingStatus"
+      ]
+    },
+    "#top(CreateBucketMetadataConfiguration)|CreateBucketMetadataConfigurationRequest": {
+      "id": "#top(CreateBucketMetadataConfiguration)|CreateBucketMetadataConfigurationRequest",
+      "cfnDef": "#top(CreateBucketMetadataConfiguration)",
+      "sdkShape": "CreateBucketMetadataConfigurationRequest",
+      "members": [
+        {
+          "cfn": "MetadataConfiguration",
+          "sdk": "MetadataConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "MetadataConfiguration|MetadataConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": [
+        "Bucket"
+      ]
+    },
+    "MetadataConfiguration|MetadataConfiguration": {
+      "id": "MetadataConfiguration|MetadataConfiguration",
+      "cfnDef": "MetadataConfiguration",
+      "sdkShape": "MetadataConfiguration",
+      "members": [
+        {
+          "cfn": "AnnotationTableConfiguration",
+          "sdk": "AnnotationTableConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "AnnotationTableConfiguration|AnnotationTableConfiguration",
+          "notes": [
+            "absent from installed @aws-sdk/client-s3"
+          ],
+          "skew": true
+        },
+        {
+          "cfn": "Destination",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "InventoryTableConfiguration",
+          "sdk": "InventoryTableConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "InventoryTableConfiguration|InventoryTableConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "JournalTableConfiguration",
+          "sdk": "JournalTableConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "JournalTableConfiguration|JournalTableConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "Destination"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "AnnotationTableConfiguration|AnnotationTableConfiguration": {
+      "id": "AnnotationTableConfiguration|AnnotationTableConfiguration",
+      "cfnDef": "AnnotationTableConfiguration",
+      "sdkShape": "AnnotationTableConfiguration",
+      "members": [
+        {
+          "cfn": "ConfigurationState",
+          "sdk": "ConfigurationState",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "EncryptionConfiguration",
+          "sdk": "EncryptionConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "MetadataTableEncryptionConfiguration|MetadataTableEncryptionConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "Role",
+          "sdk": "Role",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TableArn",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TableName",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "TableArn",
+        "TableName"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "MetadataTableEncryptionConfiguration|MetadataTableEncryptionConfiguration": {
+      "id": "MetadataTableEncryptionConfiguration|MetadataTableEncryptionConfiguration",
+      "cfnDef": "MetadataTableEncryptionConfiguration",
+      "sdkShape": "MetadataTableEncryptionConfiguration",
+      "members": [
+        {
+          "cfn": "KmsKeyArn",
+          "sdk": "KmsKeyArn",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SseAlgorithm",
+          "sdk": "SseAlgorithm",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "InventoryTableConfiguration|InventoryTableConfiguration": {
+      "id": "InventoryTableConfiguration|InventoryTableConfiguration",
+      "cfnDef": "InventoryTableConfiguration",
+      "sdkShape": "InventoryTableConfiguration",
+      "members": [
+        {
+          "cfn": "ConfigurationState",
+          "sdk": "ConfigurationState",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "EncryptionConfiguration",
+          "sdk": "EncryptionConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "MetadataTableEncryptionConfiguration|MetadataTableEncryptionConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "TableArn",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TableName",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "TableArn",
+        "TableName"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "JournalTableConfiguration|JournalTableConfiguration": {
+      "id": "JournalTableConfiguration|JournalTableConfiguration",
+      "cfnDef": "JournalTableConfiguration",
+      "sdkShape": "JournalTableConfiguration",
+      "members": [
+        {
+          "cfn": "EncryptionConfiguration",
+          "sdk": "EncryptionConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "MetadataTableEncryptionConfiguration|MetadataTableEncryptionConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "RecordExpiration",
+          "sdk": "RecordExpiration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "RecordExpiration|RecordExpiration",
+          "notes": []
+        },
+        {
+          "cfn": "TableArn",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TableName",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "TableArn",
+        "TableName"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "RecordExpiration|RecordExpiration": {
+      "id": "RecordExpiration|RecordExpiration",
+      "cfnDef": "RecordExpiration",
+      "sdkShape": "RecordExpiration",
+      "members": [
+        {
+          "cfn": "Days",
+          "sdk": "Days",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Expiration",
+          "sdk": "Expiration",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "#top(CreateBucketMetadataTableConfiguration)|CreateBucketMetadataTableConfigurationRequest": {
+      "id": "#top(CreateBucketMetadataTableConfiguration)|CreateBucketMetadataTableConfigurationRequest",
+      "cfnDef": "#top(CreateBucketMetadataTableConfiguration)",
+      "sdkShape": "CreateBucketMetadataTableConfigurationRequest",
+      "members": [
+        {
+          "cfn": "MetadataTableConfiguration",
+          "sdk": "MetadataTableConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "MetadataTableConfiguration|MetadataTableConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": [
+        "Bucket"
+      ]
+    },
+    "MetadataTableConfiguration|MetadataTableConfiguration": {
+      "id": "MetadataTableConfiguration|MetadataTableConfiguration",
+      "cfnDef": "MetadataTableConfiguration",
+      "sdkShape": "MetadataTableConfiguration",
+      "members": [
+        {
+          "cfn": "S3TablesDestination",
+          "sdk": "S3TablesDestination",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "S3TablesDestination|S3TablesDestination",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "S3TablesDestination|S3TablesDestination": {
+      "id": "S3TablesDestination|S3TablesDestination",
+      "cfnDef": "S3TablesDestination",
+      "sdkShape": "S3TablesDestination",
+      "members": [
+        {
+          "cfn": "TableArn",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TableBucketArn",
+          "sdk": "TableBucketArn",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "TableName",
+          "sdk": "TableName",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "TableNamespace",
+          "sdk": "TableName",
+          "match": "collision",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": [
+            "fuzzy-matched to \"TableName\" (overlap 0.64)",
+            "collides with 'TableName' on SDK member 'TableName' — NOT emitted; needs an override-table decision"
+          ]
+        }
+      ],
+      "unmatchedCfn": [
+        "TableArn"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "#top(PutBucketMetricsConfiguration)|PutBucketMetricsConfigurationRequest": {
+      "id": "#top(PutBucketMetricsConfiguration)|PutBucketMetricsConfigurationRequest",
+      "cfnDef": "#top(PutBucketMetricsConfiguration)",
+      "sdkShape": "PutBucketMetricsConfigurationRequest",
+      "members": [
+        {
+          "cfn": "MetricsConfigurations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "MetricsConfigurations"
+      ],
+      "sdkRequiredUnfed": [
+        "Bucket",
+        "Id",
+        "MetricsConfiguration"
+      ]
+    },
+    "#top(PutBucketNotificationConfiguration)|PutBucketNotificationConfigurationRequest": {
+      "id": "#top(PutBucketNotificationConfiguration)|PutBucketNotificationConfigurationRequest",
+      "cfnDef": "#top(PutBucketNotificationConfiguration)",
+      "sdkShape": "PutBucketNotificationConfigurationRequest",
+      "members": [
+        {
+          "cfn": "NotificationConfiguration",
+          "sdk": "NotificationConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "NotificationConfiguration|NotificationConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": [
+        "Bucket"
+      ]
+    },
+    "NotificationConfiguration|NotificationConfiguration": {
+      "id": "NotificationConfiguration|NotificationConfiguration",
+      "cfnDef": "NotificationConfiguration",
+      "sdkShape": "NotificationConfiguration",
+      "members": [
+        {
+          "cfn": "EventBridgeConfiguration",
+          "sdk": "EventBridgeConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "EventBridgeConfiguration|EventBridgeConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "LambdaConfigurations",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "QueueConfigurations",
+          "sdk": "QueueConfigurations",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "QueueConfiguration|QueueConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "TopicConfigurations",
+          "sdk": "TopicConfigurations",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "TopicConfiguration|TopicConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "LambdaConfigurations"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "EventBridgeConfiguration|EventBridgeConfiguration": {
+      "id": "EventBridgeConfiguration|EventBridgeConfiguration",
+      "cfnDef": "EventBridgeConfiguration",
+      "sdkShape": "EventBridgeConfiguration",
+      "members": [
+        {
+          "cfn": "EventBridgeEnabled",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "boolean",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "EventBridgeEnabled"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "QueueConfiguration|QueueConfiguration": {
+      "id": "QueueConfiguration|QueueConfiguration",
+      "cfnDef": "QueueConfiguration",
+      "sdkShape": "QueueConfiguration",
+      "members": [
+        {
+          "cfn": "Event",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Filter",
+          "sdk": "Filter",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "NotificationFilter|NotificationConfigurationFilter",
+          "notes": []
+        },
+        {
+          "cfn": "Queue",
+          "sdk": "QueueArn",
+          "match": "rename-candidate",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": [
+            "fuzzy-matched to \"QueueArn\" (overlap 0.63)"
+          ]
+        }
+      ],
+      "unmatchedCfn": [
+        "Event"
+      ],
+      "sdkRequiredUnfed": [
+        "Events"
+      ]
+    },
+    "NotificationFilter|NotificationConfigurationFilter": {
+      "id": "NotificationFilter|NotificationConfigurationFilter",
+      "cfnDef": "NotificationFilter",
+      "sdkShape": "NotificationConfigurationFilter",
+      "members": [
+        {
+          "cfn": "S3Key",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "S3Key"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "TopicConfiguration|TopicConfiguration": {
+      "id": "TopicConfiguration|TopicConfiguration",
+      "cfnDef": "TopicConfiguration",
+      "sdkShape": "TopicConfiguration",
+      "members": [
+        {
+          "cfn": "Event",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Filter",
+          "sdk": "Filter",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "NotificationFilter|NotificationConfigurationFilter",
+          "notes": []
+        },
+        {
+          "cfn": "Topic",
+          "sdk": "TopicArn",
+          "match": "rename-candidate",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": [
+            "fuzzy-matched to \"TopicArn\" (overlap 0.63)"
+          ]
+        }
+      ],
+      "unmatchedCfn": [
+        "Event"
+      ],
+      "sdkRequiredUnfed": [
+        "Events"
+      ]
+    },
+    "#top(PutObjectLockConfiguration)|PutObjectLockConfigurationRequest": {
+      "id": "#top(PutObjectLockConfiguration)|PutObjectLockConfigurationRequest",
+      "cfnDef": "#top(PutObjectLockConfiguration)",
+      "sdkShape": "PutObjectLockConfigurationRequest",
+      "members": [
+        {
+          "cfn": "ObjectLockConfiguration",
+          "sdk": "ObjectLockConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ObjectLockConfiguration|ObjectLockConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": [
+        "Bucket"
+      ]
+    },
+    "ObjectLockConfiguration|ObjectLockConfiguration": {
+      "id": "ObjectLockConfiguration|ObjectLockConfiguration",
+      "cfnDef": "ObjectLockConfiguration",
+      "sdkShape": "ObjectLockConfiguration",
+      "members": [
+        {
+          "cfn": "ObjectLockEnabled",
+          "sdk": "ObjectLockEnabled",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Rule",
+          "sdk": "Rule",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ObjectLockRule|ObjectLockRule",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ObjectLockRule|ObjectLockRule": {
+      "id": "ObjectLockRule|ObjectLockRule",
+      "cfnDef": "ObjectLockRule",
+      "sdkShape": "ObjectLockRule",
+      "members": [
+        {
+          "cfn": "DefaultRetention",
+          "sdk": "DefaultRetention",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "DefaultRetention|DefaultRetention",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "DefaultRetention|DefaultRetention": {
+      "id": "DefaultRetention|DefaultRetention",
+      "cfnDef": "DefaultRetention",
+      "sdkShape": "DefaultRetention",
+      "members": [
+        {
+          "cfn": "Days",
+          "sdk": "Days",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Mode",
+          "sdk": "Mode",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Years",
+          "sdk": "Years",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "#top(PutBucketOwnershipControls)|PutBucketOwnershipControlsRequest": {
+      "id": "#top(PutBucketOwnershipControls)|PutBucketOwnershipControlsRequest",
+      "cfnDef": "#top(PutBucketOwnershipControls)",
+      "sdkShape": "PutBucketOwnershipControlsRequest",
+      "members": [
+        {
+          "cfn": "OwnershipControls",
+          "sdk": "OwnershipControls",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "OwnershipControls|OwnershipControls",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": [
+        "Bucket"
+      ]
+    },
+    "OwnershipControls|OwnershipControls": {
+      "id": "OwnershipControls|OwnershipControls",
+      "cfnDef": "OwnershipControls",
+      "sdkShape": "OwnershipControls",
+      "members": [
+        {
+          "cfn": "Rules",
+          "sdk": "Rules",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": true,
+          "childId": "OwnershipControlsRule|OwnershipControlsRule",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "OwnershipControlsRule|OwnershipControlsRule": {
+      "id": "OwnershipControlsRule|OwnershipControlsRule",
+      "cfnDef": "OwnershipControlsRule",
+      "sdkShape": "OwnershipControlsRule",
+      "members": [
+        {
+          "cfn": "ObjectOwnership",
+          "sdk": "ObjectOwnership",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "#top(PutPublicAccessBlock)|PutPublicAccessBlockRequest": {
+      "id": "#top(PutPublicAccessBlock)|PutPublicAccessBlockRequest",
+      "cfnDef": "#top(PutPublicAccessBlock)",
+      "sdkShape": "PutPublicAccessBlockRequest",
+      "members": [
+        {
+          "cfn": "PublicAccessBlockConfiguration",
+          "sdk": "PublicAccessBlockConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "PublicAccessBlockConfiguration|PublicAccessBlockConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": [
+        "Bucket"
+      ]
+    },
+    "PublicAccessBlockConfiguration|PublicAccessBlockConfiguration": {
+      "id": "PublicAccessBlockConfiguration|PublicAccessBlockConfiguration",
+      "cfnDef": "PublicAccessBlockConfiguration",
+      "sdkShape": "PublicAccessBlockConfiguration",
+      "members": [
+        {
+          "cfn": "BlockPublicAcls",
+          "sdk": "BlockPublicAcls",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "BlockPublicPolicy",
+          "sdk": "BlockPublicPolicy",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "IgnorePublicAcls",
+          "sdk": "IgnorePublicAcls",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "RestrictPublicBuckets",
+          "sdk": "RestrictPublicBuckets",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "boolean",
+          "sdkKind": "boolean",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "#top(PutBucketReplication)|PutBucketReplicationRequest": {
+      "id": "#top(PutBucketReplication)|PutBucketReplicationRequest",
+      "cfnDef": "#top(PutBucketReplication)",
+      "sdkShape": "PutBucketReplicationRequest",
+      "members": [
+        {
+          "cfn": "ReplicationConfiguration",
+          "sdk": "ReplicationConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "ReplicationConfiguration|ReplicationConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": [
+        "Bucket"
+      ]
+    },
+    "ReplicationConfiguration|ReplicationConfiguration": {
+      "id": "ReplicationConfiguration|ReplicationConfiguration",
+      "cfnDef": "ReplicationConfiguration",
+      "sdkShape": "ReplicationConfiguration",
+      "members": [
+        {
+          "cfn": "Role",
+          "sdk": "Role",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Rules",
+          "sdk": "Rules",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": true,
+          "childId": "ReplicationRule|ReplicationRule",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ReplicationRule|ReplicationRule": {
+      "id": "ReplicationRule|ReplicationRule",
+      "cfnDef": "ReplicationRule",
+      "sdkShape": "ReplicationRule",
+      "members": [
+        {
+          "cfn": "DeleteMarkerReplication",
+          "sdk": "DeleteMarkerReplication",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "DeleteMarkerReplication|DeleteMarkerReplication",
+          "notes": []
+        },
+        {
+          "cfn": "Destination",
+          "sdk": "Destination",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "ReplicationDestination|Destination",
+          "notes": []
+        },
+        {
+          "cfn": "Filter",
+          "sdk": "Filter",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ReplicationRuleFilter|ReplicationRuleFilter",
+          "notes": []
+        },
+        {
+          "cfn": "Id",
+          "sdk": "ID",
+          "match": "case",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Prefix",
+          "sdk": "Prefix",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Priority",
+          "sdk": "Priority",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "SourceSelectionCriteria",
+          "sdk": "SourceSelectionCriteria",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "SourceSelectionCriteria|SourceSelectionCriteria",
+          "notes": []
+        },
+        {
+          "cfn": "Status",
+          "sdk": "Status",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "DeleteMarkerReplication|DeleteMarkerReplication": {
+      "id": "DeleteMarkerReplication|DeleteMarkerReplication",
+      "cfnDef": "DeleteMarkerReplication",
+      "sdkShape": "DeleteMarkerReplication",
+      "members": [
+        {
+          "cfn": "Status",
+          "sdk": "Status",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ReplicationDestination|Destination": {
+      "id": "ReplicationDestination|Destination",
+      "cfnDef": "ReplicationDestination",
+      "sdkShape": "Destination",
+      "members": [
+        {
+          "cfn": "AccessControlTranslation",
+          "sdk": "AccessControlTranslation",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "AccessControlTranslation|AccessControlTranslation",
+          "notes": []
+        },
+        {
+          "cfn": "Account",
+          "sdk": "Account",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Bucket",
+          "sdk": "Bucket",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "EncryptionConfiguration",
+          "sdk": "EncryptionConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "EncryptionConfiguration|EncryptionConfiguration",
+          "notes": []
+        },
+        {
+          "cfn": "Metrics",
+          "sdk": "Metrics",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "Metrics|Metrics",
+          "notes": []
+        },
+        {
+          "cfn": "ReplicationTime",
+          "sdk": "ReplicationTime",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ReplicationTime|ReplicationTime",
+          "notes": []
+        },
+        {
+          "cfn": "StorageClass",
+          "sdk": "StorageClass",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "AccessControlTranslation|AccessControlTranslation": {
+      "id": "AccessControlTranslation|AccessControlTranslation",
+      "cfnDef": "AccessControlTranslation",
+      "sdkShape": "AccessControlTranslation",
+      "members": [
+        {
+          "cfn": "Owner",
+          "sdk": "Owner",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "EncryptionConfiguration|EncryptionConfiguration": {
+      "id": "EncryptionConfiguration|EncryptionConfiguration",
+      "cfnDef": "EncryptionConfiguration",
+      "sdkShape": "EncryptionConfiguration",
+      "members": [
+        {
+          "cfn": "ReplicaKmsKeyID",
+          "sdk": "ReplicaKmsKeyID",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "Metrics|Metrics": {
+      "id": "Metrics|Metrics",
+      "cfnDef": "Metrics",
+      "sdkShape": "Metrics",
+      "members": [
+        {
+          "cfn": "EventThreshold",
+          "sdk": "EventThreshold",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ReplicationTimeValue|ReplicationTimeValue",
+          "notes": []
+        },
+        {
+          "cfn": "Status",
+          "sdk": "Status",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ReplicationTimeValue|ReplicationTimeValue": {
+      "id": "ReplicationTimeValue|ReplicationTimeValue",
+      "cfnDef": "ReplicationTimeValue",
+      "sdkShape": "ReplicationTimeValue",
+      "members": [
+        {
+          "cfn": "Minutes",
+          "sdk": "Minutes",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "number",
+          "sdkKind": "number",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ReplicationTime|ReplicationTime": {
+      "id": "ReplicationTime|ReplicationTime",
+      "cfnDef": "ReplicationTime",
+      "sdkShape": "ReplicationTime",
+      "members": [
+        {
+          "cfn": "Status",
+          "sdk": "Status",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Time",
+          "sdk": "Time",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "ReplicationTimeValue|ReplicationTimeValue",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ReplicationRuleFilter|ReplicationRuleFilter": {
+      "id": "ReplicationRuleFilter|ReplicationRuleFilter",
+      "cfnDef": "ReplicationRuleFilter",
+      "sdkShape": "ReplicationRuleFilter",
+      "members": [
+        {
+          "cfn": "And",
+          "sdk": "And",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ReplicationRuleAndOperator|ReplicationRuleAndOperator",
+          "notes": []
+        },
+        {
+          "cfn": "Prefix",
+          "sdk": "Prefix",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TagFilter",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "structure",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "TagFilter"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "ReplicationRuleAndOperator|ReplicationRuleAndOperator": {
+      "id": "ReplicationRuleAndOperator|ReplicationRuleAndOperator",
+      "cfnDef": "ReplicationRuleAndOperator",
+      "sdkShape": "ReplicationRuleAndOperator",
+      "members": [
+        {
+          "cfn": "Prefix",
+          "sdk": "Prefix",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "TagFilters",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "TagFilters"
+      ],
+      "sdkRequiredUnfed": []
+    },
+    "SourceSelectionCriteria|SourceSelectionCriteria": {
+      "id": "SourceSelectionCriteria|SourceSelectionCriteria",
+      "cfnDef": "SourceSelectionCriteria",
+      "sdkShape": "SourceSelectionCriteria",
+      "members": [
+        {
+          "cfn": "ReplicaModifications",
+          "sdk": "ReplicaModifications",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "ReplicaModifications|ReplicaModifications",
+          "notes": []
+        },
+        {
+          "cfn": "SseKmsEncryptedObjects",
+          "sdk": "SseKmsEncryptedObjects",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "SseKmsEncryptedObjects|SseKmsEncryptedObjects",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "ReplicaModifications|ReplicaModifications": {
+      "id": "ReplicaModifications|ReplicaModifications",
+      "cfnDef": "ReplicaModifications",
+      "sdkShape": "ReplicaModifications",
+      "members": [
+        {
+          "cfn": "Status",
+          "sdk": "Status",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "SseKmsEncryptedObjects|SseKmsEncryptedObjects": {
+      "id": "SseKmsEncryptedObjects|SseKmsEncryptedObjects",
+      "cfnDef": "SseKmsEncryptedObjects",
+      "sdkShape": "SseKmsEncryptedObjects",
+      "members": [
+        {
+          "cfn": "Status",
+          "sdk": "Status",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "#top(PutBucketTagging)|PutBucketTaggingRequest": {
+      "id": "#top(PutBucketTagging)|PutBucketTaggingRequest",
+      "cfnDef": "#top(PutBucketTagging)",
+      "sdkShape": "PutBucketTaggingRequest",
+      "members": [
+        {
+          "cfn": "Tags",
+          "sdk": null,
+          "match": "unmatched",
+          "transform": "unsupported",
+          "cfnKind": "list",
+          "sdkKind": null,
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [
+        "Tags"
+      ],
+      "sdkRequiredUnfed": [
+        "Bucket",
+        "Tagging"
+      ]
+    },
+    "#top(PutBucketVersioning)|PutBucketVersioningRequest": {
+      "id": "#top(PutBucketVersioning)|PutBucketVersioningRequest",
+      "cfnDef": "#top(PutBucketVersioning)",
+      "sdkShape": "PutBucketVersioningRequest",
+      "members": [
+        {
+          "cfn": "VersioningConfiguration",
+          "sdk": "VersioningConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "VersioningConfiguration|VersioningConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": [
+        "Bucket"
+      ]
+    },
+    "VersioningConfiguration|VersioningConfiguration": {
+      "id": "VersioningConfiguration|VersioningConfiguration",
+      "cfnDef": "VersioningConfiguration",
+      "sdkShape": "VersioningConfiguration",
+      "members": [
+        {
+          "cfn": "Status",
+          "sdk": "Status",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "#top(PutBucketWebsite)|PutBucketWebsiteRequest": {
+      "id": "#top(PutBucketWebsite)|PutBucketWebsiteRequest",
+      "cfnDef": "#top(PutBucketWebsite)",
+      "sdkShape": "PutBucketWebsiteRequest",
+      "members": [
+        {
+          "cfn": "WebsiteConfiguration",
+          "sdk": "WebsiteConfiguration",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "WebsiteConfiguration|WebsiteConfiguration",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": [
+        "Bucket"
+      ]
+    },
+    "WebsiteConfiguration|WebsiteConfiguration": {
+      "id": "WebsiteConfiguration|WebsiteConfiguration",
+      "cfnDef": "WebsiteConfiguration",
+      "sdkShape": "WebsiteConfiguration",
+      "members": [
+        {
+          "cfn": "ErrorDocument",
+          "sdk": "ErrorDocument",
+          "match": "exact",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "notes": [
+            "type-incompatible: CFn string vs SDK structure"
+          ]
+        },
+        {
+          "cfn": "IndexDocument",
+          "sdk": "IndexDocument",
+          "match": "exact",
+          "transform": "unsupported",
+          "cfnKind": "string",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "notes": [
+            "type-incompatible: CFn string vs SDK structure"
+          ]
+        },
+        {
+          "cfn": "RedirectAllRequestsTo",
+          "sdk": "RedirectAllRequestsTo",
+          "match": "exact",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "RedirectAllRequestsTo|RedirectAllRequestsTo",
+          "notes": []
+        },
+        {
+          "cfn": "RoutingRules",
+          "sdk": "RoutingRules",
+          "match": "exact",
+          "transform": "list",
+          "cfnKind": "list",
+          "sdkKind": "list",
+          "sdkRequired": false,
+          "childId": "RoutingRule|RoutingRule",
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "RedirectAllRequestsTo|RedirectAllRequestsTo": {
+      "id": "RedirectAllRequestsTo|RedirectAllRequestsTo",
+      "cfnDef": "RedirectAllRequestsTo",
+      "sdkShape": "RedirectAllRequestsTo",
+      "members": [
+        {
+          "cfn": "HostName",
+          "sdk": "HostName",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": true,
+          "notes": []
+        },
+        {
+          "cfn": "Protocol",
+          "sdk": "Protocol",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "RoutingRule|RoutingRule": {
+      "id": "RoutingRule|RoutingRule",
+      "cfnDef": "RoutingRule",
+      "sdkShape": "RoutingRule",
+      "members": [
+        {
+          "cfn": "RedirectRule",
+          "sdk": "Redirect",
+          "match": "rename-candidate",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": true,
+          "childId": "RedirectRule|Redirect",
+          "notes": [
+            "fuzzy-matched to \"Redirect\" (overlap 0.67)"
+          ]
+        },
+        {
+          "cfn": "RoutingRuleCondition",
+          "sdk": "Condition",
+          "match": "rename-candidate",
+          "transform": "structure",
+          "cfnKind": "structure",
+          "sdkKind": "structure",
+          "sdkRequired": false,
+          "childId": "RoutingRuleCondition|Condition",
+          "notes": [
+            "fuzzy-matched to \"Condition\" (overlap 0.45)"
+          ]
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "RedirectRule|Redirect": {
+      "id": "RedirectRule|Redirect",
+      "cfnDef": "RedirectRule",
+      "sdkShape": "Redirect",
+      "members": [
+        {
+          "cfn": "HostName",
+          "sdk": "HostName",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "HttpRedirectCode",
+          "sdk": "HttpRedirectCode",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "Protocol",
+          "sdk": "Protocol",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ReplaceKeyPrefixWith",
+          "sdk": "ReplaceKeyPrefixWith",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "ReplaceKeyWith",
+          "sdk": "ReplaceKeyWith",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    },
+    "RoutingRuleCondition|Condition": {
+      "id": "RoutingRuleCondition|Condition",
+      "cfnDef": "RoutingRuleCondition",
+      "sdkShape": "Condition",
+      "members": [
+        {
+          "cfn": "HttpErrorCodeReturnedEquals",
+          "sdk": "HttpErrorCodeReturnedEquals",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        },
+        {
+          "cfn": "KeyPrefixEquals",
+          "sdk": "KeyPrefixEquals",
+          "match": "exact",
+          "transform": "direct",
+          "cfnKind": "string",
+          "sdkKind": "string",
+          "sdkRequired": false,
+          "notes": []
+        }
+      ],
+      "unmatchedCfn": [],
+      "sdkRequiredUnfed": []
+    }
+  },
+  "readOnlyProperties": [
+    "Arn",
+    "DomainName",
+    "DualStackDomainName",
+    "RegionalDomainName",
+    "MetadataTableConfiguration/S3TablesDestination/TableNamespace",
+    "MetadataTableConfiguration/S3TablesDestination/TableArn",
+    "MetadataConfiguration/Destination",
+    "MetadataConfiguration/JournalTableConfiguration/TableName",
+    "MetadataConfiguration/JournalTableConfiguration/TableArn",
+    "MetadataConfiguration/InventoryTableConfiguration/TableName",
+    "MetadataConfiguration/InventoryTableConfiguration/TableArn",
+    "MetadataConfiguration/AnnotationTableConfiguration/TableName",
+    "MetadataConfiguration/AnnotationTableConfiguration/TableArn",
+    "WebsiteURL"
+  ],
+  "createOnlyProperties": [
+    "BucketName",
+    "BucketNamePrefix",
+    "BucketNamespace"
+  ],
+  "stats": {
+    "totalCfnPaths": 234,
+    "matchedExact": 107,
+    "matchedCase": 5,
+    "renameCandidates": 12,
+    "unmatched": 110,
+    "nonDirectTransforms": 114
+  }
+}

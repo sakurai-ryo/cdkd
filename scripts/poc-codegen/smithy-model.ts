@@ -78,20 +78,37 @@ export function findModelsByCloudFormationName(modelsDir: string, cfnName: strin
  */
 export function pickModelByHandlerActions(
   paths: string[],
-  handlerActions: string[]
-): { model: SmithyModel; scored: Array<{ path: string; score: number }> } {
-  const scored: Array<{ path: string; model: SmithyModel; score: number }> = [];
+  handlerActions: string[],
+  /**
+   * Score-tie breaker (VERIFICATION.md M7): `cloudwatch-events` vs
+   * `eventbridge` tie 18:18 on handler actions; a bare alphabetical
+   * tie-break picked the legacy model whose client is not even among the
+   * runtime's dependencies. Prefer the model whose derived client package
+   * is actually installed.
+   */
+  isInstalled?: (model: SmithyModel) => boolean
+): { model: SmithyModel; scored: Array<{ path: string; score: number; installed: boolean }> } {
+  const scored: Array<{ path: string; model: SmithyModel; score: number; installed: boolean }> =
+    [];
   for (const path of paths) {
     const model = loadSmithyModel(path);
     let score = 0;
     for (const action of handlerActions) {
       if (model.operations.has(action)) score += 1;
     }
-    scored.push({ path, model, score });
+    scored.push({ path, model, score, installed: isInstalled?.(model) ?? false });
   }
-  scored.sort((a, b) => b.score - a.score || a.path.localeCompare(b.path));
+  scored.sort(
+    (a, b) =>
+      b.score - a.score ||
+      Number(b.installed) - Number(a.installed) ||
+      a.path.localeCompare(b.path)
+  );
   const best = scored[0] as (typeof scored)[number];
-  return { model: best.model, scored: scored.map(({ path, score }) => ({ path, score })) };
+  return {
+    model: best.model,
+    scored: scored.map(({ path, score, installed }) => ({ path, score, installed })),
+  };
 }
 
 export function loadSmithyModel(path: string): SmithyModel {

@@ -38,6 +38,25 @@ function normalize(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]/g, '');
 }
 
+/**
+ * Transforms a fuzzy rename-candidate may carry. Candidates are never
+ * emitted, so this gate bounds REVIEW NOISE, not runtime risk: scalar
+ * coercions and json-string on a fuzzy name share a spelling by accident,
+ * not a meaning (`GenerateSecretString -> SecretString` — VERIFICATION.md
+ * C2), while the wrap shapes stay allowed because real historical renames
+ * carry them (`OriginCustomHeaders -> CustomHeaders` is a
+ * wrap-quantity-items).
+ */
+const CANDIDATE_SAFE_TRANSFORMS: ReadonlySet<string> = new Set([
+  'direct',
+  'structure',
+  'list',
+  'map',
+  'document',
+  'wrap-quantity-items',
+  'wrap-single-list-member',
+]);
+
 interface TransformResult {
   transform: Transform;
   childId?: string;
@@ -63,7 +82,11 @@ export class Matcher {
    * input structure. Returns the root StructMapping id.
    */
   matchOperationInput(inputTarget: string, opName: string, onlyProps?: string[]): string {
-    const readOnly = new Set(this.schema.readOnlyProperties.map((p) => p.split('/')[0] as string));
+    // Only a FULLY read-only top-level property is excluded. A nested
+    // readOnly path (`KubernetesNetworkConfig/ServiceIpv6Cidr`) must NOT
+    // exclude its writable parent — truncating to the first segment silently
+    // dropped whole top-level properties on 84 types (VERIFICATION.md C1).
+    const readOnly = new Set(this.schema.readOnlyProperties.filter((p) => !p.includes('/')));
     const props: Record<string, unknown> = {};
     for (const [name, node] of Object.entries(this.schema.properties)) {
       if (readOnly.has(name)) continue;
@@ -91,17 +114,47 @@ export class Matcher {
     this.structs[id] = struct;
 
     const sdkMembers = structureMembers(this.model, sdkTarget);
-    const matchedSdk = new Set<string>();
     const props = cfnProperties(cfnNode);
 
     for (const cfnName of Object.keys(props).sort()) {
       const propResolved = resolveCfnNode(this.schema, props[cfnName]);
       const mapping = this.matchMember(cfnName, propResolved, sdkMembers, cfnKey);
       struct.members.push(mapping);
-      if (mapping.sdk !== null) matchedSdk.add(mapping.sdk);
-      else struct.unmatchedCfn.push(cfnName);
     }
 
+    // Collision resolution (VERIFICATION.md C2): two CFn properties resolving
+    // to the SAME SDK member would be emitted as two writes with
+    // alphabetically-last-wins (`SourceDBInstanceIdentifier` overwriting the
+    // exact-tier `DBInstanceIdentifier` on the RDS delete input). Keep the
+    // best tier per SDK member; demote every loser to `collision`.
+    const TIER_RANK: Record<string, number> = { exact: 0, case: 1, 'rename-candidate': 2 };
+    const bySdk = new Map<string, MemberMapping[]>();
+    for (const m of struct.members) {
+      if (m.sdk === null) continue;
+      const list = bySdk.get(m.sdk) ?? [];
+      list.push(m);
+      bySdk.set(m.sdk, list);
+    }
+    for (const [sdkName, list] of bySdk) {
+      if (list.length < 2) continue;
+      list.sort(
+        (a, b) => (TIER_RANK[a.match] ?? 9) - (TIER_RANK[b.match] ?? 9) || a.cfn.localeCompare(b.cfn)
+      );
+      const winner = list[0] as MemberMapping;
+      for (const loser of list.slice(1)) {
+        loser.match = 'collision';
+        loser.transform = 'unsupported';
+        loser.notes.push(
+          `collides with '${winner.cfn}' on SDK member '${sdkName}' — NOT emitted; needs an override-table decision`
+        );
+      }
+    }
+
+    const matchedSdk = new Set<string>();
+    for (const m of struct.members) {
+      if (m.sdk !== null && m.match !== 'collision') matchedSdk.add(m.sdk);
+      if (m.sdk === null) struct.unmatchedCfn.push(m.cfn);
+    }
     for (const [sdkName, member] of Object.entries(sdkMembers)) {
       if (isRequired(member) && !matchedSdk.has(sdkName)) {
         struct.sdkRequiredUnfed.push(sdkName);
@@ -156,7 +209,13 @@ export class Matcher {
     }
     // Tier 3: normalized substring containment OR common-prefix ratio
     // (catches plural/singular renames like PlacementStrategies ->
-    // placementStrategy), type-compatibility gated.
+    // placementStrategy). Candidates are REPORT-ONLY (never emitted), and
+    // two gates bound the noise (VERIFICATION.md C2): a containment score
+    // floor (0.22-0.26 junk like `Mode -> endpointAccessMode` observed
+    // without it), and a KIND-PRESERVATION gate — a fuzzy name hit that also
+    // needs a kind-changing transform (json-string, to-string, wrap-*) is
+    // near-certainly wrong (`GenerateSecretString -> SecretString` would
+    // have stored the generator CONFIG as the secret's value).
     const norm = normalize(cfnName);
     let best: { name: string; score: number } | null = null;
     for (const sdkName of Object.keys(sdkMembers)) {
@@ -164,7 +223,8 @@ export class Matcher {
       if (Math.min(sn.length, norm.length) < 4) continue;
       let score = 0;
       if (sn.includes(norm) || norm.includes(sn)) {
-        score = Math.min(sn.length, norm.length) / Math.max(sn.length, norm.length);
+        const ratio = Math.min(sn.length, norm.length) / Math.max(sn.length, norm.length);
+        if (ratio >= 0.3) score = ratio;
       }
       let prefix = 0;
       const cap = Math.min(sn.length, norm.length);
@@ -176,7 +236,7 @@ export class Matcher {
     }
     if (best !== null) {
       const m = tryMember(best.name, 'rename-candidate');
-      if (m !== null) {
+      if (m !== null && CANDIDATE_SAFE_TRANSFORMS.has(m.transform)) {
         m.notes.push(`fuzzy-matched to "${best.name}" (overlap ${best.score.toFixed(2)})`);
         return m;
       }
@@ -290,11 +350,30 @@ export class Matcher {
           );
         }
       }
+      // Required wrapper members the CFn array cannot feed (CloudFront
+      // TrustedSigners.Enabled): the emitter must NOT synthesize an empty
+      // default missing them, and must surface a TODO (VERIFICATION.md M1).
+      const otherRequired = Object.entries(members)
+        .filter(
+          ([name, member]) =>
+            isRequired(member) && name !== chosen && name !== quantityMember
+        )
+        .map(([name]) => name);
+      const notes = transform === 'wrap-single-list-member' ? [`wraps into .${chosen}`] : [];
+      if (otherRequired.length > 0) {
+        notes.push(
+          `wrapper has additional required member(s) not derivable from the array: ${otherRequired.join(', ')}`
+        );
+      }
       return {
         transform,
         childId,
-        wrapper: { itemsMember: chosen, quantityMember },
-        notes: transform === 'wrap-single-list-member' ? [`wraps into .${chosen}`] : [],
+        wrapper: {
+          itemsMember: chosen,
+          quantityMember,
+          otherRequired: otherRequired.length > 0 ? otherRequired : undefined,
+        },
+        notes,
       };
     }
 
