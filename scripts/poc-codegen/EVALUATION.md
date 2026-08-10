@@ -5,12 +5,19 @@ Question: now that the PoC exists, should cdkd keep the current mechanism
 schema-driven generation, or adopt a hybrid — and where exactly should the
 boundary run?
 
-**Verdict up front: hybrid, with a precise boundary.** Generate the
-CREATE-side input-builder layer from the spec (constructive prevention);
-keep orchestration — update semantics, waiters, physicalId, multi-op
-sequencing, read paths — hand-written (that is the part codegen cannot
-derive AND the part that has never been the recurring bug class). Neither
-pure option survives contact with the evidence below.
+**Verdict up front: hybrid — but the durable artifact is the SPEC, not
+the generated runtime code.** The machine-derived mapping spec has three
+consumption modes with very different risk profiles (§6): a repair /
+drift-radar oracle, a differential-test oracle against the hand-written
+mappers, and generated runtime builders. The first two capture most of
+the prevention value at near-zero runtime risk; generated runtime
+builders are worth it unconditionally only for NEW providers, and for
+existing proven providers only if differential testing proves
+insufficient. Orchestration — update semantics, waiters, physicalId,
+multi-op sequencing, read paths — stays hand-written regardless (that is
+the part schemas cannot derive AND the part that has never been the
+recurring bug class). Neither pure option survives contact with the
+evidence below.
 
 All numbers in this document are measured, either from the committed
 critic matrix (`docs/_generated/nested-key-coverage.{json,md}`), the
@@ -100,37 +107,76 @@ physicalId derivation, import/read paths and data-safety gates are
 API-behavioral knowledge the schemas do not carry — and a big-bang swap of
 proven providers maximizes the one risk class codegen adds.
 
-## 6. Recommended hybrid, with staging and exit criteria
+**And even scoped runtime codegen has a weaker case than it first
+appears, for three measured reasons:**
 
-Boundary rule: **generated code owns "which member, what spelling, what
-shape"; hand code owns "which call, when, and what the API means by it".**
+- The semantic bug class (`EventBridgeEnabled` bool-vs-struct #1430,
+  malformed-container defaults #1471, removal-on-update semantics) is
+  untouched by generation — flagged at best, fixed by hand + live
+  verification either way — and the integ burden does not shrink.
+- On the hardest target the generated cover is uneven (S3: Website 100%,
+  Replication 94%, but Lifecycle 61%, Tags/Logging 0%), so a migrated
+  provider would carry generated AND hand-written members for the same
+  API call — a new boundary-management complexity inside one provider.
+- The critic already keeps the spelling/write-drop class non-regressing
+  for the 11 onboarded targets, so runtime generation's marginal value
+  concentrates on the ~69 un-onboarded providers, the 260 unmeasurable
+  paths, and new types — not on the already-guarded center.
 
-- **Phase 0 — no runtime change (immediate):**
-  (a) Fix #1495's remaining S3 drops BY HAND now, using the PoC report as
-  the mapping oracle (it already names every target member).
+What runtime generation uniquely solved was the write-evidence PROOF
+problem (static analysis cannot prove a fresh-object mapper writes what
+it should — the 260 unmeasurable paths are that limit). §6's differential
+mode solves the same proof problem dynamically, without touching the
+deploy path — which is why runtime migration of existing providers is
+demoted to a contingency below.
+
+## 6. The spec's three consumption modes, and the recommended plan
+
+The PoC's durable artifact is the machine-derived mapping spec. It can be
+consumed three ways:
+
+| Mode | Solves | Runtime risk |
+|---|---|---|
+| (i) **Oracle**: fix known drops by hand against the spec; commit specs for ALL types as a CI drift radar | #1495 immediately; new-member visibility across the whole tree (the critic covers 11 targets) | zero |
+| (ii) **Differential test (shadow mapper)**: generate a synthetic input populating every schema path, run the HAND-WRITTEN provider against a mocked SDK client, capture the command input it actually built, and diff its member-path set against the generated mapper's output | the write-evidence proof problem — the 260 unmeasurable paths become measured, S3 and CloudFront included; a dropped member surfaces as a diff | zero (test-only) |
+| (iii) **Generated runtime builders** | same class as (ii), constructively | real: behavior regression on proven providers + generated/hand boundary inside one provider |
+
+Mode (ii) replaces what the write-evidence pass proves statically (a
+~4.5k-line AST analysis with eight documented bounds) with a direct
+measurement, using the same SDK-client mocking the unit tests already
+use. Per-type harness glue (satisfying validation invariants in the
+synthetic input, multi-call capture for multi-op types) is expected and
+small compared to either the AST walk or a runtime migration.
+
+Boundary rule if/when (iii) applies: **generated code owns "which member,
+what spelling, what shape"; hand code owns "which call, when, and what
+the API means by it".**
+
+Recommended order:
+
+- **Phase 0 — oracle (no runtime change, immediate):**
+  (a) Fix #1495's remaining S3 drops BY HAND, spec as the mapping oracle
+  (it already names every target member).
   (b) Add a `vp run gen:sdk-mapping` task committing specs under
   `docs/_generated/sdk-mapping/` for ALL SDK-provider types, CI-checked
-  for drift — this is a schema-drift radar with full-tree breadth the
-  critic never had, and it costs nothing at runtime.
-  Pin inputs (schema-zip date + api-models-aws commit) in the spec header
-  for reproducibility.
-- **Phase 1 — constructive for NEW code (low risk):** `/new-provider`
-  scaffolds its input builders from the spec. New types start prevented,
-  not detected; no existing behavior at risk.
-- **Phase 2 — migrate the two types the critic structurally cannot audit:**
-  CloudFront Distribution and S3 Bucket create-path builders switch to
-  generated, each behind its feature integ + a broad integ
-  (`/run-integ`). Exit criteria for the phase: zero integ/live
-  regressions attributable to generated builders; regen diffs stayed
-  review-sized; override-table churn acceptable. If any criterion fails,
-  stop at Phase 1 — the radar and scaffolding already paid for the work.
-- **Phase 3 — opportunistic:** migrate other types only when they are
-  being touched anyway (bug fix / new property). Never big-bang.
+  for drift. Pin inputs (schema-zip date + api-models-aws commit) in the
+  spec header for reproducibility.
+- **Phase 1 — differential harness (test-only):** shadow-mapper diff for
+  the fresh-object-mapper types, starting with the two the static pass
+  cannot finish (S3, CloudFront). Success criterion: the diff reproduces
+  the known #1495 drops on the pre-fix tree and reports clean after
+  Phase 0's fixes. As types come under differential coverage, the
+  write-evidence pass (and its floors/bounds machinery) retires for
+  them; the key/shape passes can also consume the spec instead of
+  re-deriving from fixtures + SDK typings.
+- **Phase 2 — generation for NEW providers only:** `/new-provider`
+  scaffolds input builders from the spec. New types start prevented;
+  no existing behavior at risk.
+- **Phase 3 — contingent runtime migration:** only if differential
+  coverage proves insufficient in practice (e.g. a drop class the diff
+  cannot express, or harness glue that rivals the migration cost), and
+  then only per-type, behind feature + broad integs, never big-bang.
 - **Permanent hand-written territory:** update orchestration + removal
   semantics, waiters/stabilization, physicalId + delete/update addressing,
   import & `readCurrentState` (until a read-path generator is proven the
   same way), data-safety gates, synthesized required values.
-
-Per migrated type, the critic's key/shape/write-evidence entries retire
-(the spec supersedes them); the critic remains for un-migrated targets
-until Phase 3 exhausts them.
