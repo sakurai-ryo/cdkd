@@ -158,6 +158,7 @@
       "Tags"
     ],
     "AWS::Kinesis::Stream": [
+      "RecordDistributionStrategy",
       "WarmThroughputMiBps"
     ],
     "AWS::KinesisFirehose::DeliveryStream": [
@@ -300,6 +301,9 @@
     ],
     "AWS::RDS::DBProxyEndpoint": [
       "EndpointNetworkType"
+    ],
+    "AWS::RDS::DBProxyTargetGroup": [
+      "Tags"
     ],
     "AWS::S3::Bucket": [
       "AbacStatus",
