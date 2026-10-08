@@ -17,11 +17,11 @@ Gap severity depends on the tier. A gap on an **SDK-backed** type (`sdk-fallback
 ## Summary
 
 - Classified types (cached schema): **134**
-- Fully enriched: **47**
-- No computed attribute (Ref == physicalId is correct): **17**
+- Fully enriched: **46**
+- No computed attribute (Ref == physicalId is correct): **18**
 - **Pure-CC latent gaps (unenriched-computed, blocks CI): 0**
 - SDK-fallback gaps (informational, #614 path only): **70**
-- Types with allow-listed (not-a-gap) attributes: **85**
+- Types with allow-listed (not-a-gap) attributes: **84**
 
 ## Pure-CC latent gaps
 
@@ -138,7 +138,7 @@ SDK-backed types whose computed attribute is unenriched: only exposed on the #61
 | `AWS::CloudFront::OriginAccessControl` | yes | enriched | `Id` (OK) |
 | `AWS::CloudTrail::Trail` | yes | sdk-fallback-gap | `Arn` (GAP), `SnsTopicArn` (GAP) |
 | `AWS::CloudWatch::Alarm` | yes | sdk-fallback-gap | `Arn` (GAP) |
-| `AWS::CloudWatch::AnomalyDetector` | yes | enriched | `Id` (allow) |
+| `AWS::CloudWatch::AnomalyDetector` | yes | enriched | `AnomalyDetectorId` (allow) |
 | `AWS::CodeBuild::Project` | yes | sdk-fallback-gap | `Arn` (GAP), `Id` (allow) |
 | `AWS::CodeCommit::Repository` | yes | sdk-fallback-gap | `Arn` (GAP), `CloneUrlHttp` (GAP), `CloneUrlSsh` (GAP), `Name` (GAP), `RepositoryId` (allow) |
 | `AWS::Cognito::UserPool` | yes | sdk-fallback-gap | `Arn` (GAP), `ProviderName` (GAP), `ProviderURL` (GAP), `UserPoolId` (allow) |
@@ -186,7 +186,7 @@ SDK-backed types whose computed attribute is unenriched: only exposed on the #61
 | `AWS::Glue::Database` | yes | no-computed-attr | _(none)_ |
 | `AWS::Glue::Job` | yes | no-computed-attr | _(none)_ |
 | `AWS::Glue::SecurityConfiguration` | yes | no-computed-attr | _(none)_ |
-| `AWS::Glue::Table` | yes | enriched | `Id` (allow) |
+| `AWS::Glue::Table` | yes | no-computed-attr | _(none)_ |
 | `AWS::Glue::Trigger` | yes | no-computed-attr | _(none)_ |
 | `AWS::Glue::Workflow` | yes | no-computed-attr | _(none)_ |
 | `AWS::IAM::AccessKey` | yes | sdk-fallback-gap | `Id` (allow), `SecretAccessKey` (GAP) |

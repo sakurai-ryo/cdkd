@@ -317,7 +317,7 @@ export const CREATE_ONLY_PATHS_SNAPSHOT: ReadonlyMap<
   ['AWS::Glue::Database', [['DatabaseName']]],
   ['AWS::Glue::Job', [['Name']]],
   ['AWS::Glue::SecurityConfiguration', [['Name']]],
-  ['AWS::Glue::Table', [['CatalogId'], ['DatabaseName'], ['Name']]],
+  ['AWS::Glue::Table', [['CatalogId'], ['DatabaseName'], ['Name'], ['TableInput', 'Name']]],
   ['AWS::Glue::Trigger', [['Name'], ['Type'], ['WorkflowName']]],
   ['AWS::Glue::Workflow', [['Name']]],
   ['AWS::IAM::AccessKey', [['Serial'], ['UserName']]],
