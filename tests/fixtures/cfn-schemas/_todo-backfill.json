@@ -44,6 +44,7 @@
       "AggregationConfigurations"
     ],
     "AWS::CloudWatch::Alarm": [
+      "ActionConfiguration",
       "EvaluationWindow",
       "WarmUpConfiguration"
     ],
@@ -158,6 +159,7 @@
       "Tags"
     ],
     "AWS::Kinesis::Stream": [
+      "RecordDistributionStrategy",
       "WarmThroughputMiBps"
     ],
     "AWS::KinesisFirehose::DeliveryStream": [
@@ -300,6 +302,12 @@
     ],
     "AWS::RDS::DBProxyEndpoint": [
       "EndpointNetworkType"
+    ],
+    "AWS::RDS::DBProxyTargetGroup": [
+      "Tags"
+    ],
+    "AWS::Route53::HostedZone": [
+      "DelegationSetId"
     ],
     "AWS::S3::Bucket": [
       "AbacStatus",
