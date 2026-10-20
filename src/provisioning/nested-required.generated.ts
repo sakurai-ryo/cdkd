@@ -106,10 +106,25 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
     new Map<string, readonly string[]>([
       ['EvaluatorConfig.CodeBased', ['LambdaConfig']],
       ['EvaluatorConfig.CodeBased.LambdaConfig', ['LambdaArn']],
+      ['EvaluatorConfig.Derived', ['BaseEvaluatorId', 'ModelConfig']],
+      ['EvaluatorConfig.Derived.ModelConfig.BedrockEvaluatorModelConfig', ['ModelId']],
+      ['EvaluatorConfig.Derived.ModelConfig.ResponsesEvaluatorModelConfig', ['ModelId']],
       ['EvaluatorConfig.LlmAsAJudge', ['Instructions', 'ModelConfig', 'RatingScale']],
       ['EvaluatorConfig.LlmAsAJudge.ModelConfig.BedrockEvaluatorModelConfig', ['ModelId']],
       ['EvaluatorConfig.LlmAsAJudge.ModelConfig.ResponsesEvaluatorModelConfig', ['ModelId']],
       ['EvaluatorConfig.LlmAsAJudge.RatingScale.Categorical', ['Definition', 'Label']],
+      [
+        'EvaluatorConfig.LlmAsAJudge.RatingScale.MultiDimensional',
+        ['DimensionInstruction', 'DimensionName', 'DimensionRatingScale'],
+      ],
+      [
+        'EvaluatorConfig.LlmAsAJudge.RatingScale.MultiDimensional.DimensionRatingScale.Categorical',
+        ['Definition', 'Label'],
+      ],
+      [
+        'EvaluatorConfig.LlmAsAJudge.RatingScale.MultiDimensional.DimensionRatingScale.Numerical',
+        ['Definition', 'Label', 'Value'],
+      ],
       ['EvaluatorConfig.LlmAsAJudge.RatingScale.Numerical', ['Definition', 'Label', 'Value']],
       ['Tags', ['Key', 'Value']],
     ]),
@@ -239,6 +254,7 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
   [
     'AWS::CloudWatch::Alarm',
     new Map<string, readonly string[]>([
+      ['ActionConfiguration.AlarmTagsPropagation', ['Enabled']],
       ['Dimensions', ['Name', 'Value']],
       ['Metrics', ['Id']],
       ['Metrics.MetricStat', ['Metric', 'Period', 'Stat']],
@@ -519,7 +535,9 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
       ['ContainerDefinitions.LinuxParameters.Tmpfs', ['Size']],
       ['ContainerDefinitions.LogConfiguration', ['LogDriver']],
       ['ContainerDefinitions.LogConfiguration.SecretOptions', ['Name', 'ValueFrom']],
-      ['ContainerDefinitions.ResourceRequirements', ['Type', 'Value']],
+      ['ContainerDefinitions.ResourceRequirements', ['Type']],
+      ['ContainerDefinitions.ResourceRequirements.SharingStrategy', ['NvidiaMps']],
+      ['ContainerDefinitions.ResourceRequirements.SharingStrategy.NvidiaMps', ['Memory']],
       ['ContainerDefinitions.Secrets', ['Name', 'ValueFrom']],
       ['ContainerDefinitions.Ulimits', ['HardLimit', 'Name', 'SoftLimit']],
       ['PlacementConstraints', ['Type']],
@@ -1162,6 +1180,7 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
       ['Tags', ['Key']],
     ]),
   ],
+  ['AWS::RDS::DBProxyTargetGroup', new Map<string, readonly string[]>([['Tags', ['Key']]])],
   ['AWS::RDS::DBSubnetGroup', new Map<string, readonly string[]>([['Tags', ['Key']]])],
   [
     'AWS::Route53::HostedZone',

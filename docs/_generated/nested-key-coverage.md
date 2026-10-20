@@ -13,24 +13,30 @@ For every SDK provider that forwards a nested CFn config blob, diffs the blob's 
 ## Summary
 
 - Audited targets: **24**
-- Nested CFn key paths audited: **1223**
-- Same spelling in SDK model: **1131**
+- Nested CFn key paths audited: **1231**
+- Same spelling in SDK model: **1136**
 - Explicitly handled in provider: **71**
 - Allow-listed pass-throughs (does NOT block CI): **21**
 - **Case divergences (blocks CI): 0**
-- **No SDK member (blocks CI): 0**
+- **No SDK member (blocks CI): 3**
 - Write-evidence pass — fresh-object targets audited: **15**
 - **No write evidence (blocks CI): 0**
 - Shape pass — bare-array pairs clean: **148**
-- Shape pass — explicitly handled in provider: **40**
+- Shape pass — explicitly handled in provider: **41**
 - Shape pass — allow-listed (does NOT block CI): **9**
 - **Array-vs-wrapper divergences (blocks CI): 0**
 - **Definition-member-missing divergences (blocks CI): 0**
 - Shape pass — ambiguous (visible, non-blocking): **0**
 
-## Divergences
+## Divergences — BLOCKS CI
 
-None. Every audited nested CFn key either matches an SDK member spelling or is explicitly named by its provider — and on a fresh-object target, its SDK member is also WRITTEN somewhere in the provider.
+Each key below is templated by CFn but never reaches AWS: either it maps to no SDK member at all, or (for a fresh-object target) the SDK member exists and the provider never writes it. Add the CFn->SDK conversion to the provider (naming the CFn spelling, and WRITING the SDK member), or add a `NESTED_KEY_ALLOW_LIST` entry with a rationale in scripts/gen-nested-key-coverage.ts.
+
+| Resource type | CFn nested key / path | Bucket | SDK detail |
+| --- | --- | --- | --- |
+| `AWS::ECS::TaskDefinition` | `ContainerDefinitions.ResourceRequirements.SharingStrategy` | no-sdk-member | — |
+| `AWS::ECS::TaskDefinition` | `ContainerDefinitions.ResourceRequirements.SharingStrategy.NvidiaMps` | no-sdk-member | — |
+| `AWS::ECS::TaskDefinition` | `ContainerDefinitions.ResourceRequirements.SharingStrategy.NvidiaMps.MaxComputePercent` | no-sdk-member | — |
 
 ## Allow-listed pass-throughs
 
@@ -171,6 +177,7 @@ CFn members whose SHAPE diverges from the same-spelled SDK member (bare array vs
 | `AWS::CloudFront::Distribution` | `ForwardedValues` | `Headers` | wrapper | SDK wraps it as `Headers` ({ Quantity, Items }) |
 | `AWS::CloudFront::Distribution` | `ForwardedValues` | `QueryStringCacheKeys` | wrapper | SDK wraps it as `QueryStringCacheKeys` ({ Quantity, Items }) |
 | `AWS::CloudFront::Distribution` | `GeoRestriction` | `Locations` | definition | SDK interface `GeoRestriction` has no `Locations` member |
+| `AWS::ECS::Service` | `VpcLatticeConfiguration` | `AdvancedConfiguration` | definition | SDK interface `VpcLatticeConfiguration` has no `advancedConfiguration` member |
 | `AWS::ECS::Service` | `DeploymentLifecycleHook` | `HookDetails` | wrapper | — |
 | `AWS::Events::Rule` | `#top` | `EventPattern` | wrapper | — |
 | `AWS::Events::Rule` | `PlacementStrategy` | `Type` | definition | SDK interface `PlacementStrategy` has no `Type` member |
@@ -207,8 +214,8 @@ CFn members whose SHAPE diverges from the same-spelled SDK member (bare array vs
 | `AWS::CloudFront::Distribution` | `cloudfront-distribution-provider.ts` | `@aws-sdk/client-cloudfront` | exact | yes | 173 | 4 |
 | `AWS::CloudWatch::AnomalyDetector` | `cloudwatch-anomaly-detector-provider.ts` | `@aws-sdk/client-cloudwatch` | exact | yes | 31 | 1 |
 | `AWS::CodeBuild::Project` | `codebuild-provider.ts` | `@aws-sdk/client-codebuild` | lower-first | yes | 98 | 4 |
-| `AWS::ECS::Service` | `ecs-provider.ts` | `@aws-sdk/client-ecs` | lower-first | yes | 118 | 4 |
-| `AWS::ECS::TaskDefinition` | `ecs-provider.ts` | `@aws-sdk/client-ecs` | lower-first | yes | 142 | 3 |
+| `AWS::ECS::Service` | `ecs-provider.ts` | `@aws-sdk/client-ecs` | lower-first | yes | 122 | 5 |
+| `AWS::ECS::TaskDefinition` | `ecs-provider.ts` | `@aws-sdk/client-ecs` | lower-first | yes | 146 | 5 |
 | `AWS::Events::Rule` | `eventbridge-rule-provider.ts` | `@aws-sdk/client-eventbridge` | exact | no | 76 | 0 |
 | `AWS::Glue::Connection` | `glue-provider.ts` | `@aws-sdk/client-glue` | exact | no | 37 | 0 |
 | `AWS::Glue::Crawler` | `glue-provider.ts` | `@aws-sdk/client-glue` | exact | no | 46 | 1 |
