@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "summary": {
     "classifiedCount": 134,
-    "enriched": 47,
-    "noComputedAttr": 17,
+    "enriched": 46,
+    "noComputedAttr": 18,
     "unenrichedGap": 0,
     "sdkFallbackGap": 70,
-    "allowListedTypes": 85
+    "allowListedTypes": 83
   },
   "types": [
     {
@@ -412,6 +412,8 @@
         "CreatedAt",
         "EvaluatorArn",
         "EvaluatorId",
+        "EvaluatorType",
+        "Provider",
         "Status",
         "UpdatedAt"
       ],
@@ -431,6 +433,14 @@
           "status": "gap"
         },
         {
+          "name": "EvaluatorType",
+          "status": "gap"
+        },
+        {
+          "name": "Provider",
+          "status": "gap"
+        },
+        {
           "name": "Status",
           "status": "gap"
         },
@@ -442,6 +452,8 @@
       "gaps": [
         "CreatedAt",
         "EvaluatorId",
+        "EvaluatorType",
+        "Provider",
         "Status",
         "UpdatedAt"
       ]
@@ -747,19 +759,13 @@
       "bucket": "sdk-fallback-gap",
       "sdkBacked": true,
       "readOnlyProperties": [
-        "Arn",
-        "Id"
+        "Arn"
       ],
       "enrichedKeys": [],
       "attributes": [
         {
           "name": "Arn",
           "status": "gap"
-        },
-        {
-          "name": "Id",
-          "status": "allow-listed",
-          "rationale": "primaryIdentifier == physicalId; resolves via the resolver physicalId fallback"
         }
       ],
       "gaps": [
@@ -876,7 +882,8 @@
         "ClusterResourceId",
         "Endpoint",
         "Id",
-        "ReadEndpoint"
+        "ReadEndpoint",
+        "ServerlessV2PlatformVersion"
       ],
       "enrichedKeys": [],
       "attributes": [
@@ -896,12 +903,17 @@
         {
           "name": "ReadEndpoint",
           "status": "gap"
+        },
+        {
+          "name": "ServerlessV2PlatformVersion",
+          "status": "gap"
         }
       ],
       "gaps": [
         "ClusterResourceId",
         "Endpoint",
-        "ReadEndpoint"
+        "ReadEndpoint",
+        "ServerlessV2PlatformVersion"
       ]
     },
     {
@@ -1678,12 +1690,12 @@
       "bucket": "enriched",
       "sdkBacked": true,
       "readOnlyProperties": [
-        "Id"
+        "InstanceFleetId"
       ],
       "enrichedKeys": [],
       "attributes": [
         {
-          "name": "Id",
+          "name": "InstanceFleetId",
           "status": "allow-listed",
           "rationale": "primaryIdentifier == physicalId; resolves via the resolver physicalId fallback"
         }
@@ -1846,19 +1858,11 @@
     },
     {
       "resourceType": "AWS::Glue::Table",
-      "bucket": "enriched",
+      "bucket": "no-computed-attr",
       "sdkBacked": true,
-      "readOnlyProperties": [
-        "Id"
-      ],
+      "readOnlyProperties": [],
       "enrichedKeys": [],
-      "attributes": [
-        {
-          "name": "Id",
-          "status": "allow-listed",
-          "rationale": "primaryIdentifier == physicalId; resolves via the resolver physicalId fallback"
-        }
-      ],
+      "attributes": [],
       "gaps": []
     },
     {
