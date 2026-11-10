@@ -1,6 +1,6 @@
 {
   "resourceType": "AWS::EMR::Cluster",
-  "generatedAt": "2026-09-23",
+  "generatedAt": "2026-11-10",
   "properties": [
     "AdditionalInfo",
     "Applications",
@@ -20,6 +20,7 @@
     "LogUri",
     "ManagedScalingPolicy",
     "MasterPublicDNS",
+    "MonitoringConfiguration",
     "Name",
     "OSReleaseLabel",
     "PlacementGroupConfigs",
@@ -27,6 +28,7 @@
     "ScaleDownBehavior",
     "SecurityConfiguration",
     "ServiceRole",
+    "SessionEnabled",
     "StepConcurrencyLevel",
     "Steps",
     "Tags",
@@ -50,6 +52,7 @@
     "KerberosAttributes",
     "LogEncryptionKmsKeyId",
     "LogUri",
+    "MonitoringConfiguration",
     "Name",
     "OSReleaseLabel",
     "PlacementGroupConfigs",
@@ -57,6 +60,7 @@
     "ScaleDownBehavior",
     "SecurityConfiguration",
     "ServiceRole",
+    "SessionEnabled",
     "Steps"
   ],
   "createOnlyPropertyPaths": [
@@ -100,6 +104,9 @@
       "LogUri"
     ],
     [
+      "MonitoringConfiguration"
+    ],
+    [
       "Name"
     ],
     [
@@ -121,6 +128,9 @@
       "ServiceRole"
     ],
     [
+      "SessionEnabled"
+    ],
+    [
       "Steps"
     ]
   ],
@@ -128,20 +138,14 @@
     "Id"
   ],
   "nestedProperties": {
-    "Steps": [
-      "ActionOnFailure",
+    "Applications": [
+      "AdditionalInfo",
       "Args",
-      "HadoopJarStep",
-      "Jar",
-      "Key",
-      "MainClass",
       "Name",
-      "StepProperties",
-      "Value"
+      "Version"
     ],
-    "PlacementGroupConfigs": [
-      "InstanceRole",
-      "PlacementStrategy"
+    "AutoTerminationPolicy": [
+      "IdleTimeout"
     ],
     "BootstrapActions": [
       "Args",
@@ -153,36 +157,6 @@
       "Classification",
       "ConfigurationProperties",
       "Configurations"
-    ],
-    "Tags": [
-      "Key",
-      "Value"
-    ],
-    "ManagedScalingPolicy": [
-      "ComputeLimits",
-      "MaximumCapacityUnits",
-      "MaximumCoreCapacityUnits",
-      "MaximumOnDemandCapacityUnits",
-      "MinimumCapacityUnits",
-      "ScalingStrategy",
-      "UnitType",
-      "UtilizationPerformanceIndex"
-    ],
-    "AutoTerminationPolicy": [
-      "IdleTimeout"
-    ],
-    "KerberosAttributes": [
-      "ADDomainJoinPassword",
-      "ADDomainJoinUser",
-      "CrossRealmTrustPrincipalPassword",
-      "KdcAdminPassword",
-      "Realm"
-    ],
-    "Applications": [
-      "AdditionalInfo",
-      "Args",
-      "Name",
-      "Version"
     ],
     "Instances": [
       "Action",
@@ -267,23 +241,61 @@
       "VolumeType",
       "VolumesPerInstance",
       "WeightedCapacity"
-    ]
-  },
-  "nestedPropertyPaths": {
+    ],
+    "KerberosAttributes": [
+      "ADDomainJoinPassword",
+      "ADDomainJoinUser",
+      "CrossRealmTrustPrincipalPassword",
+      "KdcAdminPassword",
+      "Realm"
+    ],
+    "ManagedScalingPolicy": [
+      "ComputeLimits",
+      "MaximumCapacityUnits",
+      "MaximumCoreCapacityUnits",
+      "MaximumOnDemandCapacityUnits",
+      "MinimumCapacityUnits",
+      "ScalingStrategy",
+      "UnitType",
+      "UtilizationPerformanceIndex"
+    ],
     "Steps": [
       "ActionOnFailure",
+      "Args",
       "HadoopJarStep",
-      "HadoopJarStep.Args",
-      "HadoopJarStep.Jar",
-      "HadoopJarStep.MainClass",
-      "HadoopJarStep.StepProperties",
-      "HadoopJarStep.StepProperties.Key",
-      "HadoopJarStep.StepProperties.Value",
-      "Name"
+      "Jar",
+      "Key",
+      "MainClass",
+      "Name",
+      "StepProperties",
+      "Value"
     ],
     "PlacementGroupConfigs": [
       "InstanceRole",
       "PlacementStrategy"
+    ],
+    "Tags": [
+      "Key",
+      "Value"
+    ],
+    "MonitoringConfiguration": [
+      "CloudWatchLogConfiguration",
+      "Enabled",
+      "EncryptionKeyArn",
+      "LogGroupName",
+      "LogStreamNamePrefix",
+      "LogTypes"
+    ]
+  },
+  "nestedPropertyPaths": {
+    "Applications": [
+      "AdditionalInfo",
+      "Args",
+      "Name",
+      "Version"
+    ],
+    "AutoTerminationPolicy": [
+      "IdleTimeout"
     ],
     "BootstrapActions": [
       "Name",
@@ -295,36 +307,6 @@
       "Classification",
       "ConfigurationProperties",
       "Configurations"
-    ],
-    "Tags": [
-      "Key",
-      "Value"
-    ],
-    "ManagedScalingPolicy": [
-      "ComputeLimits",
-      "ComputeLimits.MaximumCapacityUnits",
-      "ComputeLimits.MaximumCoreCapacityUnits",
-      "ComputeLimits.MaximumOnDemandCapacityUnits",
-      "ComputeLimits.MinimumCapacityUnits",
-      "ComputeLimits.UnitType",
-      "ScalingStrategy",
-      "UtilizationPerformanceIndex"
-    ],
-    "AutoTerminationPolicy": [
-      "IdleTimeout"
-    ],
-    "KerberosAttributes": [
-      "ADDomainJoinPassword",
-      "ADDomainJoinUser",
-      "CrossRealmTrustPrincipalPassword",
-      "KdcAdminPassword",
-      "Realm"
-    ],
-    "Applications": [
-      "AdditionalInfo",
-      "Args",
-      "Name",
-      "Version"
     ],
     "Instances": [
       "AdditionalMasterSecurityGroups",
@@ -620,243 +602,299 @@
       "TaskInstanceGroups.Name",
       "TerminationProtected",
       "UnhealthyNodeReplacement"
+    ],
+    "KerberosAttributes": [
+      "ADDomainJoinPassword",
+      "ADDomainJoinUser",
+      "CrossRealmTrustPrincipalPassword",
+      "KdcAdminPassword",
+      "Realm"
+    ],
+    "ManagedScalingPolicy": [
+      "ComputeLimits",
+      "ComputeLimits.MaximumCapacityUnits",
+      "ComputeLimits.MaximumCoreCapacityUnits",
+      "ComputeLimits.MaximumOnDemandCapacityUnits",
+      "ComputeLimits.MinimumCapacityUnits",
+      "ComputeLimits.UnitType",
+      "ScalingStrategy",
+      "UtilizationPerformanceIndex"
+    ],
+    "Steps": [
+      "ActionOnFailure",
+      "HadoopJarStep",
+      "HadoopJarStep.Args",
+      "HadoopJarStep.Jar",
+      "HadoopJarStep.MainClass",
+      "HadoopJarStep.StepProperties",
+      "HadoopJarStep.StepProperties.Key",
+      "HadoopJarStep.StepProperties.Value",
+      "Name"
+    ],
+    "PlacementGroupConfigs": [
+      "InstanceRole",
+      "PlacementStrategy"
+    ],
+    "Tags": [
+      "Key",
+      "Value"
+    ],
+    "MonitoringConfiguration": [
+      "CloudWatchLogConfiguration",
+      "CloudWatchLogConfiguration.Enabled",
+      "CloudWatchLogConfiguration.EncryptionKeyArn",
+      "CloudWatchLogConfiguration.LogGroupName",
+      "CloudWatchLogConfiguration.LogStreamNamePrefix",
+      "CloudWatchLogConfiguration.LogTypes"
     ]
   },
   "definitionShapes": {
     "#top": {
-      "Steps": "array",
-      "PlacementGroupConfigs": "array",
-      "StepConcurrencyLevel": "scalar",
-      "EbsRootVolumeSize": "scalar",
-      "OSReleaseLabel": "scalar",
-      "Name": "scalar",
-      "ServiceRole": "scalar",
-      "LogUri": "scalar",
-      "BootstrapActions": "array",
       "MasterPublicDNS": "scalar",
-      "Configurations": "array",
-      "ReleaseLabel": "scalar",
-      "Tags": "array",
-      "ManagedScalingPolicy": "object",
-      "LogEncryptionKmsKeyId": "scalar",
-      "AdditionalInfo": "object",
-      "AutoTerminationPolicy": "object",
-      "KerberosAttributes": "object",
+      "AdditionalInfo": "mixed",
       "Applications": "array",
       "AutoScalingRole": "scalar",
+      "AutoTerminationPolicy": "object",
+      "BootstrapActions": "array",
+      "Configurations": "array",
       "CustomAmiId": "scalar",
-      "EbsRootVolumeIops": "scalar",
+      "EbsRootVolumeSize": "scalar",
+      "Id": "scalar",
       "Instances": "object",
-      "ScaleDownBehavior": "scalar",
-      "EbsRootVolumeThroughput": "scalar",
       "JobFlowRole": "scalar",
-      "VisibleToAllUsers": "scalar",
+      "KerberosAttributes": "object",
+      "LogEncryptionKmsKeyId": "scalar",
+      "LogUri": "scalar",
+      "ManagedScalingPolicy": "object",
+      "Name": "scalar",
+      "ReleaseLabel": "scalar",
+      "OSReleaseLabel": "scalar",
+      "ScaleDownBehavior": "scalar",
       "SecurityConfiguration": "scalar",
-      "Id": "scalar"
+      "ServiceRole": "scalar",
+      "StepConcurrencyLevel": "scalar",
+      "Steps": "array",
+      "VisibleToAllUsers": "scalar",
+      "EbsRootVolumeIops": "scalar",
+      "EbsRootVolumeThroughput": "scalar",
+      "PlacementGroupConfigs": "array",
+      "Tags": "array",
+      "MonitoringConfiguration": "object",
+      "SessionEnabled": "scalar"
+    },
+    "Application": {
+      "AdditionalInfo": "object",
+      "Args": "array",
+      "Name": "scalar",
+      "Version": "scalar"
+    },
+    "AutoTerminationPolicy": {
+      "IdleTimeout": "scalar"
+    },
+    "AutoScalingPolicy": {
+      "Constraints": "object",
+      "Rules": "array"
+    },
+    "BootstrapActionConfig": {
+      "Name": "scalar",
+      "ScriptBootstrapAction": "object"
+    },
+    "CloudWatchAlarmDefinition": {
+      "ComparisonOperator": "scalar",
+      "Dimensions": "array",
+      "EvaluationPeriods": "scalar",
+      "MetricName": "scalar",
+      "Namespace": "scalar",
+      "Period": "scalar",
+      "Statistic": "scalar",
+      "Threshold": "scalar",
+      "Unit": "scalar"
+    },
+    "ComputeLimits": {
+      "MaximumCapacityUnits": "scalar",
+      "MaximumCoreCapacityUnits": "scalar",
+      "MaximumOnDemandCapacityUnits": "scalar",
+      "MinimumCapacityUnits": "scalar",
+      "UnitType": "scalar"
+    },
+    "EbsBlockDeviceConfig": {
+      "VolumeSpecification": "object",
+      "VolumesPerInstance": "scalar"
     },
     "EbsConfiguration": {
       "EbsBlockDeviceConfigs": "array",
       "EbsOptimized": "scalar"
     },
-    "KeyValue": {
-      "Value": "scalar",
-      "Key": "scalar"
-    },
-    "Configuration": {
+    "EMRConfiguration": {
+      "Classification": "scalar",
       "ConfigurationProperties": "object",
-      "Configurations": "array",
-      "Classification": "scalar"
+      "Configurations": "array"
     },
-    "OnDemandResizingSpecification": {
-      "CapacityReservationOptions": "object",
-      "AllocationStrategy": "scalar",
-      "TimeoutDurationMinutes": "scalar"
-    },
-    "StepConfig": {
-      "HadoopJarStep": "object",
-      "ActionOnFailure": "scalar",
-      "Name": "scalar"
+    "HadoopJarStepConfig": {
+      "Args": "array",
+      "Jar": "scalar",
+      "MainClass": "scalar",
+      "StepProperties": "array"
     },
     "InstanceFleetConfig": {
-      "TargetOnDemandCapacity": "scalar",
-      "TargetSpotCapacity": "scalar",
+      "InstanceTypeConfigs": "array",
       "LaunchSpecifications": "object",
       "ResizeSpecifications": "object",
-      "InstanceTypeConfigs": "array",
+      "Name": "scalar",
+      "TargetOnDemandCapacity": "scalar",
+      "TargetSpotCapacity": "scalar"
+    },
+    "InstanceFleetProvisioningSpecifications": {
+      "OnDemandSpecification": "object",
+      "SpotSpecification": "object"
+    },
+    "InstanceFleetResizingSpecifications": {
+      "SpotResizeSpecification": "object",
+      "OnDemandResizeSpecification": "object"
+    },
+    "InstanceGroupConfig": {
+      "AutoScalingPolicy": "object",
+      "BidPrice": "scalar",
+      "Configurations": "array",
+      "CustomAmiId": "scalar",
+      "EbsConfiguration": "object",
+      "InstanceCount": "scalar",
+      "InstanceType": "scalar",
+      "Market": "scalar",
       "Name": "scalar"
     },
     "InstanceTypeConfig": {
       "BidPrice": "scalar",
-      "WeightedCapacity": "scalar",
-      "EbsConfiguration": "object",
-      "Priority": "scalar",
       "BidPriceAsPercentageOfOnDemandPrice": "scalar",
-      "CustomAmiId": "scalar",
       "Configurations": "array",
-      "InstanceType": "scalar"
+      "CustomAmiId": "scalar",
+      "EbsConfiguration": "object",
+      "InstanceType": "scalar",
+      "Priority": "scalar",
+      "WeightedCapacity": "scalar"
     },
-    "SpotProvisioningSpecification": {
-      "AllocationStrategy": "scalar",
-      "TimeoutDurationMinutes": "scalar",
-      "TimeoutAction": "scalar",
-      "BlockDurationMinutes": "scalar"
+    "JobFlowInstancesConfig": {
+      "AdditionalMasterSecurityGroups": "array",
+      "AdditionalSlaveSecurityGroups": "array",
+      "Ec2KeyName": "scalar",
+      "Ec2SubnetId": "scalar",
+      "Ec2SubnetIds": "array",
+      "EmrManagedMasterSecurityGroup": "scalar",
+      "EmrManagedSlaveSecurityGroup": "scalar",
+      "HadoopVersion": "scalar",
+      "KeepJobFlowAliveWhenNoSteps": "scalar",
+      "CoreInstanceFleet": "object",
+      "MasterInstanceFleet": "object",
+      "TaskInstanceFleets": "array",
+      "CoreInstanceGroup": "object",
+      "MasterInstanceGroup": "object",
+      "TaskInstanceGroups": "array",
+      "Placement": "object",
+      "ServiceAccessSecurityGroup": "scalar",
+      "TerminationProtected": "scalar",
+      "UnhealthyNodeReplacement": "scalar"
     },
-    "ScriptBootstrapActionConfig": {
-      "Path": "scalar",
-      "Args": "array"
+    "KerberosAttributes": {
+      "ADDomainJoinPassword": "scalar",
+      "ADDomainJoinUser": "scalar",
+      "CrossRealmTrustPrincipalPassword": "scalar",
+      "KdcAdminPassword": "scalar",
+      "Realm": "scalar"
     },
-    "InstanceFleetResizingSpecifications": {
-      "OnDemandResizeSpecification": "object",
-      "SpotResizeSpecification": "object"
-    },
-    "InstanceFleetProvisioningSpecifications": {
-      "SpotSpecification": "object",
-      "OnDemandSpecification": "object"
-    },
-    "SimpleScalingPolicyConfiguration": {
-      "ScalingAdjustment": "scalar",
-      "CoolDown": "scalar",
-      "AdjustmentType": "scalar"
-    },
-    "PlacementGroupConfig": {
-      "InstanceRole": "scalar",
-      "PlacementStrategy": "scalar"
-    },
-    "OnDemandProvisioningSpecification": {
-      "CapacityReservationOptions": "object",
-      "AllocationStrategy": "scalar"
-    },
-    "ScalingTrigger": {
-      "CloudWatchAlarmDefinition": "object"
+    "KeyValue": {
+      "Key": "scalar",
+      "Value": "scalar"
     },
     "ManagedScalingPolicy": {
       "UtilizationPerformanceIndex": "scalar",
       "ScalingStrategy": "scalar",
       "ComputeLimits": "object"
     },
-    "InstanceGroupConfig": {
-      "AutoScalingPolicy": "object",
-      "BidPrice": "scalar",
-      "InstanceCount": "scalar",
-      "EbsConfiguration": "object",
-      "CustomAmiId": "scalar",
-      "Configurations": "array",
-      "InstanceType": "scalar",
-      "Market": "scalar",
-      "Name": "scalar"
+    "MonitoringConfiguration": {
+      "CloudWatchLogConfiguration": "object"
     },
-    "HadoopJarStepConfig": {
-      "Args": "array",
-      "MainClass": "scalar",
-      "Jar": "scalar",
-      "StepProperties": "array"
+    "CloudWatchLogConfiguration": {
+      "Enabled": "scalar",
+      "LogGroupName": "scalar",
+      "LogStreamNamePrefix": "scalar",
+      "EncryptionKeyArn": "scalar",
+      "LogTypes": "object"
     },
-    "VolumeSpecification": {
-      "SizeInGB": "scalar",
-      "Throughput": "scalar",
-      "VolumeType": "scalar",
-      "Iops": "scalar"
+    "MetricDimension": {
+      "Key": "scalar",
+      "Value": "scalar"
     },
-    "CloudWatchAlarmDefinition": {
-      "MetricName": "scalar",
-      "ComparisonOperator": "scalar",
-      "Statistic": "scalar",
-      "Dimensions": "array",
-      "Period": "scalar",
-      "EvaluationPeriods": "scalar",
-      "Unit": "scalar",
-      "Namespace": "scalar",
-      "Threshold": "scalar"
+    "OnDemandProvisioningSpecification": {
+      "AllocationStrategy": "scalar",
+      "CapacityReservationOptions": "object"
     },
-    "AutoTerminationPolicy": {
-      "IdleTimeout": "scalar"
+    "OnDemandResizingSpecification": {
+      "TimeoutDurationMinutes": "scalar",
+      "AllocationStrategy": "scalar",
+      "CapacityReservationOptions": "object"
     },
-    "KerberosAttributes": {
-      "KdcAdminPassword": "scalar",
-      "Realm": "scalar",
-      "ADDomainJoinPassword": "scalar",
-      "ADDomainJoinUser": "scalar",
-      "CrossRealmTrustPrincipalPassword": "scalar"
+    "SpotResizingSpecification": {
+      "TimeoutDurationMinutes": "scalar",
+      "AllocationStrategy": "scalar"
     },
-    "JobFlowInstancesConfig": {
-      "MasterInstanceFleet": "object",
-      "AdditionalSlaveSecurityGroups": "array",
-      "CoreInstanceFleet": "object",
-      "CoreInstanceGroup": "object",
-      "Ec2SubnetIds": "array",
-      "HadoopVersion": "scalar",
-      "TerminationProtected": "scalar",
-      "UnhealthyNodeReplacement": "scalar",
-      "KeepJobFlowAliveWhenNoSteps": "scalar",
-      "Ec2KeyName": "scalar",
-      "MasterInstanceGroup": "object",
-      "Placement": "object",
-      "TaskInstanceFleets": "array",
-      "Ec2SubnetId": "scalar",
-      "TaskInstanceGroups": "array",
-      "ServiceAccessSecurityGroup": "scalar",
-      "EmrManagedSlaveSecurityGroup": "scalar",
-      "AdditionalMasterSecurityGroups": "array",
-      "EmrManagedMasterSecurityGroup": "scalar"
+    "OnDemandCapacityReservationOptions": {
+      "CapacityReservationPreference": "scalar",
+      "CapacityReservationResourceGroupArn": "scalar",
+      "UsageStrategy": "scalar"
     },
     "ScalingAction": {
       "Market": "scalar",
       "SimpleScalingPolicyConfiguration": "object"
     },
-    "EbsBlockDeviceConfig": {
-      "VolumeSpecification": "object",
-      "VolumesPerInstance": "scalar"
+    "ScalingConstraints": {
+      "MaxCapacity": "scalar",
+      "MinCapacity": "scalar"
     },
     "ScalingRule": {
       "Action": "object",
       "Description": "scalar",
-      "Trigger": "object",
-      "Name": "scalar"
+      "Name": "scalar",
+      "Trigger": "object"
     },
-    "ComputeLimits": {
-      "MaximumOnDemandCapacityUnits": "scalar",
-      "MaximumCapacityUnits": "scalar",
-      "MaximumCoreCapacityUnits": "scalar",
-      "MinimumCapacityUnits": "scalar",
-      "UnitType": "scalar"
+    "ScalingTrigger": {
+      "CloudWatchAlarmDefinition": "object"
     },
-    "MetricDimension": {
-      "Value": "scalar",
-      "Key": "scalar"
+    "ScriptBootstrapActionConfig": {
+      "Args": "array",
+      "Path": "scalar"
     },
-    "BootstrapActionConfig": {
-      "ScriptBootstrapAction": "object",
-      "Name": "scalar"
+    "SimpleScalingPolicyConfiguration": {
+      "AdjustmentType": "scalar",
+      "CoolDown": "scalar",
+      "ScalingAdjustment": "scalar"
     },
-    "SpotResizingSpecification": {
+    "SpotProvisioningSpecification": {
       "AllocationStrategy": "scalar",
+      "BlockDurationMinutes": "scalar",
+      "TimeoutAction": "scalar",
       "TimeoutDurationMinutes": "scalar"
     },
-    "AutoScalingPolicy": {
-      "Rules": "array",
-      "Constraints": "object"
+    "StepConfig": {
+      "ActionOnFailure": "scalar",
+      "HadoopJarStep": "object",
+      "Name": "scalar"
     },
-    "OnDemandCapacityReservationOptions": {
-      "UsageStrategy": "scalar",
-      "CapacityReservationResourceGroupArn": "scalar",
-      "CapacityReservationPreference": "scalar"
+    "PlacementGroupConfig": {
+      "InstanceRole": "scalar",
+      "PlacementStrategy": "scalar"
     },
     "PlacementType": {
       "AvailabilityZone": "scalar"
     },
-    "ScalingConstraints": {
-      "MinCapacity": "scalar",
-      "MaxCapacity": "scalar"
-    },
     "Tag": {
-      "Value": "scalar",
-      "Key": "scalar"
+      "Key": "scalar",
+      "Value": "scalar"
     },
-    "Application": {
-      "AdditionalInfo": "object",
-      "Args": "array",
-      "Version": "scalar",
-      "Name": "scalar"
+    "VolumeSpecification": {
+      "Iops": "scalar",
+      "SizeInGB": "scalar",
+      "Throughput": "scalar",
+      "VolumeType": "scalar"
     }
   },
   "definitionRequired": {
@@ -866,42 +904,13 @@
       "Name",
       "ServiceRole"
     ],
-    "StepConfig": [
-      "HadoopJarStep",
-      "Name"
+    "AutoScalingPolicy": [
+      "Constraints",
+      "Rules"
     ],
-    "InstanceTypeConfig": [
-      "InstanceType"
-    ],
-    "SpotProvisioningSpecification": [
-      "TimeoutAction",
-      "TimeoutDurationMinutes"
-    ],
-    "ScriptBootstrapActionConfig": [
-      "Path"
-    ],
-    "SimpleScalingPolicyConfiguration": [
-      "ScalingAdjustment"
-    ],
-    "PlacementGroupConfig": [
-      "InstanceRole"
-    ],
-    "OnDemandProvisioningSpecification": [
-      "AllocationStrategy"
-    ],
-    "ScalingTrigger": [
-      "CloudWatchAlarmDefinition"
-    ],
-    "InstanceGroupConfig": [
-      "InstanceCount",
-      "InstanceType"
-    ],
-    "HadoopJarStepConfig": [
-      "Jar"
-    ],
-    "VolumeSpecification": [
-      "SizeInGB",
-      "VolumeType"
+    "BootstrapActionConfig": [
+      "Name",
+      "ScriptBootstrapAction"
     ],
     "CloudWatchAlarmDefinition": [
       "ComparisonOperator",
@@ -909,48 +918,80 @@
       "Period",
       "Threshold"
     ],
+    "ComputeLimits": [
+      "MaximumCapacityUnits",
+      "MinimumCapacityUnits",
+      "UnitType"
+    ],
+    "EbsBlockDeviceConfig": [
+      "VolumeSpecification"
+    ],
+    "HadoopJarStepConfig": [
+      "Jar"
+    ],
+    "InstanceGroupConfig": [
+      "InstanceCount",
+      "InstanceType"
+    ],
+    "InstanceTypeConfig": [
+      "InstanceType"
+    ],
     "KerberosAttributes": [
       "KdcAdminPassword",
       "Realm"
     ],
+    "CloudWatchLogConfiguration": [
+      "Enabled"
+    ],
+    "MetricDimension": [
+      "Key",
+      "Value"
+    ],
+    "OnDemandProvisioningSpecification": [
+      "AllocationStrategy"
+    ],
     "ScalingAction": [
       "SimpleScalingPolicyConfiguration"
     ],
-    "EbsBlockDeviceConfig": [
-      "VolumeSpecification"
+    "ScalingConstraints": [
+      "MaxCapacity",
+      "MinCapacity"
     ],
     "ScalingRule": [
       "Action",
       "Name",
       "Trigger"
     ],
-    "ComputeLimits": [
-      "MaximumCapacityUnits",
-      "MinimumCapacityUnits",
-      "UnitType"
+    "ScalingTrigger": [
+      "CloudWatchAlarmDefinition"
     ],
-    "MetricDimension": [
-      "Key",
-      "Value"
+    "ScriptBootstrapActionConfig": [
+      "Path"
     ],
-    "BootstrapActionConfig": [
-      "Name",
-      "ScriptBootstrapAction"
+    "SimpleScalingPolicyConfiguration": [
+      "ScalingAdjustment"
     ],
-    "AutoScalingPolicy": [
-      "Constraints",
-      "Rules"
+    "SpotProvisioningSpecification": [
+      "TimeoutAction",
+      "TimeoutDurationMinutes"
+    ],
+    "StepConfig": [
+      "HadoopJarStep",
+      "Name"
+    ],
+    "PlacementGroupConfig": [
+      "InstanceRole"
     ],
     "PlacementType": [
       "AvailabilityZone"
     ],
-    "ScalingConstraints": [
-      "MaxCapacity",
-      "MinCapacity"
-    ],
     "Tag": [
       "Key",
       "Value"
+    ],
+    "VolumeSpecification": [
+      "SizeInGB",
+      "VolumeType"
     ]
   },
   "nestedRequired": {
@@ -1152,6 +1193,9 @@
       "MaximumCapacityUnits",
       "MinimumCapacityUnits",
       "UnitType"
+    ],
+    "MonitoringConfiguration.CloudWatchLogConfiguration": [
+      "Enabled"
     ],
     "PlacementGroupConfigs": [
       "InstanceRole"
