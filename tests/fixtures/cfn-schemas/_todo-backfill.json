@@ -41,9 +41,11 @@
     ],
     "AWS::CloudTrail::Trail": [
       "AdvancedEventSelectors",
-      "AggregationConfigurations"
+      "AggregationConfigurations",
+      "RecursiveLogging"
     ],
     "AWS::CloudWatch::Alarm": [
+      "ActionConfiguration",
       "EvaluationWindow",
       "WarmUpConfiguration"
     ],
@@ -84,6 +86,7 @@
       "MultiRegionConsistency",
       "ReadOnDemandThroughputSettings",
       "ReadProvisionedThroughputSettings",
+      "TableType",
       "VectorIndexes",
       "WarmThroughput"
     ],
@@ -143,10 +146,20 @@
     "AWS::EC2::VPCGatewayAttachment": [
       "VpnGatewayId"
     ],
+    "AWS::ECS::Service": [
+      "GatewayConnectors"
+    ],
+    "AWS::ECS::TaskDefinition": [
+      "TrustedExecutionConfiguration"
+    ],
     "AWS::EFS::MountTarget": [
       "IpAddress",
       "IpAddressType",
       "Ipv6Address"
+    ],
+    "AWS::EMR::Cluster": [
+      "MonitoringConfiguration",
+      "SessionEnabled"
     ],
     "AWS::ElastiCache::CacheCluster": [
       "SnapshotArns"
@@ -158,6 +171,7 @@
       "Tags"
     ],
     "AWS::Kinesis::Stream": [
+      "RecordDistributionStrategy",
       "WarmThroughputMiBps"
     ],
     "AWS::KinesisFirehose::DeliveryStream": [
@@ -170,6 +184,9 @@
     "AWS::Lambda::Function": [
       "CapacityProviderConfig",
       "FunctionScalingConfig"
+    ],
+    "AWS::Lambda::MicrovmImage": [
+      "KmsKeyIdentifier"
     ],
     "AWS::Neptune::DBCluster": [
       "AssociatedRoles",
@@ -230,7 +247,8 @@
       "SourceDbClusterResourceId",
       "SourceRegion",
       "StorageType",
-      "UseLatestRestorableTime"
+      "UseLatestRestorableTime",
+      "WithExpressConfiguration"
     ],
     "AWS::RDS::DBInstance": [
       "AdditionalStorageVolumes",
@@ -301,6 +319,12 @@
     "AWS::RDS::DBProxyEndpoint": [
       "EndpointNetworkType"
     ],
+    "AWS::RDS::DBProxyTargetGroup": [
+      "Tags"
+    ],
+    "AWS::Route53::HostedZone": [
+      "DelegationSetId"
+    ],
     "AWS::S3::Bucket": [
       "AbacStatus",
       "BucketNamePrefix",
@@ -323,6 +347,7 @@
     ],
     "AWS::S3Tables::TableBucket": [
       "EncryptionConfiguration",
+      "LoggingConfiguration",
       "MetricsConfiguration",
       "ReplicationConfiguration",
       "StorageClassConfiguration",
