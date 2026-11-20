@@ -1,7 +1,8 @@
 {
   "resourceType": "AWS::Route53::HostedZone",
-  "generatedAt": "2026-09-23",
+  "generatedAt": "2026-11-20",
   "properties": [
+    "DelegationSetId",
     "HostedZoneConfig",
     "HostedZoneFeatures",
     "HostedZoneTags",
@@ -16,9 +17,13 @@
     "NameServers"
   ],
   "createOnlyProperties": [
+    "DelegationSetId",
     "Name"
   ],
   "createOnlyPropertyPaths": [
+    [
+      "DelegationSetId"
+    ],
     [
       "Name"
     ]
@@ -36,10 +41,17 @@
       "VPCRegion"
     ],
     "HostedZoneFeatures": [
-      "EnableAcceleratedRecovery"
+      "ChangeGuardrails",
+      "ChangeHistory",
+      "EnableAcceleratedRecovery",
+      "EnablePublicDNSFallback",
+      "Name",
+      "RetentionStartsAt",
+      "Status"
     ],
     "HostedZoneConfig": [
-      "Comment"
+      "Comment",
+      "HostedZoneTier"
     ],
     "QueryLoggingConfig": [
       "CloudWatchLogsLogGroupArn"
@@ -55,10 +67,18 @@
       "VPCRegion"
     ],
     "HostedZoneFeatures": [
-      "EnableAcceleratedRecovery"
+      "ChangeGuardrails",
+      "ChangeGuardrails.Name",
+      "ChangeGuardrails.Status",
+      "ChangeHistory",
+      "ChangeHistory.RetentionStartsAt",
+      "ChangeHistory.Status",
+      "EnableAcceleratedRecovery",
+      "EnablePublicDNSFallback"
     ],
     "HostedZoneConfig": [
-      "Comment"
+      "Comment",
+      "HostedZoneTier"
     ],
     "QueryLoggingConfig": [
       "CloudWatchLogsLogGroupArn"
@@ -66,6 +86,7 @@
   },
   "definitionShapes": {
     "#top": {
+      "DelegationSetId": "scalar",
       "HostedZoneTags": "array",
       "VPCs": "array",
       "HostedZoneFeatures": "object",
@@ -75,8 +96,15 @@
       "QueryLoggingConfig": "object",
       "Name": "scalar"
     },
+    "ChangeHistory": {
+      "Status": "scalar",
+      "RetentionStartsAt": "scalar"
+    },
     "HostedZoneFeatures": {
-      "EnableAcceleratedRecovery": "scalar"
+      "ChangeHistory": "object",
+      "EnableAcceleratedRecovery": "scalar",
+      "EnablePublicDNSFallback": "scalar",
+      "ChangeGuardrails": "array"
     },
     "HostedZoneTag": {
       "Value": "scalar",
@@ -86,8 +114,13 @@
       "VPCRegion": "scalar",
       "VPCId": "scalar"
     },
+    "ChangeGuardrail": {
+      "Status": "scalar",
+      "Name": "scalar"
+    },
     "HostedZoneConfig": {
-      "Comment": "scalar"
+      "Comment": "scalar",
+      "HostedZoneTier": "scalar"
     },
     "QueryLoggingConfig": {
       "CloudWatchLogsLogGroupArn": "scalar"
@@ -102,11 +135,19 @@
       "VPCId",
       "VPCRegion"
     ],
+    "ChangeGuardrail": [
+      "Name",
+      "Status"
+    ],
     "QueryLoggingConfig": [
       "CloudWatchLogsLogGroupArn"
     ]
   },
   "nestedRequired": {
+    "HostedZoneFeatures.ChangeGuardrails": [
+      "Name",
+      "Status"
+    ],
     "HostedZoneTags": [
       "Key",
       "Value"

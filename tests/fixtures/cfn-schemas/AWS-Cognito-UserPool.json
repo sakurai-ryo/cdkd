@@ -1,12 +1,13 @@
 {
   "resourceType": "AWS::Cognito::UserPool",
-  "generatedAt": "2026-09-23",
+  "generatedAt": "2026-11-20",
   "properties": [
     "AccountRecoverySetting",
     "AdminCreateUserConfig",
     "AliasAttributes",
     "Arn",
     "AutoVerifiedAttributes",
+    "DcrConfiguration",
     "DeletionProtection",
     "DeviceConfiguration",
     "EmailAuthenticationMessage",
@@ -154,6 +155,13 @@
       "AdvancedSecurityMode",
       "CustomAuthMode"
     ],
+    "DcrConfiguration": [
+      "AllowedScopes",
+      "AuthenticatedGrantTypes",
+      "EnableStatus",
+      "OpenDcrEnabled",
+      "OpenDcrGrantTypes"
+    ],
     "IssuerConfiguration": [
       "Type"
     ]
@@ -269,6 +277,13 @@
       "AdvancedSecurityAdditionalFlows.CustomAuthMode",
       "AdvancedSecurityMode"
     ],
+    "DcrConfiguration": [
+      "AllowedScopes",
+      "AuthenticatedGrantTypes",
+      "EnableStatus",
+      "OpenDcrEnabled",
+      "OpenDcrGrantTypes"
+    ],
     "IssuerConfiguration": [
       "Type"
     ]
@@ -305,6 +320,7 @@
       "UserPoolTags": "object",
       "VerificationMessageTemplate": "object",
       "UserPoolAddOns": "object",
+      "DcrConfiguration": "object",
       "ProviderName": "scalar",
       "ProviderURL": "scalar",
       "Arn": "scalar",
@@ -445,6 +461,13 @@
     "KeyConfiguration": {
       "KeyType": "scalar",
       "KmsKeyArn": "scalar"
+    },
+    "DcrConfiguration": {
+      "EnableStatus": "scalar",
+      "OpenDcrEnabled": "scalar",
+      "AuthenticatedGrantTypes": "array",
+      "OpenDcrGrantTypes": "array",
+      "AllowedScopes": "array"
     },
     "IssuerConfiguration": {
       "Type": "scalar"
