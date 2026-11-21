@@ -14,6 +14,14 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
   ReadonlyMap<string, readonly string[]>
 >([
   [
+    'AWS::ApiGateway::Authorizer',
+    new Map<string, readonly string[]>([
+      ['JwtConfiguration', ['DefaultAlgorithms', 'Issuers']],
+      ['JwtConfiguration.Issuers', ['Audiences', 'Issuer']],
+      ['JwtConfiguration.Issuers.AdditionalClaims', ['ClaimName', 'Format']],
+    ]),
+  ],
+  [
     'AWS::ApiGateway::Deployment',
     new Map<string, readonly string[]>([['StageDescription.Tags', ['Key', 'Value']]]),
   ],
@@ -106,10 +114,25 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
     new Map<string, readonly string[]>([
       ['EvaluatorConfig.CodeBased', ['LambdaConfig']],
       ['EvaluatorConfig.CodeBased.LambdaConfig', ['LambdaArn']],
+      ['EvaluatorConfig.Derived', ['BaseEvaluatorId', 'ModelConfig']],
+      ['EvaluatorConfig.Derived.ModelConfig.BedrockEvaluatorModelConfig', ['ModelId']],
+      ['EvaluatorConfig.Derived.ModelConfig.ResponsesEvaluatorModelConfig', ['ModelId']],
       ['EvaluatorConfig.LlmAsAJudge', ['Instructions', 'ModelConfig', 'RatingScale']],
       ['EvaluatorConfig.LlmAsAJudge.ModelConfig.BedrockEvaluatorModelConfig', ['ModelId']],
       ['EvaluatorConfig.LlmAsAJudge.ModelConfig.ResponsesEvaluatorModelConfig', ['ModelId']],
       ['EvaluatorConfig.LlmAsAJudge.RatingScale.Categorical', ['Definition', 'Label']],
+      [
+        'EvaluatorConfig.LlmAsAJudge.RatingScale.MultiDimensional',
+        ['DimensionInstruction', 'DimensionName', 'DimensionRatingScale'],
+      ],
+      [
+        'EvaluatorConfig.LlmAsAJudge.RatingScale.MultiDimensional.DimensionRatingScale.Categorical',
+        ['Definition', 'Label'],
+      ],
+      [
+        'EvaluatorConfig.LlmAsAJudge.RatingScale.MultiDimensional.DimensionRatingScale.Numerical',
+        ['Definition', 'Label', 'Value'],
+      ],
       ['EvaluatorConfig.LlmAsAJudge.RatingScale.Numerical', ['Definition', 'Label', 'Value']],
       ['Tags', ['Key', 'Value']],
     ]),
@@ -142,8 +165,12 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
       ['FilesystemConfigurations.EfsAccessPoint', ['AccessPointArn', 'MountPath']],
       ['FilesystemConfigurations.S3FilesAccessPoint', ['AccessPointArn', 'MountPath']],
       ['FilesystemConfigurations.SessionStorage', ['MountPath']],
+      ['HooksConfiguration.Build.Warmup', ['Action']],
+      ['HooksConfiguration.Build.Warmup.Action', ['HttpPost']],
+      ['HooksConfiguration.Build.Warmup.Action.HttpPost', ['Path']],
       ['NetworkConfiguration', ['NetworkMode']],
       ['NetworkConfiguration.NetworkModeConfig', ['SecurityGroups', 'Subnets']],
+      ['ResourceConfigurations', ['MinimumMemoryInMiB']],
       ['WorkloadIdentityDetails', ['WorkloadIdentityArn']],
     ]),
   ],
@@ -239,6 +266,7 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
   [
     'AWS::CloudWatch::Alarm',
     new Map<string, readonly string[]>([
+      ['ActionConfiguration.AlarmTagsPropagation', ['Enabled']],
       ['Dimensions', ['Name', 'Value']],
       ['Metrics', ['Id']],
       ['Metrics.MetricStat', ['Metric', 'Period', 'Stat']],
@@ -285,6 +313,7 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
       ['Source.Auth', ['Type']],
       ['Source.GitSubmodulesConfig', ['FetchSubmodules']],
       ['Tags', ['Key', 'Value']],
+      ['Triggers.FilterGroups', ['Pattern', 'Type']],
       ['Triggers.PullRequestBuildPolicy', ['RequiresCommentApproval']],
       ['Triggers.ScopeConfiguration', ['Name']],
     ]),
@@ -489,6 +518,7 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
       ],
       ['DeploymentConfiguration.LifecycleHooks', ['LifecycleStages']],
       ['ForceNewDeployment', ['EnableForceNewDeployment']],
+      ['GatewayConnectors', ['PortName']],
       ['LoadBalancers.AdvancedConfiguration', ['AlternateTargetGroupArn']],
       ['Monitoring', ['MetricConfigurations']],
       ['Monitoring.MetricConfigurations', ['MetricNames', 'ResolutionSeconds']],
@@ -519,11 +549,14 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
       ['ContainerDefinitions.LinuxParameters.Tmpfs', ['Size']],
       ['ContainerDefinitions.LogConfiguration', ['LogDriver']],
       ['ContainerDefinitions.LogConfiguration.SecretOptions', ['Name', 'ValueFrom']],
-      ['ContainerDefinitions.ResourceRequirements', ['Type', 'Value']],
+      ['ContainerDefinitions.ResourceRequirements', ['Type']],
+      ['ContainerDefinitions.ResourceRequirements.SharingStrategy', ['NvidiaMps']],
+      ['ContainerDefinitions.ResourceRequirements.SharingStrategy.NvidiaMps', ['Memory']],
       ['ContainerDefinitions.Secrets', ['Name', 'ValueFrom']],
       ['ContainerDefinitions.Ulimits', ['HardLimit', 'Name', 'SoftLimit']],
       ['PlacementConstraints', ['Type']],
       ['ProxyConfiguration', ['ContainerName']],
+      ['TrustedExecutionConfiguration', ['IsolationMode']],
       ['Volumes.EFSVolumeConfiguration', ['FilesystemId']],
       ['Volumes.FSxWindowsFileServerVolumeConfiguration', ['FileSystemId', 'RootDirectory']],
       [
@@ -761,6 +794,7 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
         'ManagedScalingPolicy.ComputeLimits',
         ['MaximumCapacityUnits', 'MinimumCapacityUnits', 'UnitType'],
       ],
+      ['MonitoringConfiguration.CloudWatchLogConfiguration', ['Enabled']],
       ['PlacementGroupConfigs', ['InstanceRole']],
       ['Steps', ['HadoopJarStep', 'Name']],
       ['Steps.HadoopJarStep', ['Jar']],
@@ -1109,6 +1143,7 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
   [
     'AWS::Lambda::Function',
     new Map<string, readonly string[]>([
+      ['AcceleratorConfig', ['AcceleratorMemorySize']],
       ['CapacityProviderConfig', ['LambdaManagedInstancesCapacityProviderConfig']],
       [
         'CapacityProviderConfig.LambdaManagedInstancesCapacityProviderConfig',
@@ -1117,6 +1152,7 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
       ['DurableConfig', ['ExecutionTimeout']],
       ['EphemeralStorage', ['Size']],
       ['FileSystemConfigs', ['Arn', 'LocalMountPath']],
+      ['RuntimeConfig', ['RuntimeAlias', 'RuntimeArn']],
       ['RuntimeManagementConfig', ['UpdateRuntimeOn']],
       ['SnapStart', ['ApplyOn']],
       ['Tags', ['Key']],
@@ -1162,10 +1198,12 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
       ['Tags', ['Key']],
     ]),
   ],
+  ['AWS::RDS::DBProxyTargetGroup', new Map<string, readonly string[]>([['Tags', ['Key']]])],
   ['AWS::RDS::DBSubnetGroup', new Map<string, readonly string[]>([['Tags', ['Key']]])],
   [
     'AWS::Route53::HostedZone',
     new Map<string, readonly string[]>([
+      ['HostedZoneFeatures.ChangeGuardrails', ['Name', 'Status']],
       ['HostedZoneTags', ['Key', 'Value']],
       ['QueryLoggingConfig', ['CloudWatchLogsLogGroupArn']],
       ['VPCs', ['VPCId', 'VPCRegion']],
@@ -1174,6 +1212,7 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
   [
     'AWS::Route53::RecordSet',
     new Map<string, readonly string[]>([
+      ['AZAffinity', ['LocationId', 'LocationType']],
       ['AliasTarget', ['DNSName', 'HostedZoneId']],
       ['CidrRoutingConfig', ['CollectionId', 'LocationName']],
     ]),
@@ -1314,6 +1353,9 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
   [
     'AWS::S3Tables::TableBucket',
     new Map<string, readonly string[]>([
+      ['LoggingConfiguration', ['TargetBucket', 'TargetObjectKeyFormat', 'TargetPrefix']],
+      ['LoggingConfiguration.TargetObjectKeyFormat', ['PartitionedPrefix']],
+      ['LoggingConfiguration.TargetObjectKeyFormat.PartitionedPrefix', ['PartitionDateSource']],
       ['ReplicationConfiguration', ['Role', 'Rules']],
       ['ReplicationConfiguration.Rules', ['Destinations']],
       ['ReplicationConfiguration.Rules.Destinations', ['DestinationTableBucketARN']],
@@ -1333,6 +1375,7 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
       ['Target.EcsParameters.CapacityProviderStrategy', ['CapacityProvider']],
       ['Target.EcsParameters.NetworkConfiguration.AwsvpcConfiguration', ['Subnets']],
       ['Target.EventBridgeParameters', ['DetailType', 'Source']],
+      ['Target.EventBridgePutEventsV2Parameters', ['DetailType', 'Source']],
       ['Target.KinesisParameters', ['PartitionKey']],
       ['Target.SageMakerPipelineParameters.PipelineParameterList', ['Name', 'Value']],
     ]),
@@ -1396,6 +1439,9 @@ export const NESTED_REQUIRED: ReadonlyMap<string, ReadonlyMap<string, readonly s
       ['DefaultAction.Allow.CustomRequestHandling.InsertHeaders', ['Name', 'Value']],
       ['DefaultAction.Block.CustomResponse', ['ResponseCode']],
       ['DefaultAction.Block.CustomResponse.ResponseHeaders', ['Name', 'Value']],
+      ['MonetizationConfig.ConnectedAccountConfigs', ['ConnectedAccountArn', 'PaymentNetworks']],
+      ['MonetizationConfig.ConnectedAccountConfigs.PaymentNetworks', ['Chain', 'Prices']],
+      ['MonetizationConfig.ConnectedAccountConfigs.PaymentNetworks.Prices', ['Amount', 'Currency']],
       ['MonetizationConfig.CryptoConfig', ['PaymentNetworks']],
       ['MonetizationConfig.CryptoConfig.PaymentNetworks', ['Chain', 'Prices', 'WalletAddress']],
       ['MonetizationConfig.CryptoConfig.PaymentNetworks.Prices', ['Amount', 'Currency']],

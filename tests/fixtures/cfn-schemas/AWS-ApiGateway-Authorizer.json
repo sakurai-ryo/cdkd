@@ -1,6 +1,6 @@
 {
   "resourceType": "AWS::ApiGateway::Authorizer",
-  "generatedAt": "2026-08-13",
+  "generatedAt": "2026-11-21",
   "properties": [
     "AuthType",
     "AuthorizerCredentials",
@@ -9,6 +9,7 @@
     "AuthorizerUri",
     "IdentitySource",
     "IdentityValidationExpression",
+    "JwtConfiguration",
     "Name",
     "ProviderARNs",
     "RestApiId",
@@ -29,6 +30,32 @@
     "AuthorizerId",
     "RestApiId"
   ],
+  "nestedProperties": {
+    "JwtConfiguration": [
+      "AdditionalClaims",
+      "Audiences",
+      "ClaimName",
+      "DefaultAlgorithms",
+      "ExpectedValues",
+      "Format",
+      "Issuer",
+      "Issuers",
+      "Required"
+    ]
+  },
+  "nestedPropertyPaths": {
+    "JwtConfiguration": [
+      "DefaultAlgorithms",
+      "Issuers",
+      "Issuers.AdditionalClaims",
+      "Issuers.AdditionalClaims.ClaimName",
+      "Issuers.AdditionalClaims.ExpectedValues",
+      "Issuers.AdditionalClaims.Format",
+      "Issuers.AdditionalClaims.Required",
+      "Issuers.Audiences",
+      "Issuers.Issuer"
+    ]
+  },
   "definitionShapes": {
     "#top": {
       "RestApiId": "scalar",
@@ -41,7 +68,23 @@
       "IdentityValidationExpression": "scalar",
       "Name": "scalar",
       "ProviderARNs": "array",
-      "Type": "scalar"
+      "Type": "scalar",
+      "JwtConfiguration": "object"
+    },
+    "JwtConfiguration": {
+      "Issuers": "array",
+      "DefaultAlgorithms": "array"
+    },
+    "JwtIssuer": {
+      "Issuer": "scalar",
+      "Audiences": "array",
+      "AdditionalClaims": "array"
+    },
+    "JwtAdditionalClaim": {
+      "ClaimName": "scalar",
+      "Format": "scalar",
+      "Required": "scalar",
+      "ExpectedValues": "array"
     }
   },
   "definitionRequired": {
@@ -49,6 +92,32 @@
       "Name",
       "RestApiId",
       "Type"
+    ],
+    "JwtConfiguration": [
+      "DefaultAlgorithms",
+      "Issuers"
+    ],
+    "JwtIssuer": [
+      "Audiences",
+      "Issuer"
+    ],
+    "JwtAdditionalClaim": [
+      "ClaimName",
+      "Format"
+    ]
+  },
+  "nestedRequired": {
+    "JwtConfiguration": [
+      "DefaultAlgorithms",
+      "Issuers"
+    ],
+    "JwtConfiguration.Issuers": [
+      "Audiences",
+      "Issuer"
+    ],
+    "JwtConfiguration.Issuers.AdditionalClaims": [
+      "ClaimName",
+      "Format"
     ]
   }
 }
