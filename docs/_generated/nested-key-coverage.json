@@ -1,16 +1,16 @@
 {
   "summary": {
     "targetCount": 24,
-    "nestedKeyCount": 1223,
-    "sameSpelling": 1131,
+    "nestedKeyCount": 1241,
+    "sameSpelling": 1138,
     "providerHandled": 71,
     "allowListed": 21,
     "caseDivergence": 0,
-    "noSdkMember": 0,
-    "noWriteEvidence": 0,
+    "noSdkMember": 10,
+    "noWriteEvidence": 1,
     "freshObjectTargets": 15,
-    "shapeClean": 148,
-    "shapeHandled": 40,
+    "shapeClean": 149,
+    "shapeHandled": 41,
     "shapeAllowListed": 9,
     "arrayVsWrapper": 0,
     "definitionMemberMissing": 0,
@@ -815,7 +815,7 @@
       "sdkClientPackage": "@aws-sdk/client-cloudfront",
       "keyStyle": "exact",
       "freshObjectMapper": true,
-      "nestedKeyCount": 173,
+      "nestedKeyCount": 175,
       "entries": [
         {
           "resourceType": "AWS::CloudFront::Distribution",
@@ -1640,6 +1640,13 @@
         },
         {
           "resourceType": "AWS::CloudFront::Distribution",
+          "nestedKey": "DistributionConfig.Origins.CustomOriginConfig.OriginHttpVersion",
+          "topLevelProperty": "DistributionConfig",
+          "terminalKey": "OriginHttpVersion",
+          "bucket": "no-sdk-member"
+        },
+        {
+          "resourceType": "AWS::CloudFront::Distribution",
           "nestedKey": "DistributionConfig.Origins.CustomOriginConfig.OriginKeepaliveTimeout",
           "topLevelProperty": "DistributionConfig",
           "terminalKey": "OriginKeepaliveTimeout",
@@ -1784,6 +1791,13 @@
           "topLevelProperty": "DistributionConfig",
           "terminalKey": "VpcOriginConfig",
           "bucket": "same-spelling"
+        },
+        {
+          "resourceType": "AWS::CloudFront::Distribution",
+          "nestedKey": "DistributionConfig.Origins.VpcOriginConfig.OriginHttpVersion",
+          "topLevelProperty": "DistributionConfig",
+          "terminalKey": "OriginHttpVersion",
+          "bucket": "no-sdk-member"
         },
         {
           "resourceType": "AWS::CloudFront::Distribution",
@@ -2056,6 +2070,54 @@
         },
         {
           "resourceType": "AWS::CloudFront::Distribution",
+          "nestedKey": "Locations",
+          "definition": "GeoRestriction",
+          "pass": "definition",
+          "bucket": "provider-handled",
+          "sdkDetail": "SDK interface `GeoRestriction` has no `Locations` member"
+        },
+        {
+          "resourceType": "AWS::CloudFront::Distribution",
+          "nestedKey": "WhitelistedNames",
+          "definition": "Cookies",
+          "pass": "wrapper",
+          "bucket": "provider-handled",
+          "sdkDetail": "SDK wraps it as `CookieNames` ({ Quantity, Items })"
+        },
+        {
+          "resourceType": "AWS::CloudFront::Distribution",
+          "nestedKey": "FunctionAssociations",
+          "definition": "CacheBehavior",
+          "pass": "wrapper",
+          "bucket": "provider-handled",
+          "sdkDetail": "SDK wraps it as `FunctionAssociations` ({ Quantity, Items })"
+        },
+        {
+          "resourceType": "AWS::CloudFront::Distribution",
+          "nestedKey": "LambdaFunctionAssociations",
+          "definition": "CacheBehavior",
+          "pass": "wrapper",
+          "bucket": "provider-handled",
+          "sdkDetail": "SDK wraps it as `LambdaFunctionAssociations` ({ Quantity, Items })"
+        },
+        {
+          "resourceType": "AWS::CloudFront::Distribution",
+          "nestedKey": "TrustedSigners",
+          "definition": "CacheBehavior",
+          "pass": "wrapper",
+          "bucket": "provider-handled",
+          "sdkDetail": "SDK wraps it as `TrustedSigners` ({ Quantity, Items })"
+        },
+        {
+          "resourceType": "AWS::CloudFront::Distribution",
+          "nestedKey": "TrustedKeyGroups",
+          "definition": "CacheBehavior",
+          "pass": "wrapper",
+          "bucket": "provider-handled",
+          "sdkDetail": "SDK wraps it as `TrustedKeyGroups` ({ Quantity, Items })"
+        },
+        {
+          "resourceType": "AWS::CloudFront::Distribution",
           "nestedKey": "AllowedMethods",
           "definition": "CacheBehavior",
           "pass": "wrapper",
@@ -2080,46 +2142,6 @@
         },
         {
           "resourceType": "AWS::CloudFront::Distribution",
-          "nestedKey": "FunctionAssociations",
-          "definition": "CacheBehavior",
-          "pass": "wrapper",
-          "bucket": "provider-handled",
-          "sdkDetail": "SDK wraps it as `FunctionAssociations` ({ Quantity, Items })"
-        },
-        {
-          "resourceType": "AWS::CloudFront::Distribution",
-          "nestedKey": "LambdaFunctionAssociations",
-          "definition": "CacheBehavior",
-          "pass": "wrapper",
-          "bucket": "provider-handled",
-          "sdkDetail": "SDK wraps it as `LambdaFunctionAssociations` ({ Quantity, Items })"
-        },
-        {
-          "resourceType": "AWS::CloudFront::Distribution",
-          "nestedKey": "TrustedKeyGroups",
-          "definition": "CacheBehavior",
-          "pass": "wrapper",
-          "bucket": "provider-handled",
-          "sdkDetail": "SDK wraps it as `TrustedKeyGroups` ({ Quantity, Items })"
-        },
-        {
-          "resourceType": "AWS::CloudFront::Distribution",
-          "nestedKey": "TrustedSigners",
-          "definition": "CacheBehavior",
-          "pass": "wrapper",
-          "bucket": "provider-handled",
-          "sdkDetail": "SDK wraps it as `TrustedSigners` ({ Quantity, Items })"
-        },
-        {
-          "resourceType": "AWS::CloudFront::Distribution",
-          "nestedKey": "WhitelistedNames",
-          "definition": "Cookies",
-          "pass": "wrapper",
-          "bucket": "provider-handled",
-          "sdkDetail": "SDK wraps it as `CookieNames` ({ Quantity, Items })"
-        },
-        {
-          "resourceType": "AWS::CloudFront::Distribution",
           "nestedKey": "CachedMethods",
           "definition": "DefaultCacheBehavior",
           "pass": "definition",
@@ -2128,11 +2150,11 @@
         },
         {
           "resourceType": "AWS::CloudFront::Distribution",
-          "nestedKey": "Aliases",
+          "nestedKey": "CustomErrorResponses",
           "definition": "DistributionConfig",
           "pass": "wrapper",
           "bucket": "provider-handled",
-          "sdkDetail": "SDK wraps it as `Aliases` ({ Quantity, Items })"
+          "sdkDetail": "SDK wraps it as `CustomErrorResponses` ({ Quantity, Items })"
         },
         {
           "resourceType": "AWS::CloudFront::Distribution",
@@ -2141,14 +2163,6 @@
           "pass": "wrapper",
           "bucket": "provider-handled",
           "sdkDetail": "SDK wraps it as `CacheBehaviors` ({ Quantity, Items })"
-        },
-        {
-          "resourceType": "AWS::CloudFront::Distribution",
-          "nestedKey": "CustomErrorResponses",
-          "definition": "DistributionConfig",
-          "pass": "wrapper",
-          "bucket": "provider-handled",
-          "sdkDetail": "SDK wraps it as `CustomErrorResponses` ({ Quantity, Items })"
         },
         {
           "resourceType": "AWS::CloudFront::Distribution",
@@ -2170,6 +2184,14 @@
         },
         {
           "resourceType": "AWS::CloudFront::Distribution",
+          "nestedKey": "Aliases",
+          "definition": "DistributionConfig",
+          "pass": "wrapper",
+          "bucket": "provider-handled",
+          "sdkDetail": "SDK wraps it as `Aliases` ({ Quantity, Items })"
+        },
+        {
+          "resourceType": "AWS::CloudFront::Distribution",
           "nestedKey": "Headers",
           "definition": "ForwardedValues",
           "pass": "wrapper",
@@ -2183,14 +2205,6 @@
           "pass": "wrapper",
           "bucket": "provider-handled",
           "sdkDetail": "SDK wraps it as `QueryStringCacheKeys` ({ Quantity, Items })"
-        },
-        {
-          "resourceType": "AWS::CloudFront::Distribution",
-          "nestedKey": "Locations",
-          "definition": "GeoRestriction",
-          "pass": "definition",
-          "bucket": "provider-handled",
-          "sdkDetail": "SDK interface `GeoRestriction` has no `Locations` member"
         }
       ],
       "shapeCleanCount": 2,
@@ -2450,7 +2464,7 @@
       "sdkClientPackage": "@aws-sdk/client-codebuild",
       "keyStyle": "lower-first",
       "freshObjectMapper": true,
-      "nestedKeyCount": 98,
+      "nestedKeyCount": 99,
       "entries": [
         {
           "resourceType": "AWS::CodeBuild::Project",
@@ -2542,6 +2556,14 @@
           "topLevelProperty": "BuildBatchConfig",
           "terminalKey": "ComputeTypesAllowed",
           "bucket": "same-spelling"
+        },
+        {
+          "resourceType": "AWS::CodeBuild::Project",
+          "nestedKey": "BuildBatchConfig.Restrictions.FleetsAllowed",
+          "topLevelProperty": "BuildBatchConfig",
+          "terminalKey": "FleetsAllowed",
+          "bucket": "no-write-evidence",
+          "sdkNearMiss": "fleetsAllowed"
         },
         {
           "resourceType": "AWS::CodeBuild::Project",
@@ -3140,7 +3162,7 @@
         }
       ],
       "shapeEntries": [],
-      "shapeCleanCount": 12,
+      "shapeCleanCount": 13,
       "unmatchedDefinitions": [
         "Artifacts",
         "Environment",
@@ -3156,7 +3178,7 @@
       "sdkClientPackage": "@aws-sdk/client-ecs",
       "keyStyle": "lower-first",
       "freshObjectMapper": true,
-      "nestedKeyCount": 118,
+      "nestedKeyCount": 124,
       "entries": [
         {
           "resourceType": "AWS::ECS::Service",
@@ -3605,6 +3627,20 @@
         },
         {
           "resourceType": "AWS::ECS::Service",
+          "nestedKey": "ServiceConnectConfiguration.ContainerConfigurations",
+          "topLevelProperty": "ServiceConnectConfiguration",
+          "terminalKey": "ContainerConfigurations",
+          "bucket": "no-sdk-member"
+        },
+        {
+          "resourceType": "AWS::ECS::Service",
+          "nestedKey": "ServiceConnectConfiguration.ContainerConfigurations.LogLevel",
+          "topLevelProperty": "ServiceConnectConfiguration",
+          "terminalKey": "LogLevel",
+          "bucket": "no-sdk-member"
+        },
+        {
+          "resourceType": "AWS::ECS::Service",
           "nestedKey": "ServiceConnectConfiguration.Enabled",
           "topLevelProperty": "ServiceConnectConfiguration",
           "terminalKey": "Enabled",
@@ -3969,6 +4005,34 @@
         },
         {
           "resourceType": "AWS::ECS::Service",
+          "nestedKey": "VpcLatticeConfigurations.AdvancedConfiguration",
+          "topLevelProperty": "VpcLatticeConfigurations",
+          "terminalKey": "AdvancedConfiguration",
+          "bucket": "same-spelling"
+        },
+        {
+          "resourceType": "AWS::ECS::Service",
+          "nestedKey": "VpcLatticeConfigurations.AdvancedConfiguration.AlternateTargetGroupArn",
+          "topLevelProperty": "VpcLatticeConfigurations",
+          "terminalKey": "AlternateTargetGroupArn",
+          "bucket": "same-spelling"
+        },
+        {
+          "resourceType": "AWS::ECS::Service",
+          "nestedKey": "VpcLatticeConfigurations.AdvancedConfiguration.ProductionListenerRule",
+          "topLevelProperty": "VpcLatticeConfigurations",
+          "terminalKey": "ProductionListenerRule",
+          "bucket": "same-spelling"
+        },
+        {
+          "resourceType": "AWS::ECS::Service",
+          "nestedKey": "VpcLatticeConfigurations.AdvancedConfiguration.TestListenerRule",
+          "topLevelProperty": "VpcLatticeConfigurations",
+          "terminalKey": "TestListenerRule",
+          "bucket": "same-spelling"
+        },
+        {
+          "resourceType": "AWS::ECS::Service",
           "nestedKey": "VpcLatticeConfigurations.PortName",
           "topLevelProperty": "VpcLatticeConfigurations",
           "terminalKey": "PortName",
@@ -3992,6 +4056,14 @@
       "shapeEntries": [
         {
           "resourceType": "AWS::ECS::Service",
+          "nestedKey": "AdvancedConfiguration",
+          "definition": "VpcLatticeConfiguration",
+          "pass": "definition",
+          "bucket": "provider-handled",
+          "sdkDetail": "SDK interface `VpcLatticeConfiguration` has no `advancedConfiguration` member"
+        },
+        {
+          "resourceType": "AWS::ECS::Service",
           "nestedKey": "HookDetails",
           "definition": "DeploymentLifecycleHook",
           "pass": "wrapper",
@@ -4001,9 +4073,16 @@
       "shapeCleanCount": 18,
       "unmatchedDefinitions": [
         "ForceNewDeployment",
+        "GatewayConnector",
+        "GatewayConnectorDeregistrationDelay",
+        "GatewayConnectorFilters",
+        "GatewayConnectorHealthCheck",
+        "GatewayConnectorHealthCheckMatcher",
         "HookTimeoutConfig",
+        "ServiceConnectContainerConfiguration",
         "ServiceConnectTestTrafficRulesHeader",
-        "ServiceConnectTestTrafficRulesHeaderValue"
+        "ServiceConnectTestTrafficRulesHeaderValue",
+        "VpcLatticeAdvancedConfiguration"
       ],
       "usedSegmentRenames": [],
       "usedTerminalRenames": []
@@ -4014,7 +4093,7 @@
       "sdkClientPackage": "@aws-sdk/client-ecs",
       "keyStyle": "lower-first",
       "freshObjectMapper": true,
-      "nestedKeyCount": 142,
+      "nestedKeyCount": 146,
       "entries": [
         {
           "resourceType": "AWS::ECS::TaskDefinition",
@@ -4557,6 +4636,34 @@
         },
         {
           "resourceType": "AWS::ECS::TaskDefinition",
+          "nestedKey": "ContainerDefinitions.ResourceRequirements.SharingStrategy",
+          "topLevelProperty": "ContainerDefinitions",
+          "terminalKey": "SharingStrategy",
+          "bucket": "no-sdk-member"
+        },
+        {
+          "resourceType": "AWS::ECS::TaskDefinition",
+          "nestedKey": "ContainerDefinitions.ResourceRequirements.SharingStrategy.NvidiaMps",
+          "topLevelProperty": "ContainerDefinitions",
+          "terminalKey": "NvidiaMps",
+          "bucket": "no-sdk-member"
+        },
+        {
+          "resourceType": "AWS::ECS::TaskDefinition",
+          "nestedKey": "ContainerDefinitions.ResourceRequirements.SharingStrategy.NvidiaMps.MaxComputePercent",
+          "topLevelProperty": "ContainerDefinitions",
+          "terminalKey": "MaxComputePercent",
+          "bucket": "no-sdk-member"
+        },
+        {
+          "resourceType": "AWS::ECS::TaskDefinition",
+          "nestedKey": "ContainerDefinitions.ResourceRequirements.SharingStrategy.NvidiaMps.Memory",
+          "topLevelProperty": "ContainerDefinitions",
+          "terminalKey": "Memory",
+          "bucket": "same-spelling"
+        },
+        {
+          "resourceType": "AWS::ECS::TaskDefinition",
           "nestedKey": "ContainerDefinitions.ResourceRequirements.Type",
           "topLevelProperty": "ContainerDefinitions",
           "terminalKey": "Type",
@@ -5016,7 +5123,10 @@
       "unmatchedDefinitions": [
         "AuthorizationConfig",
         "FSxAuthorizationConfig",
-        "RestartPolicy"
+        "NvidiaMpsAllocation",
+        "RestartPolicy",
+        "SharingStrategy",
+        "TrustedExecutionConfiguration"
       ],
       "usedSegmentRenames": [
         "ProxyConfigurationProperties"
@@ -9215,7 +9325,7 @@
       "sdkClientPackage": "@aws-sdk/client-scheduler",
       "keyStyle": "exact",
       "freshObjectMapper": false,
-      "nestedKeyCount": 47,
+      "nestedKeyCount": 52,
       "entries": [
         {
           "resourceType": "AWS::Scheduler::Schedule",
@@ -9457,6 +9567,41 @@
         },
         {
           "resourceType": "AWS::Scheduler::Schedule",
+          "nestedKey": "Target.EventBridgePutEventsV2Parameters",
+          "topLevelProperty": "Target",
+          "terminalKey": "EventBridgePutEventsV2Parameters",
+          "bucket": "no-sdk-member"
+        },
+        {
+          "resourceType": "AWS::Scheduler::Schedule",
+          "nestedKey": "Target.EventBridgePutEventsV2Parameters.DetailType",
+          "topLevelProperty": "Target",
+          "terminalKey": "DetailType",
+          "bucket": "same-spelling"
+        },
+        {
+          "resourceType": "AWS::Scheduler::Schedule",
+          "nestedKey": "Target.EventBridgePutEventsV2Parameters.Source",
+          "topLevelProperty": "Target",
+          "terminalKey": "Source",
+          "bucket": "same-spelling"
+        },
+        {
+          "resourceType": "AWS::Scheduler::Schedule",
+          "nestedKey": "Target.EventBridgePutRawEventsParameters",
+          "topLevelProperty": "Target",
+          "terminalKey": "EventBridgePutRawEventsParameters",
+          "bucket": "no-sdk-member"
+        },
+        {
+          "resourceType": "AWS::Scheduler::Schedule",
+          "nestedKey": "Target.EventBridgePutRawEventsParameters.Metadata",
+          "topLevelProperty": "Target",
+          "terminalKey": "Metadata",
+          "bucket": "no-sdk-member"
+        },
+        {
+          "resourceType": "AWS::Scheduler::Schedule",
           "nestedKey": "Target.Input",
           "topLevelProperty": "Target",
           "terminalKey": "Input",
@@ -9549,7 +9694,10 @@
       ],
       "shapeEntries": [],
       "shapeCleanCount": 7,
-      "unmatchedDefinitions": [],
+      "unmatchedDefinitions": [
+        "EventBridgePutEventsV2Parameters",
+        "EventBridgePutRawEventsParameters"
+      ],
       "usedSegmentRenames": [],
       "usedTerminalRenames": []
     }
