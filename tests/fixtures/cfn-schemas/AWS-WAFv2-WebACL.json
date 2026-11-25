@@ -1,7 +1,8 @@
 {
   "resourceType": "AWS::WAFv2::WebACL",
-  "generatedAt": "2026-09-23",
+  "generatedAt": "2026-11-25",
   "properties": [
+    "AnalyticsConfig",
     "ApplicationConfig",
     "Arn",
     "AssociationConfig",
@@ -241,6 +242,7 @@
       "ImmunityTimeProperty"
     ],
     "AssociationConfig": [
+      "ChallengeJavascriptSdkInjection",
       "DefaultSizeInspectionLimit",
       "RequestBody"
     ],
@@ -250,12 +252,17 @@
     "MonetizationConfig": [
       "Amount",
       "Chain",
+      "ConnectedAccountArn",
+      "ConnectedAccountConfigs",
       "CryptoConfig",
       "Currency",
       "CurrencyMode",
       "PaymentNetworks",
       "Prices",
       "WalletAddress"
+    ],
+    "AnalyticsConfig": [
+      "Mode"
     ]
   },
   "nestedPropertyPaths": {
@@ -864,6 +871,7 @@
       "ImmunityTimeProperty.ImmunityTime"
     ],
     "AssociationConfig": [
+      "ChallengeJavascriptSdkInjection",
       "RequestBody",
       "RequestBody.DefaultSizeInspectionLimit"
     ],
@@ -871,6 +879,13 @@
       "ALBLowReputationMode"
     ],
     "MonetizationConfig": [
+      "ConnectedAccountConfigs",
+      "ConnectedAccountConfigs.ConnectedAccountArn",
+      "ConnectedAccountConfigs.PaymentNetworks",
+      "ConnectedAccountConfigs.PaymentNetworks.Chain",
+      "ConnectedAccountConfigs.PaymentNetworks.Prices",
+      "ConnectedAccountConfigs.PaymentNetworks.Prices.Amount",
+      "ConnectedAccountConfigs.PaymentNetworks.Prices.Currency",
       "CryptoConfig",
       "CryptoConfig.PaymentNetworks",
       "CryptoConfig.PaymentNetworks.Chain",
@@ -879,6 +894,9 @@
       "CryptoConfig.PaymentNetworks.Prices.Currency",
       "CryptoConfig.PaymentNetworks.WalletAddress",
       "CurrencyMode"
+    ],
+    "AnalyticsConfig": [
+      "Mode"
     ]
   },
   "definitionShapes": {
@@ -902,7 +920,8 @@
       "TokenDomains": "array",
       "AssociationConfig": "object",
       "OnSourceDDoSProtectionConfig": "object",
-      "MonetizationConfig": "object"
+      "MonetizationConfig": "object",
+      "AnalyticsConfig": "object"
     },
     "ApplicationConfig": {
       "Attributes": "array"
@@ -1286,7 +1305,8 @@
       "FailureValues": "array"
     },
     "AssociationConfig": {
-      "RequestBody": "object"
+      "RequestBody": "object",
+      "ChallengeJavascriptSdkInjection": "object"
     },
     "RequestBodyAssociatedResourceTypeConfig": {
       "DefaultSizeInspectionLimit": "scalar"
@@ -1329,9 +1349,25 @@
     "OnSourceDDoSProtectionConfig": {
       "ALBLowReputationMode": "scalar"
     },
+    "AnalyticsConfig": {
+      "Mode": "scalar"
+    },
     "MonetizationConfig": {
       "CryptoConfig": "object",
+      "ConnectedAccountConfigs": "array",
       "CurrencyMode": "scalar"
+    },
+    "ConnectedAccountConfig": {
+      "ConnectedAccountArn": "scalar",
+      "PaymentNetworks": "array"
+    },
+    "ConnectedAccountChainConfig": {
+      "Chain": "scalar",
+      "Prices": "array"
+    },
+    "ConnectedAccountPrice": {
+      "Amount": "scalar",
+      "Currency": "scalar"
     },
     "CryptoConfig": {
       "PaymentNetworks": "array"
@@ -1588,6 +1624,21 @@
     "OnSourceDDoSProtectionConfig": [
       "ALBLowReputationMode"
     ],
+    "AnalyticsConfig": [
+      "Mode"
+    ],
+    "ConnectedAccountConfig": [
+      "ConnectedAccountArn",
+      "PaymentNetworks"
+    ],
+    "ConnectedAccountChainConfig": [
+      "Chain",
+      "Prices"
+    ],
+    "ConnectedAccountPrice": [
+      "Amount",
+      "Currency"
+    ],
     "CryptoConfig": [
       "PaymentNetworks"
     ],
@@ -1602,6 +1653,9 @@
     ]
   },
   "nestedRequired": {
+    "AnalyticsConfig": [
+      "Mode"
+    ],
     "ApplicationConfig": [
       "Attributes"
     ],
@@ -1638,6 +1692,18 @@
     "DefaultAction.Block.CustomResponse.ResponseHeaders": [
       "Name",
       "Value"
+    ],
+    "MonetizationConfig.ConnectedAccountConfigs": [
+      "ConnectedAccountArn",
+      "PaymentNetworks"
+    ],
+    "MonetizationConfig.ConnectedAccountConfigs.PaymentNetworks": [
+      "Chain",
+      "Prices"
+    ],
+    "MonetizationConfig.ConnectedAccountConfigs.PaymentNetworks.Prices": [
+      "Amount",
+      "Currency"
     ],
     "MonetizationConfig.CryptoConfig": [
       "PaymentNetworks"
