@@ -23,6 +23,9 @@
     "regenerations of the `types` block."
   ],
   "types": {
+    "AWS::ApiGateway::Authorizer": [
+      "JwtConfiguration"
+    ],
     "AWS::ApiGateway::Deployment": [
       "DeploymentCanarySettings"
     ],
@@ -35,15 +38,23 @@
     "AWS::BedrockAgentCore::Runtime": [
       "CapacityProviderConfiguration",
       "FilesystemConfigurations",
+      "HooksConfiguration",
       "PlatformVersion",
       "RequestHeaderConfiguration",
+      "ResourceConfigurations",
       "Tags"
+    ],
+    "AWS::CertificateManager::Certificate": [
+      "CertificateUsage",
+      "RootHierarchyType"
     ],
     "AWS::CloudTrail::Trail": [
       "AdvancedEventSelectors",
-      "AggregationConfigurations"
+      "AggregationConfigurations",
+      "RecursiveLogging"
     ],
     "AWS::CloudWatch::Alarm": [
+      "ActionConfiguration",
       "EvaluationWindow",
       "WarmUpConfiguration"
     ],
@@ -53,6 +64,7 @@
       "Visibility"
     ],
     "AWS::Cognito::UserPool": [
+      "DcrConfiguration",
       "IssuerConfiguration",
       "KeyConfiguration"
     ],
@@ -84,6 +96,7 @@
       "MultiRegionConsistency",
       "ReadOnDemandThroughputSettings",
       "ReadProvisionedThroughputSettings",
+      "TableType",
       "VectorIndexes",
       "WarmThroughput"
     ],
@@ -143,10 +156,20 @@
     "AWS::EC2::VPCGatewayAttachment": [
       "VpnGatewayId"
     ],
+    "AWS::ECS::Service": [
+      "GatewayConnectors"
+    ],
+    "AWS::ECS::TaskDefinition": [
+      "TrustedExecutionConfiguration"
+    ],
     "AWS::EFS::MountTarget": [
       "IpAddress",
       "IpAddressType",
       "Ipv6Address"
+    ],
+    "AWS::EMR::Cluster": [
+      "MonitoringConfiguration",
+      "SessionEnabled"
     ],
     "AWS::ElastiCache::CacheCluster": [
       "SnapshotArns"
@@ -158,6 +181,7 @@
       "Tags"
     ],
     "AWS::Kinesis::Stream": [
+      "RecordDistributionStrategy",
       "WarmThroughputMiBps"
     ],
     "AWS::KinesisFirehose::DeliveryStream": [
@@ -168,8 +192,13 @@
       "SnowflakeDestinationConfiguration"
     ],
     "AWS::Lambda::Function": [
+      "AcceleratorConfig",
       "CapacityProviderConfig",
-      "FunctionScalingConfig"
+      "FunctionScalingConfig",
+      "RuntimeConfig"
+    ],
+    "AWS::Lambda::MicrovmImage": [
+      "KmsKeyIdentifier"
     ],
     "AWS::Neptune::DBCluster": [
       "AssociatedRoles",
@@ -230,7 +259,8 @@
       "SourceDbClusterResourceId",
       "SourceRegion",
       "StorageType",
-      "UseLatestRestorableTime"
+      "UseLatestRestorableTime",
+      "WithExpressConfiguration"
     ],
     "AWS::RDS::DBInstance": [
       "AdditionalStorageVolumes",
@@ -301,6 +331,15 @@
     "AWS::RDS::DBProxyEndpoint": [
       "EndpointNetworkType"
     ],
+    "AWS::RDS::DBProxyTargetGroup": [
+      "Tags"
+    ],
+    "AWS::Route53::HostedZone": [
+      "DelegationSetId"
+    ],
+    "AWS::Route53::RecordSet": [
+      "AZAffinity"
+    ],
     "AWS::S3::Bucket": [
       "AbacStatus",
       "BucketNamePrefix",
@@ -323,12 +362,14 @@
     ],
     "AWS::S3Tables::TableBucket": [
       "EncryptionConfiguration",
+      "LoggingConfiguration",
       "MetricsConfiguration",
       "ReplicationConfiguration",
       "StorageClassConfiguration",
       "UnreferencedFileRemoval"
     ],
     "AWS::WAFv2::WebACL": [
+      "AnalyticsConfig",
       "ApplicationConfig",
       "DataProtectionConfig",
       "MonetizationConfig",
